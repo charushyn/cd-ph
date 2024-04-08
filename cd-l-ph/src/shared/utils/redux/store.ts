@@ -4,11 +4,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import languageReducer from './language/language';
 import burgerReducer from './burger/burger';
+import serviceReducer from './service/service'
 
 export const store = configureStore({
     reducer: {
         languageReducer,
         burgerReducer,
+        serviceReducer,
     }
 })
 

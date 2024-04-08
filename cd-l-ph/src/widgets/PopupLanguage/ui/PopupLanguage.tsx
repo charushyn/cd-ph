@@ -17,7 +17,7 @@ const PopupLanguage = () => {
             <div className={`fixed flex flex-col z-[50] top-0 right-0 w-fit h-fit p-4 gap-4 bg-[#D3BE5F] ${!stateVisibility && 'hidden'}`}>
                     <div className='flex flex-row justify-between gap-4'>
                         <Title text="Choose Language" className=""></Title>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6" onClick={() => dispatch(toggleVisibilityPopupLanguage())}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 t-s:w-8 t-s:h-8" onClick={() => dispatch(toggleVisibilityPopupLanguage())}>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </div>

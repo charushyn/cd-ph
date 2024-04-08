@@ -52,6 +52,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gold: '#D3BE5F',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -72,6 +73,18 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      screens: {
+        'm-s': '319px', //568px
+        'm-m': '374px', //667px
+        'm-l': '413px', //736px
+        't-s': '600px', //960px
+        't-m': '767px', //1024px
+        't-l': '819px', //1180px
+        't-x': '1024px', //1366px
+        'd-s': '1200px', //800px
+        'd-m': '1440px', //900px
+        'd-l': '1536px', //960px
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

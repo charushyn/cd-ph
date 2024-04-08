@@ -17,11 +17,13 @@ const FAQ = () => {
                 <div className={`bg-black w-[1px] h-full absolute rotate-45 top-0 bottom-0`}></div>
                 <Title text="Answers" className=""></Title>
             </div>
+            <div className="t-s:flex-wrap t-s:flex t-s:justify-around gap-y-10">
             {blocks.map((item: any) => {
                 return(
                     <FAQBlock title={item.title} photoUrl={item.photoUrl}></FAQBlock>
                 )
             })}
+            </div>
         </div>
     )
 }
