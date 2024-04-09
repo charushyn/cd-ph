@@ -56,8 +56,8 @@ const TestForm = () => {
 
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-      // sendData(values)
-      console.log(values)
+      sendData(values)
+      // console.log(values)
     }
 
 
