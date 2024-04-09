@@ -12,7 +12,7 @@ const LeafletMap = () => {
       iconSize: [30,30]
   })
   return (
-    <div className='w-full h-fit flex justify-center'>
+    <div className='w-full flex justify-center'>
       <MapContainer center={position} zoom={15.5} scrollWheelZoom={true}>
         <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

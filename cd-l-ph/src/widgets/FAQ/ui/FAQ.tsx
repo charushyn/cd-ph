@@ -14,10 +14,10 @@ const FAQ = () => {
         <div ref={faqRef} className='flex flex-col px-4 mt-[20px] gap-10'>
             <div className='flex flex-row justify-center relative items-center gap-3 h-[100px]'>
                 <Title text="Questions" className=""></Title>
-                <div className={`bg-black w-[1px] h-full absolute rotate-45 top-0 bottom-0`}></div>
+                <div className={`bg-black w-[1px] h-full`}></div>
                 <Title text="Answers" className=""></Title>
             </div>
-            <div className="t-s:flex-wrap t-s:flex t-s:justify-around gap-y-10">
+            <div className="gap-y-8 t-s:flex-wrap t-s:flex-row flex flex-col t-s:justify-around">
             {blocks.map((item: any) => {
                 return(
                     <FAQBlock title={item.title} photoUrl={item.photoUrl}></FAQBlock>

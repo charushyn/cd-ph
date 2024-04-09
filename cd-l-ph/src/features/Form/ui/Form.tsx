@@ -65,9 +65,9 @@ const TestForm = () => {
     return (
         <div className="p-4 flex flex-col gap-4" id='main-form'>
             <hr className=" bg-black h-[1px] border-0 t-s:m-10"></hr>
-            <Title text="Залишились питання або ж бажаєте залишити заявку?" className=" t-s:text-2xl t-s:mb-10 t-s:w-[400px] t-s:flex t-s:self-center text-center"></Title>
             <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-5">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-5 m-l:w-[80%] t-m:w-[50%] d-s:w-[33%] d-s:flex d-s:flex-col mx-auto">
+                    <Title text="Залишились питання або ж бажаєте залишити заявку?" className=" t-s:text-2xl t-s:mb-10 t-s:w-[400px] t-s:flex t-s:self-center text-center"></Title>
                     <FormField
                         control={form.control}
                         name="service"
@@ -119,14 +119,14 @@ const TestForm = () => {
                             </FormItem>
                         )}
                         />
-                                                <FormField
+                        <FormField
                         control={form.control}
                         name="email"
                         render={({ field }) => (
                             <FormItem>
                             <FormLabel>Ваша почта *</FormLabel>
                             <FormControl>
-                                <Input placeholder="example@gmail.com" {...field} />
+                                <Input placeholder="example@gmail.com" {...field}/>
                             </FormControl>
                             <FormMessage />
                             </FormItem>

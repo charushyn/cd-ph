@@ -7,6 +7,7 @@ const ScrollToComponent = (
         text,
         hrefElem,
         arrowClassName,
+        isHoverEffectDisabled,
     }
     :
     {
@@ -15,11 +16,12 @@ const ScrollToComponent = (
         text: string
         hrefElem: string,
         arrowClassName?: string,
+        isHoverEffectDisabled?: boolean,
     }
 ) => {
     let stringHref = `#${hrefElem}`
     return(
-        <a href={stringHref}  className={cn(`flex flex-row w-fit h-fit px-4 py-2 gap-2 bg-black z-20 hover:text-black hover:bg-gold duration-200`, className)}>
+        <a href={stringHref}  className={cn(`flex flex-row w-fit h-fit px-4 py-2 gap-2 bg-black z-20 d-s:hover:text-black d-s:hover:bg-gold d-s:duration-200 ${isHoverEffectDisabled && 'd-s:hover:text-white d-s:hover:bg-black'}`, className)}>
             <p className='uppercase'>{text}</p>
             {
                 isArrowIconNeeded 

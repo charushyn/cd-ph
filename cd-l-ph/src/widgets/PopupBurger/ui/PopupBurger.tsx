@@ -21,7 +21,7 @@ export default function PopupBurger(){
                     </svg>
                 </div>
                 <hr className=" bg-black h-[1px] border-0"></hr>
-                <Link href={'/login'} text={'Login'} className='cursor-pointer underline bg-gold p-0'></Link>
+                <Link href={'/login'} text={'Login'} className='cursor-pointer underline bg-gold p-0 t-m:text-xl'></Link>
             </div>
         </div>
     )

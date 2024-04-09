@@ -21,7 +21,7 @@ const Services = () => {
             <div className="h-[70px] flex items-center px-4">
                 <Title text="Наші послуги" className=""></Title>
             </div>
-            <div className="flex flex-col t-s:flex-row">
+            <div className="flex flex-col d-s:flex-row">
                 {
                     services.map((service) => {
                         return(
