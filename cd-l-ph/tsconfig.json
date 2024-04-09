@@ -19,7 +19,6 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "pages": ["app/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/shared/ui/ScrollToComponent/ScrollToComponent.tsx", "src/features/LeafletMap/ui/LeafletMap.tsx"],
