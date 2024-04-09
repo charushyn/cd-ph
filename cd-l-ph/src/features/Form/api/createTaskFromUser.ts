@@ -8,10 +8,10 @@ const createTaskFromUser = (userID: any, description: string, service: string) =
         },
         body: JSON.stringify(
           {
-            "name": `Task: ${service}`,
+            "name": `Task: ${service} TEST`,
             "description": `${description}`,
             "assigner": {
-              "id": `contact:${userID}`
+              "id": `contact:${+userID}`
             },
             "assignees": {
               "users": [

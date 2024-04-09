@@ -1,6 +1,6 @@
-const createCardUser = async (values : {name: string, email: string, phone: string}) => {
+const createCardUser = async (values : {name: string, email: string, phone: string, service: string, textarea: string}) => {
 
-    let answer;
+        let answer;
 
         await fetch('https://cdfinance.planfix.com/rest/contact/', {
         method: 'POST',
