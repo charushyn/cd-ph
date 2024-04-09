@@ -15,7 +15,7 @@ const Services = () => {
 
     React.useEffect(() => {
         dispatch(changeCurrentService(services[Math.floor(Math.random() * services.length - 1) + 1]))
-    })
+    }, [])
     return(
         <div>
             <div className="h-[70px] flex items-center px-4">
