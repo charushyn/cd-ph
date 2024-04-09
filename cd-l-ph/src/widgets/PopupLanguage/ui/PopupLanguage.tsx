@@ -7,6 +7,7 @@ import { Title } from "@/shared/ui"
 
 import { useSelector, useDispatch } from "react-redux"
 import { toggleVisibilityPopupLanguage,changeCurrentLanguage } from "@/shared/utils/index"
+import Image from "next/image"
 
 const PopupLanguage = () => {
         const stateVisibility = useSelector((state: any) => state.languageReducer.isPopupLanguageShow)
@@ -25,11 +26,11 @@ const PopupLanguage = () => {
                     {
                         languages.map((item) => {
                             return(
-                                <div className={`flex flex-row gap-1 cursor-pointer font-Acrom_Regular`} onClick={() => {
+                                <div key={item} className={`flex flex-row gap-1 cursor-pointer font-Acrom_Regular`} onClick={() => {
                                     dispatch(changeCurrentLanguage(item))
                                     dispatch(toggleVisibilityPopupLanguage())
                                     }}>
-                                    <img className='w-[30px] object-cover h-[20px] border-[1px]' src={item.flagUrl}></img>
+                                    <Image width={30} height={20} alt="" className=' object-cover border-[1px]' src={item.flagUrl}></Image>
                                     <Title text={item.fullName} className={item.id === currentLanguage.id ? 'underline' : ''}></Title>
                                 </div>
                             )
