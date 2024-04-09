@@ -1,3 +1,9 @@
 import { LoginPage } from "@/build/index";
 
-export default LoginPage;
+const Page = () => {
+    return(
+        <LoginPage></LoginPage>
+    )
+}
+
+export default Page;
