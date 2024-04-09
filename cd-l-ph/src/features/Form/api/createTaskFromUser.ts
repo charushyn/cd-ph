@@ -1,4 +1,4 @@
-const createTaskFromUser = (userID: any) => {
+const createTaskFromUser = (userID: any, description: string, service: string) => {
     fetch(`https://cdfinance.planfix.com/rest/task/`, {
         method: 'POST',
         headers: {
@@ -8,8 +8,8 @@ const createTaskFromUser = (userID: any) => {
         },
         body: JSON.stringify(
           {
-            "name": `automaticly generated task by client id: ${userID}`,
-            "description": `Task description client`,
+            "name": `Task: ${service}`,
+            "description": `${description}`,
             "assigner": {
               "id": `contact:${userID}`
             },
