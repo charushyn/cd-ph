@@ -20,7 +20,7 @@ const FAQ = () => {
             <div className="gap-y-8 t-s:flex-wrap t-s:flex-row flex flex-col t-s:justify-around">
             {blocks.map((item: any) => {
                 return(
-                    <FAQBlock title={item.title} photoUrl={item.photoUrl}></FAQBlock>
+                    <FAQBlock key={item.title} title={item.title} photoUrl={item.photoUrl}></FAQBlock>
                 )
             })}
             </div>
