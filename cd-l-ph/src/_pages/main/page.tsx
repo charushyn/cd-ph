@@ -1,4 +1,4 @@
-import { TestForm } from "@/features/index";
+import { MainForm } from "@/widgets/index";
 import { FAQ, Services } from "@/widgets/index";
 import {PopupLanguage} from "@/widgets/index";
 import {PopupBurger} from "@/widgets/index";
@@ -11,7 +11,7 @@ const Main = () => {
             <PopupLanguage></PopupLanguage>
             <Services></Services>
             <FAQ></FAQ>
-            <TestForm></TestForm>
+            <MainForm></MainForm>
           </div>
         );
       }

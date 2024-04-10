@@ -1,5 +1,5 @@
-const createTaskFromUser = (userID: any, description: string, service: string) => {
-    fetch(`https://cdfinance.planfix.com/rest/task/`, {
+const createTaskFromUser = async (userID: any, description: string, service: string, name: string) => {
+    let response = await fetch(`https://cdfinance.planfix.com/rest/task/`, {
         method: 'POST',
         headers: {
             'accept': 'application/json',
@@ -8,7 +8,7 @@ const createTaskFromUser = (userID: any, description: string, service: string) =
         },
         body: JSON.stringify(
           {
-            "name": `Task: ${service} TEST`,
+            "name": `${name}, ${service} (site, https://TEST/TEST)`,
             "description": `${description}`,
             "assigner": {
               "id": `contact:${+userID}`
@@ -20,12 +20,25 @@ const createTaskFromUser = (userID: any, description: string, service: string) =
                 }
               ],
               "groups": []
+            },
+            "counterparty": {
+              "id": `contact:${+userID}`
             }
           }
         ),
         mode: 'cors',
         cache: "default",
+      }).then((res) => {
+        if(res.ok){
+          return res.json()
+        }
+        throw new Error('task not created from user')
+      }).then((res) => {
+        return res
+      }).catch((error) => {
+        throw error
       })
+      return response
 }
 
 export {createTaskFromUser}
