@@ -1,20 +1,40 @@
 'use client'
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+
+import React from "react";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { MutateFunction, useMutation } from "@tanstack/react-query"
-
-
-
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
 import validator from 'validator';
 
+import { MutateFunction, useMutation } from "@tanstack/react-query"
+
 
 import { Button } from "@/shared/uiShadcn/ui/button"
+import { Input } from "@/shared/uiShadcn/ui/input"
+
+import { SuccessCard, LoadingCard, ErrorCard } from "@/features/index";
+import { Title } from "@/shared/ui/index";
+
+import { sendData } from "../api";
+
+import {
+  Select,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+} from "@/shared/uiShadcn/ui/select"
+
+import {
+  Textarea,
+} from "@/shared/uiShadcn/ui/textarea"
+
+
 import {
   Form,
   FormControl,
@@ -24,53 +44,53 @@ import {
   FormLabel,
   FormMessage,
 } from "@/shared/uiShadcn/ui/form"
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/shared/uiShadcn/ui/select'
-import { Textarea } from "@/shared/uiShadcn/ui/textarea";
-import { Input } from "@/shared/uiShadcn/ui/input"
-
-import { SuccessCard, LoadingCard, ErrorCard } from "@/features/index";
-
-import { sendData } from "../api";
-import { Title } from "@/shared/ui/index";
-import React from "react";
-
  
 const formSchema = z.object({
   name: z.string().min(2, 'Too Short!').max(14, 'Too long!'),
+  surname: z.string().min(2, 'Too Short!').max(14, 'Too long!'),
   phone: z.string().refine(validator.isMobilePhone, 'Invalid Phone Number'),
   email: z.string().email('Invalid Email'),
   service: z.string().min(1, "Оберіть послугу яка Вас цікавить"),
   textarea: z.string()
 })
 
-const MainForm = () => {
+const FeedbackForm = () => {
+    const { 
+      isPending, 
+      isError, 
+      isSuccess, 
+      error, 
+      mutate, 
+      reset
+    } = useMutation(
+      {
+        mutationFn: (values: {name: string, surname: string, email: string, phone: string, service: string, textarea: string}) => sendData(values),
+      })
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
         name: "",
-        phone: "",
+        surname: "",
+        phone: "+48",
         email: "",
         service: "",
         textarea: "",
       },
     })
-    const { isPending, isError, isSuccess, error, mutate, reset} = useMutation({mutationFn: (values: {name: string, email: string, phone: string, service: string, textarea: string}) => sendData(values)})
-    // const { isPending, isError, isSuccess, error, mutate, reset} = useMutation({mutationFn: (values: {name: string}) => sendData(values)})
+    
 
     React.useEffect(() => {
-      isSuccess && toast.success('success')
-      isError && toast.error('error!')!
+      isSuccess && toast.success('Успішно!')
+      isError && toast.error('Помилка!')!
     }, [isError, isSuccess])
 
     function onSubmit(values: z.infer<typeof formSchema>) {
       mutate(values)
+    }
+
+    function resetValues(){
+      reset()
+      form.reset()
     }
 
 
@@ -80,14 +100,8 @@ const MainForm = () => {
             <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-5 m-l:w-[80%] t-m:w-[50%] d-s:w-[33%] d-s:flex d-s:flex-col mx-auto relative`}>
                       {isPending && <LoadingCard text='Loading...'></LoadingCard>}
-                      {isError && <ErrorCard funcReset={() => { 
-                        reset()
-                        form.reset()
-                         }} text={error.message}></ErrorCard>}
-                      {isSuccess && <SuccessCard funcReset={() => { 
-                        reset()
-                        form.reset()
-                         }} text="Greetings!"></SuccessCard>}
+                      {isError && <ErrorCard funcReset={resetValues} text={error.message}></ErrorCard>}
+                      {isSuccess && <SuccessCard funcReset={resetValues} text="Успішно!"></SuccessCard>}
                       
                     <Title text="Залишились питання або ж бажаєте залишити заявку?" className=" t-s:text-2xl t-s:mb-10 t-s:w-[400px] t-s:flex t-s:self-center text-center"></Title>
                     <FormField
@@ -96,7 +110,7 @@ const MainForm = () => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Interested service *</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <Select onValueChange={field.onChange} value={field.value}>
                               <FormControl>
                                 <SelectTrigger>
                                   <SelectValue placeholder="Select a service you need." />
@@ -124,6 +138,19 @@ const MainForm = () => {
                             <FormDescription>
                                 Наприклад: Сергій
                             </FormDescription>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                        <FormField
+                        control={form.control}
+                        name="surname"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormLabel>Ваше призвіще</FormLabel>
+                            <FormControl>
+                                <Input placeholder="shadcn" {...field} />
+                            </FormControl>
                             <FormMessage />
                             </FormItem>
                         )}
@@ -174,6 +201,7 @@ const MainForm = () => {
                             </FormItem>
                           )}
                         />
+                        
                         <Button type="submit" className="w-full">Надіслати</Button>
                     </form>
             </Form>
@@ -181,4 +209,4 @@ const MainForm = () => {
       )
     }
 
-export default MainForm;
+export default FeedbackForm;

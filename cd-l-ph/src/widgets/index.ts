@@ -4,6 +4,6 @@ import PopupBurger from "./PopupBurger/ui/PopupBurger";
 import PopupLanguage from "./PopupLanguage/ui/PopupLanguage";
 import FAQ from "./FAQ/ui/FAQ";
 import Footer from "./Footer/ui/Footer";
-import MainForm from "./Form/ui/Form";
+import Greeting from "./Greeting/ui/Greeting";
 
-export {Header, Services, PopupBurger, PopupLanguage, FAQ, Footer, MainForm}
+export {Header, Services, PopupBurger, PopupLanguage, FAQ, Footer, Greeting}

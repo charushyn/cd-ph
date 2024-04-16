@@ -6,9 +6,6 @@ import { useSelector } from "react-redux";
 import { toggleVisibilityPopupLanguage, toggleVisibilityPopupBurger } from "@/shared/utils/index";
 import { useDispatch } from "react-redux";
 
-import { getLangInfo } from "@/shared/helpers/index";
-
-
 const Header = () => {
     const currentLanguage = useSelector((state: any) => state.languageReducer.currentLanguage)
     const dispatch = useDispatch()

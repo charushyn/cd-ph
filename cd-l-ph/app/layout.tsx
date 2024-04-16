@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import { ReduxProvider, ProviderAsync, NotificationBlock } from "@/build/Providers/index";
+import { ReduxProvider, ProviderAsync, NotificationBlock, Loading } from "@/build/Providers/index";
 
 const inter = Inter({ subsets: ["latin"] });
 

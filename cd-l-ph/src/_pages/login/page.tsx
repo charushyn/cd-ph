@@ -1,9 +1,9 @@
-
+import { LoginForm } from "@/widgets/index";
 
 const Login = () => {
     return(
-        <div className=" h-svh bg-black">
-            login page
+        <div className=" min-h-svh bg-black">
+            <LoginForm></LoginForm>
         </div>
     )
 }
