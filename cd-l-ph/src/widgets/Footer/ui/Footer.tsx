@@ -14,7 +14,7 @@ export default function Footer(){
     const Map = dynamic(() => import("@/shared/ui/LeafletMap/ui/LeafletMap"), { ssr: false });
 
     return(
-        <footer className='flex flex-col bg-black text-white gap-4 h-fit p-4' id='footer'>
+        <footer className='flex flex-col text-xs bg-black text-white gap-4 h-fit p-4' id='footer'>
             <ScrollToComponent text={'повернутись нагору'} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffectDisabled={true}></ScrollToComponent>
             <div className='flex flex-col gap-4 h-fit'>
                 <div className='flex flex-col gap-2'>
@@ -30,7 +30,7 @@ export default function Footer(){
                     <div className='flex flex-col gap-4'>
                         <div className='flex flex-row items-center gap-2'>
                             {iconFinder('small-gold-logo')}
-                            <p className='font-Acrom_Bold text-xl'>CD Phinance</p>
+                            <p className='text-sm'>CD Phinance</p>
                         </div>
                         <TitleWithSbtitle titleText="Title" subtitleText="Subtitle"></TitleWithSbtitle>
                         <TitleWithSbtitle titleText="Title" subtitleText="Subtitle"></TitleWithSbtitle>
@@ -38,19 +38,19 @@ export default function Footer(){
                     </div>
                     <div className='flex flex-col gap-4'>
                         <Title text="Social Media" className="text-white"></Title>
-                        <div className='flex flex-row gap-2 cursor-pointer'>
+                        <div className='flex flex-row gap-2 cursor-pointer items-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                             </svg>
                             <p className='underline'>link/link</p>
                         </div>
-                        <div className='flex flex-row gap-2 cursor-pointer'>
+                        <div className='flex flex-row gap-2 cursor-pointer items-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                             </svg>
                             <p className='underline'>link/link</p>
                         </div>
-                        <div className='flex flex-row gap-2 cursor-pointer'>
+                        <div className='flex flex-row gap-2 cursor-pointer items-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                             </svg>

@@ -18,8 +18,8 @@ const Services = () => {
     }, [])
     return(
         <div>
-            <div className="h-[70px] flex items-center px-4">
-                <Title text="Наші послуги" className=""></Title>
+            <div className="h-[70px] flex items-center px-4 t-l:px-8" id="services">
+                <Title text="Наші послуги" className="text-sm"></Title>
             </div>
             <div className="flex flex-col d-s:flex-row">
                 {

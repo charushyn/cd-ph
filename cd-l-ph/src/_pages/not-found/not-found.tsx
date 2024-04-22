@@ -2,8 +2,7 @@ import Link from 'next/link'
  
 export default function NotFoundPage() {
   return (
-    <div>
-      <h2>Not Found</h2>
+    <div className='h-svh flex items-center justify-center'>
       <Link href="/">Return Home</Link>
     </div>
   )

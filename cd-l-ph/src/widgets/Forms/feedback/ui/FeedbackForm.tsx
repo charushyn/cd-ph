@@ -95,7 +95,7 @@ const FeedbackForm = () => {
 
 
     return (
-        <div className="p-4 flex flex-col gap-4" id='main-form'>
+        <div className="p-4 flex flex-col gap-4" id='feedbackform'>
             <hr className=" bg-black h-[1px] border-0 t-s:m-10"></hr>
             <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-5 m-l:w-[80%] t-m:w-[50%] d-s:w-[33%] d-s:flex d-s:flex-col mx-auto relative`}>
@@ -103,7 +103,7 @@ const FeedbackForm = () => {
                       {isError && <ErrorCard funcReset={resetValues} text={error.message}></ErrorCard>}
                       {isSuccess && <SuccessCard funcReset={resetValues} text="Успішно!"></SuccessCard>}
                       
-                    <Title text="Залишились питання або ж бажаєте залишити заявку?" className=" t-s:text-2xl t-s:mb-10 t-s:w-[400px] t-s:flex t-s:self-center text-center"></Title>
+                    <Title text="Залишились питання або ж бажаєте залишити заявку?" className=" t-s:text-2xl text-sm t-s:mb-10 t-s:w-[400px] t-s:flex t-s:self-center text-center"></Title>
                     <FormField
                         control={form.control}
                         name="service"

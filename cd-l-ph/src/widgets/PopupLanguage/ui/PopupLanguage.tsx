@@ -26,12 +26,12 @@ const PopupLanguage = () => {
                     {
                         languages.map((item) => {
                             return(
-                                <div key={item} className={`flex flex-row gap-1 cursor-pointer font-Acrom_Regular`} onClick={() => {
+                                <div key={item} className={`flex flex-row gap-2 cursor-pointer font-Acrom_Regular`} onClick={() => {
                                     dispatch(changeCurrentLanguage(item))
                                     dispatch(toggleVisibilityPopupLanguage())
                                     }}>
                                     <Image width={30} height={20} alt="" className=' object-cover border-[1px]' src={item.flagUrl}></Image>
-                                    <Title text={item.fullName} className={item.id === currentLanguage.id ? 'underline' : ''}></Title>
+                                    <p className={`text-xs t-s:text-sm t-m:text-base t-x:text-lg ${item.id === currentLanguage.id ? 'underline' : ''}`}>{item.fullName}</p>
                                 </div>
                             )
                         })
