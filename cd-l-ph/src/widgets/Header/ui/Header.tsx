@@ -27,7 +27,7 @@ const Header = () => {
                     {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 t-s:w-5 t-s:h-5 text-white">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg> */}
-                    {iconFinder(currentLanguage.flagIcon, 'h-[16px]')}
+                    {iconFinder("flag-gb", 'h-[16px]')}
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white t-s:w-6 t-s:h-6" onClick={() => dispatch(toggleVisibilityPopupBurger())}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

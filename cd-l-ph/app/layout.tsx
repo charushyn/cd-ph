@@ -1,10 +1,6 @@
-
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 
-import { ReduxProvider, ProviderAsync, NotificationBlock, Loading } from "@/build/Providers/index";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +17,7 @@ export default function RootLayout({
   return (
     <html lang={"en"}>
       <body className={inter.className}>
-        <ProviderAsync>
-        <ReduxProvider>
           {children}
-          <NotificationBlock />
-        </ReduxProvider>
-        </ProviderAsync>
       </body>
     </html>
   );

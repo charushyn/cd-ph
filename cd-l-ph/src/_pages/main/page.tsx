@@ -6,6 +6,7 @@ import {Greeting} from "@/widgets/index"
 import {WhyWe} from '@/widgets/index'
 import {Opinions} from "@/widgets/index"
 
+
 const Main = () => {
         return (
           <div className="">

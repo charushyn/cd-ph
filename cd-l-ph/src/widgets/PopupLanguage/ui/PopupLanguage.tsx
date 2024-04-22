@@ -5,15 +5,17 @@ import React from "react"
 import languages from "../api/data"
 import { Title } from "@/shared/ui"
 
+import { useLocale } from "next-intl"
+
 import { useSelector, useDispatch } from "react-redux"
 import { toggleVisibilityPopupLanguage,changeCurrentLanguage } from "@/shared/utils/index"
 import Image from "next/image"
 
 const PopupLanguage = () => {
         const stateVisibility = useSelector((state: any) => state.languageReducer.isPopupLanguageShow)
-        const currentLanguage = useSelector((state:any) => state.languageReducer.currentLanguage)
         const dispatch = useDispatch()
-        
+        const local = useLocale()
+        console.log(local)
         return(
             <div className={`fixed flex flex-col z-[50] top-0 right-0 w-fit h-fit p-4 gap-4 bg-[#D3BE5F] ${!stateVisibility && 'hidden'}`}>
                     <div className='flex flex-row justify-between gap-4'>
@@ -27,11 +29,11 @@ const PopupLanguage = () => {
                         languages.map((item) => {
                             return(
                                 <div key={item} className={`flex flex-row gap-2 cursor-pointer font-Acrom_Regular`} onClick={() => {
-                                    dispatch(changeCurrentLanguage(item))
+                                    
                                     dispatch(toggleVisibilityPopupLanguage())
                                     }}>
                                     <Image width={30} height={20} alt="" className=' object-cover border-[1px]' src={item.flagUrl}></Image>
-                                    <p className={`text-xs t-s:text-sm t-m:text-base t-x:text-lg ${item.id === currentLanguage.id ? 'underline' : ''}`}>{item.fullName}</p>
+                                    <p className={`text-xs t-s:text-sm t-m:text-base t-x:text-lg underline`}>{item.fullName}</p>
                                 </div>
                             )
                         })

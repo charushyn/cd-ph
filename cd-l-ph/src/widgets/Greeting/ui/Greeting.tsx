@@ -1,13 +1,14 @@
 'use client'
-
+import {useTranslations} from 'next-intl';
 
 import { Title, ScrollToComponent } from "@/shared/ui/index"
 
-import React from 'react'
+import {getTranslations} from 'next-intl/server';
 
 import {ReactTyped} from 'react-typed'
 
 export default function Greeting(){
+        const t = useTranslations('index');
         return(
             <div className={`w-full relative min-h-svh h-fit`} id="greeting">
                 <video 
@@ -17,7 +18,6 @@ export default function Greeting(){
                     loop
                     preload="auto"
                     src={require("../video/stock-video-team-working.mp4")}
-
                     />
                 <div className="overlay"></div>
                 <div className={`flex flex-col justify-around min-h-svh z-[1] relative px-4 pt-[60px] m-l:pt-[100px] t-l:px-8`}>
@@ -33,8 +33,9 @@ export default function Greeting(){
                         backSpeed={200}
                         loop
                         ></ReactTyped>
+                        <h1>{}</h1>
                         <div className='max-w-[60%] text-white text-xs m-l:text-sm t-s:text-xl t-m:max-w-[50%] t-x:text-2xl d-s:text-lg d-s:max-w-[33%]'>
-                            We are <span className="text-xm">The Best Result</span>, we are making good quality product
+                            We are {t('title')} <span className="text-xm">The Best Result</span>, we are making good quality product
                         </div>
                     </div>
                     <div className='flex flex-col gap-3 t-l:gap-5'>
