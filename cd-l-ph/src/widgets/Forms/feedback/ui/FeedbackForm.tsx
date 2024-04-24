@@ -48,12 +48,20 @@ import {
 const formSchema = z.object({
   name: z.string().min(2, 'Too Short!').max(14, 'Too long!'),
   surname: z.string().min(2, 'Too Short!').max(14, 'Too long!'),
-  phone: z.string().refine(validator.isMobilePhone, 'Invalid Phone Number'),
+  mobilecode: z.string(),
+  phone: z.string(),
   email: z.string().email('Invalid Email'),
   service: z.string().min(1, "Оберіть послугу яка Вас цікавить"),
   textarea: z.string()
-})
-
+}).refine((values) => {
+  console.log(values)
+  return validator.isMobilePhone(`${values.mobilecode}${values.phone}`, ['uk-UA', 'pl-PL', 'be-BY', 'de-DE'])
+},
+  {
+      message: "Неправильний номер, заповніть ще раз та вишліть форму",
+      path: ["phone"]
+  }
+)
 const FeedbackForm = () => {
     const { 
       isPending, 
@@ -66,12 +74,16 @@ const FeedbackForm = () => {
       {
         mutationFn: (values: {name: string, surname: string, email: string, phone: string, service: string, textarea: string}) => sendData(values),
       })
+
+     
+
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
         name: "",
         surname: "",
-        phone: "+48",
+        mobilecode: "+48",
+        phone: "",
         email: "",
         service: "",
         textarea: "",
@@ -155,19 +167,43 @@ const FeedbackForm = () => {
                             </FormItem>
                         )}
                         />
+                        <div className=" flex flex-row">
+                        <FormField
+                        control={form.control}
+                        name="mobilecode"
+                        render={({ field }) => (
+                          <FormItem>
+                            
+                            <Select onValueChange={field.onChange} value={field.value}>
+                              <FormControl>
+                              <SelectTrigger>
+                                  <SelectValue placeholder="Select a service you need." />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent className=" w-fit">
+                                <SelectItem value="+48">+48</SelectItem>
+                                <SelectItem value="+380">+380</SelectItem>
+                                <SelectItem value="+49">+49</SelectItem>
+                                <SelectItem value="+375">+375</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                         <FormField
                         control={form.control}
                         name="phone"
                         render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>Ваш телефон *</FormLabel>
+                            <FormItem className="w-full">
                             <FormControl>
-                                <Input placeholder="+48 / +38 / +49" {...field} />
+                                <Input placeholder="" {...field} />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
                         )}
                         />
+                        </div>
                         <FormField
                         control={form.control}
                         name="email"
