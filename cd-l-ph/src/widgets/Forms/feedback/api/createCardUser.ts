@@ -1,4 +1,4 @@
-const createCardUser = async (values : {name: string, surname: string, email: string, phone: string, service: string, textarea: string}) => {
+const createCardUser = async (values : {name: string, surname: string, email: string, mobilecode: string, phone: string, service: string, textarea: string}) => {
   // const createCardUser = async (values : {name: string, email: string, phone: string,}) => {
           const body = JSON.stringify({
             "template": {
@@ -16,7 +16,7 @@ const createCardUser = async (values : {name: string, surname: string, email: st
             "isDeleted": false,
             "phones": [
               {
-                "number": values.phone,
+                "number": `${values.mobilecode}${values.phone}`,
                 "type": 1
               }
             ],

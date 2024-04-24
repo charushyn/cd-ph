@@ -1,5 +1,5 @@
-import withVideos from 'next-videos'
 import createNextIntlPlugin from 'next-intl/plugin';
+import withVideos from 'next-videos'
  
 const withNextIntl = createNextIntlPlugin(
   './i18n.ts'

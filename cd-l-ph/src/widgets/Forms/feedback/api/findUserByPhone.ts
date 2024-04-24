@@ -1,4 +1,4 @@
-const findUserByEmail = async (values : {phone: string}) => {
+const findUserByPhone = async (values : {mobilecode: string, phone: string}) => {
     // group.id === 1 === client
     const body = JSON.stringify({
         "offset": 0,
@@ -13,7 +13,7 @@ const findUserByEmail = async (values : {phone: string}) => {
             {
                 "type": 4003,
                 "operator": "equal",
-                "value": values.phone
+                "value": `${values.mobilecode}${values.phone}`
             }
           ]
       })
@@ -46,4 +46,4 @@ const findUserByEmail = async (values : {phone: string}) => {
 return response
 }
 
-export {findUserByEmail}
+export {findUserByPhone}

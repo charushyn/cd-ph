@@ -72,7 +72,7 @@ const FeedbackForm = () => {
       reset
     } = useMutation(
       {
-        mutationFn: (values: {name: string, surname: string, email: string, phone: string, service: string, textarea: string}) => sendData(values),
+        mutationFn: (values: {name: string, surname: string, email: string, mobilecode: string, phone: string, service: string, textarea: string}) => sendData(values),
       })
 
      
