@@ -60,7 +60,6 @@ const formSchema = z.object({
   service: z.string().min(1, "Оберіть послугу яка Вас цікавить"),
   textarea: z.string()
 }).refine((values) => {
-  console.log(values)
   return validator.isMobilePhone(`${values.mobilecode}${values.phone}`, ['uk-UA', 'pl-PL', 'be-BY', 'de-DE'])
 },
   {
