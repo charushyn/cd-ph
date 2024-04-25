@@ -83,7 +83,6 @@ const RegistrationForm = () => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
     //   mutate(values)
-    console.log(values)
     }
 
 

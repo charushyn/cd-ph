@@ -65,7 +65,6 @@ const LoginForm = () => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
     //   mutate(values)
-    console.log(values)
     }
 
 
@@ -105,7 +104,7 @@ const LoginForm = () => {
                         />
                         <div className='flex flex-row text-white justify-between'>
                             <p className="text-sm">Not have account yet?</p>
-                            <Link href='/registration' text='registration' isArrowNeeded={true} className="text-blue-500 p-0 lowercase gap-1 text-sm"></Link>
+                            <Link href='/registration' text='registration' isArrowIconNeeded={true} className="text-blue-500 p-0 lowercase gap-1 text-sm"></Link>
                         </div>
                         <Button type="submit" className="w-full " variant={"secondary"}>Submit</Button>
                     </form>

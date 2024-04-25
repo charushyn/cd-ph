@@ -17,7 +17,6 @@ const PopupLanguage = () => {
         const stateVisibility = useSelector((state: any) => state.languageReducer.isPopupLanguageShow)
         const dispatch = useDispatch()
         const local = useLocale()
-        console.log(local)
         return(
             <div className={`font-OpenSans fixed flex flex-col z-[50] top-0 right-0 w-fit h-fit p-4 gap-4 bg-[#D3BE5F] ${!stateVisibility && 'hidden'}`}>
                     <div className='flex flex-row justify-between gap-4'>

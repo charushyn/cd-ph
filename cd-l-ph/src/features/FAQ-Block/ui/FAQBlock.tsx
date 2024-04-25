@@ -1,8 +1,6 @@
 'use client'
 
 import { Title } from "@/shared/ui/index";
-
-import { ImageSeeMore } from "@/entities/index";
 import {ScrollToComponent} from "@/shared/ui/index";
 
 import { useInView } from "react-intersection-observer";
