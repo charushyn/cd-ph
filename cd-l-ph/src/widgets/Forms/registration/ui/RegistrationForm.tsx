@@ -136,7 +136,7 @@ const RegistrationForm = () => {
                         />
                         <div className='flex flex-row text-white justify-between'>
                             <p className="text-sm">Have account?</p>
-                            <Link href='/login' text='login' isArrowNeeded={true} className="text-blue-500 p-0 lowercase gap-1 text-sm"></Link>
+                            <Link href='/login' text='login' isArrowIconNeeded={true} className="text-blue-500 p-0 lowercase gap-1 text-sm"></Link>
                         </div>
                         <Button type="submit" className="w-full " variant={"secondary"}>Submit</Button>
                     </form>
