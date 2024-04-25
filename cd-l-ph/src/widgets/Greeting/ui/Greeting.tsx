@@ -16,10 +16,10 @@ export default function Greeting(){
                     muted
                     autoPlay
                     loop
-                    preload="auto"
+                    preload="metadata"
                     src={require("../video/stock-video-team-working.mp4")}
                     />
-                <div className="overlay"></div>
+                <div className="overlay z-0"></div>
                 <div className={`flex flex-col justify-around min-h-svh z-[1] relative px-4 pt-[60px] m-l:pt-[100px] t-l:px-8`}>
                     <div className="flex flex-col gap-6 t-s:gap-10">
                         <ReactTyped
