@@ -1,5 +1,5 @@
 import MainLayout from "./layouts/MainLayout";
-import SighInLayout from "./layouts/Sigh-in-Layout";
+import DeepLayout from "./layouts/Deep-Layout";
 
 export {MainLayout};
-export {SighInLayout};
+export {DeepLayout};

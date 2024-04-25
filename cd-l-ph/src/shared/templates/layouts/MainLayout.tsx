@@ -15,7 +15,7 @@ export default function MainLayout({
 }>) {
   return (
     <>
-        <Header></Header>
+        <Header isArrowBack={false} isBurger={true}></Header>
         {children}
         <Footer></Footer>
     </>

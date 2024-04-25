@@ -20,19 +20,19 @@ const iconFinder = (iconName: iconName, className?: string
             return (
                 <Image src={SmallGoldLogo} className={cn('w-fit h-[20px] t-s:h-[30px]', className)} alt=""></Image>
             )
-        case "flag-ukraine":
+        case "flag-ua":
             return(
                 <img src={'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/510px-Flag_of_Ukraine.svg.png'} className='w-6 h-[20px] t-s:h-[30px] t-s:w-[25px]' alt=""></img>
             )
-        case "flag-poland":
+        case "flag-pl":
             return(
                 <img src={'https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Flag_of_Poland.svg/640px-Flag_of_Poland.svg.png'} className='w-6 h-[20px] t-s:h-[30px] t-s:w-[25px]'  alt=""></img> 
             )
-        case "flag-russia":
+        case "flag-ru":
             return (
                 <img src={'https://upload.wikimedia.org/wikipedia/commons/6/6f/White-blue-white_flag.svg'} className='w-6 h-[20px] t-s:h-[30px] t-s:w-[25px]'  alt=""></img>
             )
-        case "flag-gb":
+        case "flag-en":
             return (
                 <img src={'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png'} className='w-6 h-[20px] t-s:h-[30px] t-s:w-[25px]' alt=""></img>
             )

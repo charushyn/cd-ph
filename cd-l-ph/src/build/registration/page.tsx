@@ -1,11 +1,11 @@
-import { SighInLayout } from "@/shared/templates";
+import { DeepLayout } from "@/shared/templates";
 
 import {Registration} from "@/_pages/index";
 
 export default function RegistrationPage() {
     return (
-      <SighInLayout>
+      <DeepLayout>
         <Registration></Registration>
-      </SighInLayout>
+      </DeepLayout>
     );
   }

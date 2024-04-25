@@ -9,6 +9,7 @@ const Button = (
         arrowClassName,
         isHoverEffect,
         onClick,
+        normalcase,
     }
     :
     {
@@ -18,11 +19,12 @@ const Button = (
         text: string
         arrowClassName?: string,
         isHoverEffect?: boolean,
-        onClick?: any
+        onClick?: any,
+        normalcase?: boolean
     }) => {
     return(
         <button type={type} className={cn(`flex flex-row items-center w-fit h-fit px-4 py-2 t-l:px-6 t-l:py-4 t-x:px-10 t-x:py-4 gap-2 bg-black z-20  ${isHoverEffect && 'd-s:hover:text-black d-s:hover:bg-gold d-s:duration-200'}`, className)} onClick={onClick}>
-            <p className='uppercase text-xs t-s:text-sm t-m:text-base t-x:text-lg'>{text}</p>
+            <p className={`uppercase text-xs t-s:text-sm t-m:text-base t-x:text-lg ${normalcase && ' normal-case'}`}>{text}</p>
             {
                 isArrowIconNeeded 
                 && 

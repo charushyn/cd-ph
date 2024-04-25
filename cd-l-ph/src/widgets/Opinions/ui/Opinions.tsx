@@ -12,8 +12,10 @@ import React from 'react'
 import { Title, ALink } from '@/shared/ui/index';
 
 import CountUp from 'react-countup';
+import { useTranslations } from 'next-intl';
 
 const Opinions = () => {
+    const t = useTranslations('main.Opinions');
     const countRef = React.useRef(null)
     const responsive = {
         superLargeDesktop: {
@@ -35,8 +37,8 @@ const Opinions = () => {
         }
       };
       return(
-      <div className='' id='opinions'>
-        <Title text={'Opinions'} className="bg-white z-[10] h-[70px] flex items-center px-4 t-l:px-8"></Title>
+      <div className='font-OpenSans' id='opinions'>
+        <Title text={t('h1')} className="bg-white z-[10] h-[70px] flex items-center px-4 t-l:px-8"></Title>
         <div className='flex flex-col z-[1] relative p-4 t-l:flex-row t-l:p-8 gap-y-4 text-white t-l:justify-between'>
           <div className='overlay z-[0]'></div>
           <div className=' bg-photo z-[-1]'></div>

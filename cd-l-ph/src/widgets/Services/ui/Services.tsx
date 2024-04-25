@@ -9,7 +9,10 @@ import { Title } from "@/shared/ui/index";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCurrentService } from "@/shared/utils";
 
+import { useTranslations } from "next-intl";
+
 const Services = () => {
+    const t = useTranslations('main.services');
     const dispatch = useDispatch()
     const currentService = useSelector((state: any) => state.serviceReducer.currentServiceShowed)
 
@@ -17,9 +20,9 @@ const Services = () => {
         dispatch(changeCurrentService(services[Math.floor(Math.random() * services.length - 1) + 1]))
     }, [])
     return(
-        <div>
+        <div className="font-OpenSans">
             <div className="h-[70px] flex items-center px-4 t-l:px-8" id="services">
-                <Title text="Наші послуги" className="text-sm"></Title>
+                <Title text={t('h1')} className="text-sm"></Title>
             </div>
             <div className="flex flex-col d-s:flex-row">
                 {

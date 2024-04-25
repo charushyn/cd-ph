@@ -12,7 +12,7 @@ export default function PopupBurger(){
     const dispatch = useDispatch()
 
     return(
-        <div className={`w-full h-svh bg-[rgba(0,0,0,0.70)] top-0 bottom-0 right-0 left-0 z-[50] fixed ${!isOpen && 'hidden'}`} onClick={() => dispatch(toggleVisibilityPopupBurger())}>
+        <div className={`font-OpenSans w-full h-svh bg-[rgba(0,0,0,0.70)] top-0 bottom-0 right-0 left-0 z-[50] fixed ${!isOpen && 'hidden'}`} onClick={() => dispatch(toggleVisibilityPopupBurger())}>
             <div className='h-fit flex flex-col gap-4 bg-[#D3BE5F] p-4' onClick={(e) => e.stopPropagation()}>
                 <div className='flex flex-row justify-between'>
                     <Title text="The Best Result" className=""></Title>

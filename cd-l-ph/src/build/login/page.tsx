@@ -1,11 +1,11 @@
-import { SighInLayout } from "@/shared/templates";
+import { DeepLayout } from "@/shared/templates";
 
 import {Login} from "@/_pages/index";
 
 export default function LoginPage() {
     return (
-      <SighInLayout>
+      <DeepLayout>
         <Login></Login>
-      </SighInLayout>
+      </DeepLayout>
     );
   }

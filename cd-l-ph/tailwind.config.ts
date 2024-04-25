@@ -1,13 +1,18 @@
+// content: [
+//   './pages/**/*.{ts,tsx}',
+//   './components/**/*.{ts,tsx}',
+//   './app/**/*.{ts,tsx}',
+//   './src/**/*.{ts,tsx}',
+//   './src/**/**/*.{ts,tsx}',
+//   './app/*.{ts,tsx}',
+// ],
+//content: ['./src/**/*.html', './src/**/*.{ts,tsx}'],
+import defaultTheme from "tailwindcss/defaultTheme"
 import type { Config } from "tailwindcss"
 
 const config = {
   darkMode: ["class"],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+  content: ['./src/**/*.html', './src/**/*.{ts,tsx}'],
   prefix: "",
   theme: {
     container: {
@@ -84,7 +89,10 @@ const config = {
         'd-s': '1200px', //800px
         'd-m': '1440px', //900px
         'd-l': '1536px', //960px
-      }
+      },
+      fontFamily: {
+        OpenSans: ['Open Sans', 'sans-serif']
+      },
     },
   },
 } satisfies Config

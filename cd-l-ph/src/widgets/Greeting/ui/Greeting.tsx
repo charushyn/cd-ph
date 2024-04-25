@@ -8,9 +8,9 @@ import {getTranslations} from 'next-intl/server';
 import {ReactTyped} from 'react-typed'
 
 export default function Greeting(){
-        const t = useTranslations('index');
+        const t = useTranslations('main.greeting');
         return(
-            <div className={`w-full relative min-h-svh h-fit`} id="greeting">
+            <div className={`w-full relative min-h-svh h-fit font-OpenSans`} id="greeting">
                 <video 
                     className="absolute z-[-1] top-0 left-0 right-0 bottom-0 w-full videoBg h-svh object-cover"
                     muted
@@ -26,16 +26,16 @@ export default function Greeting(){
                         className=" text-white m-l:text-xl t-s:text-2xl t-m:text-3xl t-x:text-4xl d-s:text-5xl"
                         strings={[
                             "Hello!",
-                            "Privet!",
-                            "Bonjour!",
+                            "Привіт!",
+                            "Cześć!",
                         ]}
                         typeSpeed={50}
                         backSpeed={200}
                         loop
                         ></ReactTyped>
                         <h1>{}</h1>
-                        <div className='max-w-[60%] text-white text-xs m-l:text-sm t-s:text-xl t-m:max-w-[50%] t-x:text-2xl d-s:text-lg d-s:max-w-[33%]'>
-                            We are {t('title')} <span className="text-xm">The Best Result</span>, we are making good quality product
+                        <div className=' max-w-[60%] text-white text-xs m-l:text-sm t-s:text-xl t-m:max-w-[50%] t-x:text-2xl d-s:text-lg d-s:max-w-[33%]'>
+                            {t('company-mission')}
                         </div>
                     </div>
                     <div className='flex flex-col gap-3 t-l:gap-5'>

@@ -1,14 +1,34 @@
-import { Title } from "@/shared/ui/index"
+'use client'
+
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+  } from "@/shared/uiShadcn/ui/alert-dialog"
+
 import { BarLoader } from "@/entities/index";
-const LoadingCard = ({text} : {text:string}) => {
+
+import React from "react";
+
+const ErrorCard = ({text, isOpen} : {text:string, isOpen: boolean }) => {
     return(
-        <div className="flex items-center justify-center absolute h-full w-full top-0 bottom-0 bg-white border-[1px]  z-20 left-0 right-0">
-            <div className='flex flex-col items-center gap-2 p-4'>
-                <Title text={text} className=""></Title>
+        <AlertDialog open={isOpen}>
+            <AlertDialogContent className=" flex justify-center">
+                <AlertDialogHeader>
+                <AlertDialogTitle>{text}</AlertDialogTitle>
+                <AlertDialogDescription>
                 <BarLoader className="bg-white"></BarLoader>
-            </div>
-        </div>
+                </AlertDialogDescription>
+                </AlertDialogHeader>
+            </AlertDialogContent>
+        </AlertDialog>
     )
 }
 
-export default LoadingCard;
+export default ErrorCard;
+

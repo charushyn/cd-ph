@@ -1,9 +1,9 @@
 type iconName = 
     "small-gold-logo" | 
-    "flag-ukraine" |
-    "flag-poland" |
-    "flag-russia" |
-    "flag-gb" |
+    "flag-ua" |
+    "flag-pl" |
+    "flag-ru" |
+    "flag-en" |
     "chevron-down" |
     "clock" |
     "team" |

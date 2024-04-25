@@ -2,6 +2,10 @@
 
 import React from "react";
 
+import { useTranslations } from "next-intl";
+
+import { Link } from "@/shared/ui/index";
+
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,6 +38,8 @@ import {
   Textarea,
 } from "@/shared/uiShadcn/ui/textarea"
 
+import { Checkbox } from "@/shared/uiShadcn/ui/checkbox"
+
 
 import {
   Form,
@@ -63,6 +69,7 @@ const formSchema = z.object({
   }
 )
 const FeedbackForm = () => {
+    const t = useTranslations('main.FeedbackForm');
     const { 
       isPending, 
       isError, 
@@ -107,25 +114,24 @@ const FeedbackForm = () => {
 
 
     return (
-        <div className="p-4 flex flex-col gap-4" id='feedbackform'>
+        <div className="p-4 flex flex-col gap-4 font-OpenSans" id='feedbackform'>
             <hr className=" bg-black h-[1px] border-0 t-s:m-10"></hr>
             <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-5 m-l:w-[80%] t-m:w-[50%] d-s:w-[33%] d-s:flex d-s:flex-col mx-auto relative`}>
-                      {isPending && <LoadingCard text='Loading...'></LoadingCard>}
-                      {isError && <ErrorCard funcReset={resetValues} text={error.message}></ErrorCard>}
-                      {isSuccess && <SuccessCard funcReset={resetValues} text="Успішно!"></SuccessCard>}
-                      
+                      <LoadingCard isOpen={isPending} text='Loading...'></LoadingCard>
+                      <ErrorCard isOpen={isError} funcReset={resetValues} text={error?.message}></ErrorCard>
+                      <SuccessCard isOpen={isSuccess} funcReset={resetValues} text="Успішно!"></SuccessCard>
                     <Title text="Залишились питання або ж бажаєте залишити заявку?" className=" t-s:text-2xl text-sm t-s:mb-10 t-s:w-[400px] t-s:flex t-s:self-center text-center"></Title>
                     <FormField
                         control={form.control}
                         name="service"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Interested service *</FormLabel>
+                            <FormLabel>{t('service.label')}{t('service.required')}</FormLabel>
                             <Select onValueChange={field.onChange} value={field.value}>
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder="Select a service you need." />
+                                  <SelectValue placeholder={t('service.placeholder')} />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
@@ -143,13 +149,10 @@ const FeedbackForm = () => {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel>Ваше імя *</FormLabel>
+                            <FormLabel>{t('name.label')}{t('name.required')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="shadcn" {...field} />
+                                <Input placeholder={t('name.placeholder')} {...field} />
                             </FormControl>
-                            <FormDescription>
-                                Наприклад: Сергій
-                            </FormDescription>
                             <FormMessage />
                             </FormItem>
                         )}
@@ -159,9 +162,9 @@ const FeedbackForm = () => {
                         name="surname"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel>Ваше призвіще</FormLabel>
+                            <FormLabel>{t('surname.label')}{t('surname.required')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="shadcn" {...field} />
+                                <Input placeholder={t('surname.placeholder')} {...field} />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -173,11 +176,11 @@ const FeedbackForm = () => {
                         name="mobilecode"
                         render={({ field }) => (
                           <FormItem>
-                            
+                            <FormLabel className="w-full">{t('mobilecode.label')}</FormLabel>
                             <Select onValueChange={field.onChange} value={field.value}>
                               <FormControl>
                               <SelectTrigger>
-                                  <SelectValue placeholder="Select a service you need." />
+                                  <SelectValue placeholder='' />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent className=" w-fit">
@@ -196,8 +199,9 @@ const FeedbackForm = () => {
                         name="phone"
                         render={({ field }) => (
                             <FormItem className="w-full">
+                            <FormLabel>{t('phone.label')}{t('phone.required')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="" {...field} />
+                                <Input placeholder={t('phone.placeholder')} {...field} />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -209,9 +213,9 @@ const FeedbackForm = () => {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel>Ваша почта *</FormLabel>
+                            <FormLabel>{t('email.label')}{t('email.required')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="example@gmail.com" {...field}/>
+                                <Input placeholder={t('email.placeholder')} {...field}/>
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -222,22 +226,35 @@ const FeedbackForm = () => {
                           name="textarea"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Message</FormLabel>
+                              <FormLabel>{t('message.label')}{t('message.required')}</FormLabel>
                               <FormControl>
                                 <Textarea
-                                  placeholder="Tell more details about your request!"
+                                  placeholder={t('message.placeholder')}
                                   className="resize-none"
                                   {...field}
                                 />
                               </FormControl>
                               <FormDescription>
-                                Це поле не є вимаганим, але можете допомогти нам зрозуміти Вашу потребу!
+                               {t('message.description')}
                               </FormDescription>
                               <FormMessage />
                             </FormItem>
                           )}
                         />
-                        
+                        <div className="items-top flex space-x-2">
+                          <Checkbox id="terms1" required/>
+                          <div className="grid gap-1.5 leading-none">
+                            <label
+                              htmlFor="terms1"
+                              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            >
+                              Accept terms and conditions
+                            </label>
+                            <p className="text-sm text-muted-foreground">
+                              You agree to our Terms of Service and <Link text='Privicy Police' href="/login" isArrowIconNeeded={false} normalcase={true} className=" bg-[none] inline text-blue-400 decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0 cursor-pointer" arrowClassName=""></Link>
+                            </p>
+                          </div>
+                        </div>
                         <Button type="submit" className="w-full">Надіслати</Button>
                     </form>
             </Form>

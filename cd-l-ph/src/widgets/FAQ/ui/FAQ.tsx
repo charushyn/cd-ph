@@ -8,11 +8,14 @@ import { Title } from "@/shared/ui/index"
 
 import blocks from "../api/data"
 
+import { useTranslations } from "next-intl"
+
 const FAQ = () => {
     const { ref: faqRef, inView: faqIsVisible } = useInView({triggerOnce: true})
+    const t = useTranslations('main.FAQ');
     return(
-        <div ref={faqRef} className='flex flex-col px-4 pb-4 t-l:px-8' id="faq">
-            <Title text={'Questions/Answers'} className="text-sm bg-white h-[70px] flex items-center"></Title>
+        <div ref={faqRef} className='font-OpenSans flex flex-col px-4 pb-4 t-l:px-8' id="faq">
+            <Title text={t('h1')} className="text-sm bg-white h-[70px] flex items-center"></Title>
             <div className="gap-y-8 flex flex-col t-m:items-center my-10">
             {blocks.map((item: any) => {
                 return(

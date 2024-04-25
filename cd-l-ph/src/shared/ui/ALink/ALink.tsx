@@ -11,6 +11,7 @@ const ALink = (
         arrowClassName,
         isHoverEffect,
         onClick,
+        normalcase,
     }
     :
     {
@@ -20,11 +21,12 @@ const ALink = (
         href: string,
         arrowClassName?: string,
         isHoverEffect?: boolean,
-        onClick?: any
+        onClick?: any,
+        normalcase?: boolean,
     }) => {
     return(
         <a href={href} target="_blank" rel="noopener noreferrer" className={cn(`flex flex-row items-center w-fit h-fit px-4 py-2 t-l:px-6 t-l:py-4 t-x:px-10 t-x:py-4 gap-2 bg-black z-20  ${isHoverEffect && 'd-s:hover:text-black d-s:hover:bg-gold d-s:duration-200'}`, className)} onClick={onClick}>
-            <p className='uppercase text-xs t-s:text-sm t-m:text-base t-x:text-lg'>{text}</p>
+            <p className={`uppercase text-xs t-s:text-sm t-m:text-base t-x:text-lg ${normalcase && ' normal-case'}`}>{text}</p>
             {
                 isArrowIconNeeded &&    
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={cn(`w-6 h-6 `, arrowClassName)}>

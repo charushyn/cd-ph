@@ -14,8 +14,8 @@ export default function Footer(){
     const Map = dynamic(() => import("@/shared/ui/LeafletMap/ui/LeafletMap"), { ssr: false });
 
     return(
-        <footer className='flex flex-col text-xs bg-black text-white gap-4 h-fit p-4' id='footer'>
-            <ScrollToComponent text={'повернутись нагору'} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffectDisabled={true}></ScrollToComponent>
+        <footer className='font-OpenSans flex flex-col text-xs bg-black text-white gap-4 h-fit p-4' id='footer'>
+            <ScrollToComponent text={'повернутись нагору'} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffect={true}></ScrollToComponent>
             <div className='flex flex-col gap-4 h-fit'>
                 <div className='flex flex-col gap-2'>
                     <Map></Map>
@@ -59,8 +59,8 @@ export default function Footer(){
                     </div>
                     <div className='flex flex-col gap-4'>
                         <Title className='text-white' text="Угоди з сайтом"></Title>
-                        <Link isArrowNeeded={true} text={'some text'} href="/" className="w-full p-0 underline"></Link>
-                        <Link isArrowNeeded={true} text={'some text'} href="/" className="w-full p-0 underline"></Link>
+                        <Link isArrowIconNeeded={true} text={'some text'} href="/" className="w-full p-0 underline"></Link>
+                        <Link isArrowIconNeeded={true} text={'some text'} href="/" className="w-full p-0 underline"></Link>
                     </div>
                 </div>
                 

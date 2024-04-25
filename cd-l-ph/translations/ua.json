@@ -1,0 +1,63 @@
+{
+    "main": {
+        "greeting": {
+            "company-mission": "Ми - The Best Result, ми створюємо чудовий продукт!"
+        },
+        "services": {
+            "h1": "Наші послуги"
+        },
+        "Features": {
+            "h1": "Наші переваги"
+        },
+        "FAQ": {
+            "h1": "Питання/Відповіді"
+        },
+        "Opinions": {
+            "h1": "Клієнти про Нас"
+        },
+        "FeedbackForm": {
+            "service": {
+                "label": "Зацікавлена послуга",
+                "placeholder": "Оберіть послугу, яка Вас цікавить",
+                "required": "*",
+                "description": ""
+            },
+            "name": {
+                "label": "Ваше імя",
+                "placeholder": "Андрій",
+                "required": "*",
+                "description": ""
+            },
+            "surname": {
+                "label": "Ваше призвіще",
+                "placeholder": "Довгун",
+                "required": "*",
+                "description": ""
+            },
+            "phone": {
+                "label": "Ваш телефон",
+                "placeholder": "",
+                "required": "*",
+                "description": ""
+            },
+            "mobilecode": {
+                "label": "Код",
+                "placeholder": "",
+                "required": "*",
+                "description": ""
+            },
+            "email": {
+                "label": "Ваша почта",
+                "placeholder": "example@gmail.com",
+                "required": "",
+                "description": ""
+            },
+            "message": {
+                "label": "Ваше повідомлення",
+                "placeholder": "Додайте деталі до Вашого звернення!",
+                "required": "",
+                "description": "Це поле не є вимаганим, але можете допомогти нам зрозуміти Вашу потребу!"
+            }
+        }
+    }
+}

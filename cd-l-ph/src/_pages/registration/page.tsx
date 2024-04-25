@@ -1,4 +1,4 @@
-import { RegistrationForm} from "@/widgets/index";
+import { RegistrationForm } from "@/widgets/Forms/index";
 
 const Registration = () => {
     return(
