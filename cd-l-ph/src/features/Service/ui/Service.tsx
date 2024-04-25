@@ -24,7 +24,7 @@ const Service = ({title, key, description, photoUrl, amountOfServices, active, o
                     {/* <img src={iconUrl} className={`hidden d-s:block ${active ? 'w-[100px] h-[100px] absolute top-10 right-10' : 'w-8 h-8'}`}></img> */}
                     <Title className="text-white uppercase relative" text={title}></Title>
                     <div className=' text-white relative text-xs leading-5 t-s:text-base t-s:w-[70%] t-m:text-lg d-s:w-[60%]'>{description}</div>
-                    <ScrollToComponent hrefElem='main-form' className=" text-white absolute bottom-4 right-4 d-s:bottom-10 d-s:right-10 t-x:px-10 t-x:py-4" isArrowIconNeeded={true} isHoverEffect={true} text={'до послуги'}></ScrollToComponent>
+                    <ScrollToComponent hrefElem='feedbackform' className=" text-white absolute bottom-4 right-4 d-s:bottom-10 d-s:right-10 t-x:px-10 t-x:py-4" isArrowIconNeeded={true} isHoverEffect={true} text={'до послуги'}></ScrollToComponent>
                 </div>
                 <style jsx>{
                         `

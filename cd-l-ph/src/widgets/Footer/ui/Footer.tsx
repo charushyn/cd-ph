@@ -15,7 +15,7 @@ export default function Footer(){
 
     return(
         <footer className='font-OpenSans flex flex-col text-xs bg-black text-white gap-4 h-fit p-4' id='footer'>
-            <ScrollToComponent text={'повернутись нагору'} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffect={true}></ScrollToComponent>
+            <ScrollToComponent text={'повернутись нагору'} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffect={false}></ScrollToComponent>
             <div className='flex flex-col gap-4 h-fit'>
                 <div className='flex flex-col gap-2'>
                     <Map></Map>

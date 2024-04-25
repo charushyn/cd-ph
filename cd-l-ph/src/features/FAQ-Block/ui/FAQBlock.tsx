@@ -25,7 +25,7 @@ const FAQBlock = ({description, title, key} : {description:string, title:string,
                     <div className={`info ${active ? '' : 'hidden'} h-fit mb-4  flex flex-col gap-4 d-s:gap-6`}>
                         <div className='text-xs t-s:text-sm t-m:text-base leading-5 t-x:text-lg d-s:w-[60%] text-gray-500'>{description}</div>
                         <div className='flex justify-end'>
-                            <ScrollToComponent isHoverEffect={true} hrefElem='main-form' className=" bottom-4 right-4 text-white" onClick={(e: any) => e.stopPropagation()} isArrowIconNeeded={true} text={'до послуги'}></ScrollToComponent>
+                            <ScrollToComponent isHoverEffect={true} hrefElem='feedbackform' className=" bottom-4 right-4 text-white" onClick={(e: any) => e.stopPropagation()} isArrowIconNeeded={true} text={'до послуги'}></ScrollToComponent>
                         </div>
                     </div>
                     <hr></hr>
