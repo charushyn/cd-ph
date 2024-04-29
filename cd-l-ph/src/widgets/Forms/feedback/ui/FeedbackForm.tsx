@@ -271,7 +271,7 @@ const FeedbackForm = () => {
                           setCaptcha(true)
                         }}
                         hl={local == 'ua' ? 'en' : local}
-                        sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+                        sitekey='6LecEcspAAAAAGtyTc0IYkH_LGTWjVbBZOICQgCQ'
                         className=""
                         />
                         <Button type="submit" className="w-full">Надіслати</Button>
