@@ -26,16 +26,13 @@ export default function Layout({
       </head>
       <body className={inter.className}>
           <ProviderAsync>
-          
           <ReduxProvider>
           <LocaleProvider>
           {children}
           </LocaleProvider>
           <NotificationBlock />
           </ReduxProvider>
-          
           </ProviderAsync>
-        
       </body>
     </html>
   );

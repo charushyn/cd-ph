@@ -6,11 +6,10 @@ import { iconFinder } from "../../../../public/helpers"
 
 // title, description, link(to page with choosed service), photoUrl, iconUrl
 
-const Service = ({title, key, description, photoUrl, amountOfServices, active, onClickFunc, iconUrl} : {title: string, key: any, description: string, photoUrl: string, amountOfServices: number, active: boolean, onClickFunc: any, iconUrl: string}) => {
-    const width = (1200 - 900) / amountOfServices
+const Service = ({title, key, description, photoUrl, active, onClickFunc, iconUrl, width} : {title: string, key: any, description: string, photoUrl: string, active: boolean, onClickFunc: any, iconUrl: string, width: number | string}) => {
     return(
         <div className={`w-full flex flex-col h-fit bg-black`} key={key} onClick={onClickFunc}>
-            <div className={`serviceC relative ${active ? `h-[400px] d-s:w-[1124px]` : `h-[70px] m-l:h-[90px] t-l:h-[100px] justify-center d-s:justify-start d-s:w-[60px]`} flex flex-col d-s:h-[80vh] `}>
+            <div className={`serviceC relative ${active ? `active d-s:w-[1124px]` : `h-[70px] m-l:h-[90px] t-l:h-[100px] justify-center d-s:justify-start`} flex flex-col`}>
                 <div className={` flex flex-row justify-between items-center px-4 uppercase m-l:h-[90px] h-[70px] t-l:px-8 d-s:px-0 relative ${active ? 'd-s:justify-end' : 'd-s:justify-center'}`}>
                     <Title className={`text-sm text-white ${active && 'opacity-0'} d-s:hidden`} text={title}></Title>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={`d-s:hidden w-6 h-6 t-m:w-8 t-m:h-8 text-white transition-all duration-200 ${active ? 'rotate-180' : 'rotate-0'}`}>
@@ -35,8 +34,18 @@ const Service = ({title, key, description, photoUrl, amountOfServices, active, o
                             background-position: center;
                             transition: height 0.8s ease;
                             @media screen and (min-width: 1199px) {
+                                height: 90svh;
+                                width: ${width}px;
                                 transition: width 0.8s ease; 
-                              }
+                            }
+                        }
+                        .active {
+                            height: 400px;
+                            @media screen and (min-width: 1199px) {
+                                height: 90svh;
+                                transition: width 0.8s ease;
+                                width: 1124px;
+                            }
                         }
                         
                         .serviceC::before {    
@@ -51,6 +60,7 @@ const Service = ({title, key, description, photoUrl, amountOfServices, active, o
                         }
                         .info{
                             animation: fadeIn 2s;
+
                         }
                         `
                     }</style>

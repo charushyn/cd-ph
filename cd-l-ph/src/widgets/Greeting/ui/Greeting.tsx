@@ -11,14 +11,10 @@ export default function Greeting(){
         const t = useTranslations('main.greeting');
         return(
             <div className={`w-full relative min-h-svh h-fit font-OpenSans`} id="greeting">
-                <video 
-                    className="absolute z-[-1] top-0 left-0 right-0 bottom-0 w-full videoBg h-svh object-cover"
-                    muted
-                    autoPlay
-                    loop
-                    preload="metadata"
-                    src={require("../video/stock-video-team-working.mp4")}
-                    />
+                <div className="fadein w-full h-svh z-[-1]">
+                    <img className='h-svh w-full' src="https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.850businessmagazine.com/content/uploads/2019/10/iStock-694415714-1024x688.jpg" id="f1" />
+                    <img className='h-svh w-full' src="https://img.freepik.com/free-photo/people-business-meeting-high-angle_23-2148911819.jpg" id="f2" />
+                </div>
                 <div className="overlay z-0"></div>
                 <div className={`flex flex-col justify-around min-h-svh z-[1] relative px-4 pt-[60px] m-l:pt-[100px] t-l:px-8`}>
                     <div className="flex flex-col gap-6 t-s:gap-10">
@@ -60,6 +56,38 @@ export default function Greeting(){
                                 left: 0px;
                                 
                                 background-color: rgba(0,0,0,0.60);
+                            }
+                            .fadein {
+                                position: absolute;
+                                top: 0px;
+                                left: 0px;
+                                right: 0px;
+                                bottom: 0px;
+                            }
+                            .fadein img {
+                                opacity: 0;
+                                position: absolute;
+                                top: 0px;
+                                left: 0px;
+                                right: 0px;
+                                bottom: 0px;
+                                object-fit: cover;
+                                -webkit-animation-name: fade;
+                                -webkit-animation-iteration-count: infinite;
+                                -webkit-animation-duration: 8s;
+                                animation-name: fade;
+                                animation-iteration-count: infinite;
+                                animation-duration: 8s;
+                            }
+                            @keyframes fade {
+                                0% {opacity: 0;}
+                                20% {opacity: 1;}
+                                33% {opacity: 1;}
+                                53% {opacity: 0.5;}
+                                100% {opacity: 0;}
+                            }
+                            #f2 {
+                                animation-delay: 4s;
                             }
                             `
                         }</style>

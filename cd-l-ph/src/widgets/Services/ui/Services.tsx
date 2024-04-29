@@ -16,6 +16,9 @@ const Services = () => {
     const dispatch = useDispatch()
     const currentService = useSelector((state: any) => state.serviceReducer.currentServiceShowed)
 
+    const userWidth = window.innerWidth;
+    const widthForEachService = (userWidth - 1124) / ( services.length - 1 )
+
     React.useEffect(() => {
         dispatch(changeCurrentService(services[Math.floor(Math.random() * services.length - 1) + 1]))
     }, [])
@@ -28,7 +31,7 @@ const Services = () => {
                 {
                     services.map((service) => {
                         return(
-                            <Service iconUrl={service.icon} onClickFunc={() => dispatch(changeCurrentService(service))} active={service === currentService} amountOfServices={services.length} photoUrl={service.photoUrl} title={service.title} key={service.title} description={service.description}></Service>
+                            <Service width={widthForEachService} iconUrl={service.icon} onClickFunc={() => dispatch(changeCurrentService(service))} active={service === currentService} photoUrl={service.photoUrl} title={service.title} key={service.title} description={service.description}></Service>
                         )
                     })
                 }

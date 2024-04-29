@@ -6,6 +6,8 @@ import { useTranslations } from "next-intl";
 
 import { Link } from "@/shared/ui/index";
 
+import { useLocale } from "next-intl";
+
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -26,6 +28,8 @@ import { Title } from "@/shared/ui/index";
 
 import { sendData } from "../api";
 
+import ReCAPTCHA from "react-google-recaptcha";
+
 import {
   Select,
   SelectItem,
@@ -39,6 +43,7 @@ import {
 } from "@/shared/uiShadcn/ui/textarea"
 
 import { Checkbox } from "@/shared/uiShadcn/ui/checkbox"
+
 
 
 import {
@@ -58,7 +63,7 @@ const formSchema = z.object({
   phone: z.string(),
   email: z.string().email('Invalid Email'),
   service: z.string().min(1, "Оберіть послугу яка Вас цікавить"),
-  textarea: z.string()
+  textarea: z.string(),
 }).refine((values) => {
   return validator.isMobilePhone(`${values.mobilecode}${values.phone}`, ['uk-UA', 'pl-PL', 'be-BY', 'de-DE'])
 },
@@ -68,7 +73,9 @@ const formSchema = z.object({
   }
 )
 const FeedbackForm = () => {
+    const local = useLocale()
     const t = useTranslations('main.FeedbackForm');
+    const [captcha, setCaptcha] = React.useState(false)
     const { 
       isPending, 
       isError, 
@@ -102,7 +109,11 @@ const FeedbackForm = () => {
       isError && toast.error('Помилка!')!
     }, [isError, isSuccess])
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    const onSubmit = async (values: z.infer<typeof formSchema>) =>  {
+      if(!captcha){
+        toast.warning("Captcha!")
+        return
+      }
       mutate(values)
     }
 
@@ -254,6 +265,15 @@ const FeedbackForm = () => {
                             </p>
                           </div>
                         </div>
+                        <ReCAPTCHA
+                        aria-required={true}
+                        onChange={() => {
+                          setCaptcha(true)
+                        }}
+                        hl={local == 'ua' ? 'en' : local}
+                        sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+                        className=""
+                        />
                         <Button type="submit" className="w-full">Надіслати</Button>
                     </form>
             </Form>
