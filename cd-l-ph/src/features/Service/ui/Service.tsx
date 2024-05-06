@@ -6,10 +6,16 @@ import { iconFinder } from "../../../../public/helpers"
 
 // title, description, link(to page with choosed service), photoUrl, iconUrl
 
-const Service = ({title, key, description, photoUrl, active, onClickFunc, iconUrl, width} : {title: string, key: any, description: string, photoUrl: string, active: boolean, onClickFunc: any, iconUrl: string, width: number | string}) => {
+const Service = ({title, key, description, photoUrl, active, onClickFunc, iconUrl, width, onHoverFunc} : {title: string, key: any, description: string, photoUrl: string, active: boolean, onClickFunc: any, iconUrl: string, width: any, onHoverFunc: any}) => {
+    const func = () => {
+        if(width < 0){
+            return
+        }
+        onHoverFunc()
+    }
     return(
-        <div className={`w-full flex flex-col h-fit bg-black`} key={key} onClick={onClickFunc}>
-            <div className={`serviceC relative ${active ? `active d-s:w-[1124px]` : `h-[70px] m-l:h-[90px] t-l:h-[100px] justify-center d-s:justify-start`} flex flex-col`}>
+        <div className={`w-full flex flex-col h-fit bg-black`} key={key} onClick={onClickFunc} >
+            <div onMouseOver={func} className={`serviceC relative ${active ? `active d-s:w-[1124px]` : `h-[70px] m-l:h-[90px] t-l:h-[100px] justify-center d-s:justify-start`} flex flex-col`}>
                 <div className={` flex flex-row justify-between items-center px-4 uppercase m-l:h-[90px] h-[70px] t-l:px-8 d-s:px-0 relative ${active ? 'd-s:justify-end' : 'd-s:justify-center'}`}>
                     <Title className={`text-sm text-white ${active && 'opacity-0'} d-s:hidden`} text={title}></Title>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={`d-s:hidden w-6 h-6 t-m:w-8 t-m:h-8 text-white transition-all duration-200 ${active ? 'rotate-180' : 'rotate-0'}`}>

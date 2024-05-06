@@ -124,14 +124,18 @@ const FeedbackForm = () => {
 
 
     return (
-        <div className="p-4 flex flex-col gap-4 font-OpenSans" id='feedbackform'>
-            <hr className=" bg-black h-[1px] border-0 t-s:m-10"></hr>
-            <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-5 m-l:w-[80%] t-m:w-[50%] d-s:w-[33%] d-s:flex d-s:flex-col mx-auto relative`}>
+        <div className="flex flex-col" id='feedbackform'>
+            <Title text={'Feedback(not trans.)'} className="text-sm bg-white h-[50px] flex items-center px-4 t-l:px-8 relative"></Title>
+            <div className="flex flex-col gap-4 font-OpenSans d-s:flex-row h-fit d-s:justify-between">
+              <div className="h-vh w-[67%] photo relative">
+                <div className="overlay"></div>
+              </div>
+              <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-5 p-4 w-full m-l:w-[80%] t-m:w-[50%] d-s:w-[33%] d-s:flex d-s:flex-col mx-auto d-s:mx-0 relative`}>
                       <LoadingCard isOpen={isPending} text='Loading...'></LoadingCard>
                       <ErrorCard isOpen={isError} funcReset={resetValues} text={error?.message}></ErrorCard>
                       <SuccessCard isOpen={isSuccess} funcReset={resetValues} text="Успішно!"></SuccessCard>
-                    <Title text="Залишились питання або ж бажаєте залишити заявку?" className=" t-s:text-2xl text-sm t-s:mb-10 t-s:w-[400px] t-s:flex t-s:self-center text-center"></Title>
+                    <Title text="Залишились питання або ж бажаєте залишити заявку?" className=" t-s:text-xl d-s:text-lg text-sm t-s:mb-10 t-s:w-[400px] t-s:flex t-s:self-center text-center"></Title>
                     <FormField
                         control={form.control}
                         name="service"
@@ -141,7 +145,7 @@ const FeedbackForm = () => {
                             <Select onValueChange={field.onChange} value={field.value}>
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder={t('service.placeholder')} />
+                                  <SelectValue placeholder={t('service.placeholder')}/>
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
@@ -277,6 +281,29 @@ const FeedbackForm = () => {
                         <Button type="submit" className="w-full">Надіслати</Button>
                     </form>
             </Form>
+            <style jsx>{
+                        `
+                        .photo {
+                            background-image: url("https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.850businessmagazine.com/content/uploads/2019/10/iStock-694415714-1024x688.jpg");
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: right;
+                        }
+                        .overlay {    
+                          width: 100%;
+                          height: 100%;
+                          background-size: cover;
+                          position: absolute;
+                          top: 0px;
+                          right: 0px;
+                          bottom: 0px;
+                          left: 0px;
+                          
+                          background-color: rgba(0,0,0,0.60);
+                      }
+                        `
+                    }</style>
+            </div>
         </div>
       )
     }

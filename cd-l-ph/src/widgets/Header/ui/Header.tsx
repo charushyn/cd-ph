@@ -1,7 +1,7 @@
 'use client'
 
 import { iconFinder } from "../../../../public/helpers/index";
-import { useSelector } from "react-redux";
+import useScrollDirection from "../hooks/useScrollDirection";
 
 import { useLocale } from "next-intl";
 
@@ -10,14 +10,18 @@ import { ScrollToComponent } from "@/shared/ui/index";
 import { toggleVisibilityPopupLanguage, toggleVisibilityPopupBurger } from "@/shared/utils/index";
 import { useDispatch } from "react-redux";
 
+import { PopupBurger } from "@/widgets/index";
+
 import { Link } from "@/shared/ui/index";
 
 const Header = ({isBurger, isArrowBack} : {isBurger: boolean, isArrowBack: boolean}) => {
     const local = useLocale()
     const dispatch = useDispatch()
 
+    const scrollDirection = useScrollDirection();
+
     return(
-        <header className="flex flex-row fixed w-full justify-between h-[60px] z-[50] t-s:h-[60px] items-center bg-black px-4 t-l:px-8">
+        <header className={`flex flex-row ${ scrollDirection === "down" ? "-top-[60px]" : "top-0"} transition-all duration-500 fixed w-full justify-between h-[60px] z-[50] t-s:h-[60px] items-center bg-black px-4 t-l:px-8`}>
             <div className="relative w-fit h-fit flex flex-row items-center">
             {
                 isArrowBack &&
@@ -39,7 +43,7 @@ const Header = ({isBurger, isArrowBack} : {isBurger: boolean, isArrowBack: boole
                 </div>
                 {
                     isBurger &&
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white t-s:w-6 t-s:h-6" onClick={() => dispatch(toggleVisibilityPopupBurger())}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white t-s:w-6 t-s:h-6" onClick={() => {dispatch(toggleVisibilityPopupBurger())}}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                 }

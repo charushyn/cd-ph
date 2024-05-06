@@ -7,6 +7,7 @@ import shield from "./store/shield.svg"
 import car from './store/car.svg'
 import handshake from './store/handshake.svg'
 import team from './store/team.svg'
+import quatation from "./store/quatation.svg"
 
 import iconName from './types/iconName'
 
@@ -66,6 +67,10 @@ const iconFinder = (iconName: iconName, className?: string
             return(
                 <Image src={car} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
             )
+        case "quatation":
+            return(
+                <Image src={quatation} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )   
     }
 }
 

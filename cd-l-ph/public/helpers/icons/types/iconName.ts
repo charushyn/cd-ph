@@ -11,6 +11,7 @@ type iconName =
     "papers-and-calculating" |
     "shield" |
     "handshake" |
-    "car" | string
+    "car" | string |
+    "quatation"
 
 export default iconName;

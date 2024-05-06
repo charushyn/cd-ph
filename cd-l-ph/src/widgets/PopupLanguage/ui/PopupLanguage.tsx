@@ -18,7 +18,7 @@ const PopupLanguage = () => {
         const dispatch = useDispatch()
         const local = useLocale()
         return(
-            <div className={`font-OpenSans fixed flex flex-col z-[50] top-0 right-0 w-fit h-fit p-4 gap-4 bg-[#D3BE5F] ${!stateVisibility && 'hidden'}`}>
+            <div className={`font-OpenSans fixed flex flex-col right-0 w-fit h-fit p-4 gap-4 z-[50] bg-[#D3BE5F] transition-all duration-500 ${stateVisibility ? 'top-0' : '-top-[1000px]'}`}>
                     <div className='flex flex-row justify-between gap-4'>
                         <Title text="Choose Language" className=""></Title>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 t-s:w-8 t-s:h-8" onClick={() => dispatch(toggleVisibilityPopupLanguage())}>

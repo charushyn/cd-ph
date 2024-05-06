@@ -23,15 +23,13 @@ const Services = () => {
         dispatch(changeCurrentService(services[Math.floor(Math.random() * services.length - 1) + 1]))
     }, [])
     return(
-        <div className="font-OpenSans">
-            <div className="h-[70px] flex items-center px-4 t-l:px-8" id="services">
-                <Title text={t('h1')} className="text-sm"></Title>
-            </div>
-            <div className="flex flex-col d-s:flex-row">
+        <div className="font-OpenSans" id="services">
+            <Title text={t('h1')} className="text-sm bg-white h-[50px] flex items-center px-4 t-l:px-8 relative"></Title>
+            <div className="flex flex-col d-s:flex-row overflow-x-hidden">
                 {
                     services.map((service) => {
                         return(
-                            <Service width={widthForEachService} iconUrl={service.icon} onClickFunc={() => dispatch(changeCurrentService(service))} active={service === currentService} photoUrl={service.photoUrl} title={service.title} key={service.title} description={service.description}></Service>
+                            <Service width={widthForEachService} iconUrl={service.icon} onHoverFunc={() => dispatch(changeCurrentService(service))} onClickFunc={() => dispatch(changeCurrentService(service))} active={service === currentService} photoUrl={service.photoUrl} title={service.title} key={service.title} description={service.description}></Service>
                         )
                     })
                 }

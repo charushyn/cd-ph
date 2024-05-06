@@ -24,11 +24,10 @@ const createCardUser = async (values : {name: string, surname: string, email: st
           //   "contacts": [],
           //   "customFieldData": []
           // })
-          let response = await fetch('https://cdfinance.planfix.com/rest/contact/', {
+          let response = await fetch('https://proxy-for-best-friend-illya-charushyn.onrender.com/crm/proxy/rest/contact/', {
           method: 'POST',
           headers: {
             'accept': 'application/json',
-            'Authorization': 'Bearer 7698b7bb3c7b00a1155abac76318121e',
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
