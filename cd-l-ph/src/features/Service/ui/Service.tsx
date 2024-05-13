@@ -6,7 +6,7 @@ import { iconFinder } from "../../../../public/helpers"
 
 // title, description, link(to page with choosed service), photoUrl, iconUrl
 
-const Service = ({title, key, description, photoUrl, active, onClickFunc, iconUrl, width, onHoverFunc} : {title: string, key: any, description: string, photoUrl: string, active: boolean, onClickFunc: any, iconUrl: string, width: any, onHoverFunc: any}) => {
+const Service = ({title, description, photoUrl, active, onClickFunc, iconUrl, width, onHoverFunc} : {title: string, description: string, photoUrl: string, active: boolean, onClickFunc: any, iconUrl: string, width: any, onHoverFunc: any}) => {
     const func = () => {
         if(width < 0){
             return
@@ -14,7 +14,7 @@ const Service = ({title, key, description, photoUrl, active, onClickFunc, iconUr
         onHoverFunc()
     }
     return(
-        <div className={`w-full flex flex-col h-fit bg-black`} key={key} onClick={onClickFunc} >
+        <div className={`w-full flex flex-col h-fit bg-black`} onClick={onClickFunc} >
             <div onMouseOver={func} className={`serviceC relative ${active ? `active d-s:w-[1124px]` : `h-[70px] m-l:h-[90px] t-l:h-[100px] justify-center d-s:justify-start`} flex flex-col`}>
                 <div className={` flex flex-row justify-between items-center px-4 uppercase m-l:h-[90px] h-[70px] t-l:px-8 d-s:px-0 relative ${active ? 'd-s:justify-end' : 'd-s:justify-center'}`}>
                     <Title className={`text-sm text-white ${active && 'opacity-0'} d-s:hidden`} text={title}></Title>

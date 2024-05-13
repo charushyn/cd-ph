@@ -24,8 +24,9 @@ const ScrollToComponent = (
     }) => {
     let stringHref = `#${hrefElem}`
     return(
-        <a href={stringHref}  className={cn(`flex flex-row items-center w-fit h-fit px-4 py-2 t-l:px-6 t-l:py-4 t-x:px-10 t-x:py-4 gap-4 bg-black z-20  ${isHoverEffect && 'd-s:hover:text-black d-s:hover:bg-gold d-s:duration-200'}`, className)} onClick={onClick}>
+        <div  className={cn(`flex flex-row items-center w-fit h-fit px-4 py-2 t-l:px-6 t-l:py-4 t-x:px-10 t-x:py-4 gap-4 bg-black z-20 relative  ${isHoverEffect && 'd-s:hover:text-black d-s:hover:bg-gold d-s:duration-200'}`, className)} onClick={onClick}>
             <p className={`uppercase text-xs t-s:text-sm t-m:text-base t-x:text-lg ${normalcase && ' normal-case'}`}>{text}</p>
+            <a href={stringHref} className="absolute top-0 left-0 right-0 bottom-0 w-full h-full"></a>
             {
                 isArrowIconNeeded 
                 && 
@@ -33,7 +34,7 @@ const ScrollToComponent = (
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                 </svg>
             }
-        </a>
+        </div>
     )
 }
 

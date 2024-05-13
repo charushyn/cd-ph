@@ -3,8 +3,6 @@
 import { iconFinder } from "../../../../public/helpers/index";
 import useScrollDirection from "../hooks/useScrollDirection";
 
-import { useLocale } from "next-intl";
-
 import { ScrollToComponent } from "@/shared/ui/index";
 
 import { toggleVisibilityPopupLanguage, toggleVisibilityPopupBurger } from "@/shared/utils/index";
@@ -15,7 +13,6 @@ import { PopupBurger } from "@/widgets/index";
 import { Link } from "@/shared/ui/index";
 
 const Header = ({isBurger, isArrowBack} : {isBurger: boolean, isArrowBack: boolean}) => {
-    const local = useLocale()
     const dispatch = useDispatch()
 
     const scrollDirection = useScrollDirection();
@@ -39,7 +36,7 @@ const Header = ({isBurger, isArrowBack} : {isBurger: boolean, isArrowBack: boole
             </div>
             <div className="flex flex-row gap-4">
                 <div className='flex flex-row gap-2 items-center' onClick={() => dispatch(toggleVisibilityPopupLanguage())}>
-                    {iconFinder(`flag-${local}`, 'h-[16px]')}
+                    {iconFinder(`flag-gb`, 'h-[16px]')}
                 </div>
                 {
                     isBurger &&

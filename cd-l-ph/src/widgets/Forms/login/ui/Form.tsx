@@ -3,8 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { MutateFunction, useMutation } from "@tanstack/react-query"
 

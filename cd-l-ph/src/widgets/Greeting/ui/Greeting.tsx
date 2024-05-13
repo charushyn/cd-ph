@@ -1,14 +1,10 @@
 'use client'
-import {useTranslations} from 'next-intl';
 
 import { Title, ScrollToComponent } from "@/shared/ui/index"
-
-import {getTranslations} from 'next-intl/server';
 
 import {ReactTyped} from 'react-typed'
 
 export default function Greeting(){
-        const t = useTranslations('main.greeting');
         return(
             <div className={`w-full relative h-svh font-OpenSans`} id="greeting">
                 <div className="fadeinn w-full h-svh z-[-1]">
@@ -31,7 +27,7 @@ export default function Greeting(){
                         ></ReactTyped>
                         <h1>{}</h1>
                         <div className=' max-w-[60%] text-white text-xs m-l:text-sm t-s:text-xl t-m:max-w-[50%] t-x:text-2xl d-s:text-lg d-s:max-w-[33%]'>
-                            {t('company-mission')}
+                            {''}
                         </div>
                     </div>
                     <div className='flex flex-col gap-3 t-l:gap-5'>

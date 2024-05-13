@@ -9,13 +9,11 @@ import { iconFinder } from "../../../../public/helpers"
 
 import { Title } from "@/shared/ui/index"
 
-import { useTranslations } from "next-intl"
 
 export default function WhyWe(){
-    const t = useTranslations('main.Features');
     return(
         <div className="font-OpenSans gap-4 h-fit relative" id="whywe">
-            <Title text={t('h1')} className="text-sm bg-white h-[50px] flex items-center px-4 t-l:px-8 relative"></Title>
+            <Title text={''} className="text-sm bg-white h-[50px] flex items-center px-4 t-l:px-8 relative"></Title>
             <div className="flex flex-col p-4 gap-5 justify-center items-center  t-s:flex-row t-s:flex-wrap t-l:p-8 t-l:justify-around t-l:gap-y-8">
                 
             {whyWeData.map((item) => {

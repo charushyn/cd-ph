@@ -2,14 +2,8 @@
 
 import React from "react";
 
-import { useTranslations } from "next-intl";
-
 import { Link } from "@/shared/ui/index";
 
-import { useLocale } from "next-intl";
-
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -73,8 +67,6 @@ const formSchema = z.object({
   }
 )
 const FeedbackForm = () => {
-    const local = useLocale()
-    const t = useTranslations('main.FeedbackForm');
     const [captcha, setCaptcha] = React.useState(false)
     const { 
       isPending, 
@@ -104,14 +96,14 @@ const FeedbackForm = () => {
     })
     
 
-    React.useEffect(() => {
-      isSuccess && toast.success('Успішно!')
-      isError && toast.error('Помилка!')!
-    }, [isError, isSuccess])
+    // React.useEffect(() => {
+    //   isSuccess && toast.success('Успішно!')
+    //   isError && toast.error('Помилка!')!
+    // }, [isError, isSuccess])
 
     const onSubmit = async (values: z.infer<typeof formSchema>) =>  {
       if(!captcha){
-        toast.warning("Captcha!")
+        // toast.warning("Captcha!")
         return
       }
       mutate(values)
@@ -141,11 +133,11 @@ const FeedbackForm = () => {
                         name="service"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>{t('service.label')}{t('service.required')}</FormLabel>
+                            <FormLabel>{''}</FormLabel>
                             <Select onValueChange={field.onChange} value={field.value}>
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder={t('service.placeholder')}/>
+                                  <SelectValue placeholder={''}/>
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
@@ -163,9 +155,9 @@ const FeedbackForm = () => {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel>{t('name.label')}{t('name.required')}</FormLabel>
+                            <FormLabel>{''}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('name.placeholder')} {...field} />
+                                <Input placeholder={''} {...field} />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -176,9 +168,9 @@ const FeedbackForm = () => {
                         name="surname"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel>{t('surname.label')}{t('surname.required')}</FormLabel>
+                            <FormLabel>{''}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('surname.placeholder')} {...field} />
+                                <Input placeholder={''} {...field} />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -190,7 +182,7 @@ const FeedbackForm = () => {
                         name="mobilecode"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="w-full">{t('mobilecode.label')}</FormLabel>
+                            <FormLabel className="w-full">{''}</FormLabel>
                             <Select onValueChange={field.onChange} value={field.value}>
                               <FormControl>
                               <SelectTrigger>
@@ -213,9 +205,9 @@ const FeedbackForm = () => {
                         name="phone"
                         render={({ field }) => (
                             <FormItem className="w-full">
-                            <FormLabel>{t('phone.label')}{t('phone.required')}</FormLabel>
+                            <FormLabel>{''}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('phone.placeholder')} {...field} />
+                                <Input placeholder={''} {...field} />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -227,9 +219,9 @@ const FeedbackForm = () => {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel>{t('email.label')}{t('email.required')}</FormLabel>
+                            <FormLabel>{''}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('email.placeholder')} {...field}/>
+                                <Input placeholder={''} {...field}/>
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -240,16 +232,16 @@ const FeedbackForm = () => {
                           name="textarea"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>{t('message.label')}{t('message.required')}</FormLabel>
+                              <FormLabel>{''}</FormLabel>
                               <FormControl>
                                 <Textarea
-                                  placeholder={t('message.placeholder')}
+                                  placeholder={''}
                                   className="resize-none"
                                   {...field}
                                 />
                               </FormControl>
                               <FormDescription>
-                               {t('message.description')}
+                               {''}
                               </FormDescription>
                               <FormMessage />
                             </FormItem>
@@ -264,9 +256,9 @@ const FeedbackForm = () => {
                             >
                               Accept terms and conditions
                             </label>
-                            <p className="text-sm text-muted-foreground">
+                            {/* <p className="text-sm text-muted-foreground">
                               You agree to our Terms of Service and <Link text='Privicy Police' href="/login" isArrowIconNeeded={false} normalcase={true} className=" bg-[none] inline text-blue-400 decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0 cursor-pointer" arrowClassName=""></Link>
-                            </p>
+                            </p> */}
                           </div>
                         </div>
                         <ReCAPTCHA
@@ -274,7 +266,7 @@ const FeedbackForm = () => {
                         onChange={() => {
                           setCaptcha(true)
                         }}
-                        hl={local == 'ua' ? 'en' : local}
+                        hl={'en'}
                         sitekey='6LecEcspAAAAAGtyTc0IYkH_LGTWjVbBZOICQgCQ'
                         className=""
                         />

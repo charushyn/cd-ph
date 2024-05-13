@@ -6,11 +6,11 @@ import {ScrollToComponent} from "@/shared/ui/index";
 import { useInView } from "react-intersection-observer";
 import React from "react";
 
-const FAQBlock = ({description, title, key} : {description:string, title:string, key: string}) => {
+const FAQBlock = ({description, title} : {description:string, title:string}) => {
          const {ref: faqRef, inView: isBlockVisible } = useInView({triggerOnce: true})
          const [active, setActive] = React.useState(false)
         return(
-            <div className={`w-full flex flex-col h-fit t-m:max-w-[80%] t-x:max-w-[60%] d-s:max-w-[50%]`} key={key} ref={faqRef} onClick={() => {
+            <div className={`w-full flex flex-col h-fit t-m:max-w-[80%] t-x:max-w-[60%] d-s:max-w-[50%]`} ref={faqRef} onClick={() => {
                 setActive(!active) 
                 }}>
                 <div className={`FAQBlock ${active ? ` min-h-[150px]` : `min-h-[50px]`} flex flex-col`}>
