@@ -6,5 +6,6 @@ import ScrollToComponent from "./ScrollToComponent/ScrollToComponent";
 // import LeafletMap from "./LeafletMap/ui/LeafletMap";
 import ALink from "./ALink/ALink";
 import Subtitle from "./Subtitle/Subtitle";
+import Map from "./LeafletMap/ui/LeafletMap";
 
-export {Link, Title, Input, Button, ScrollToComponent, ALink, Subtitle}
+export {Link, Title, Input, Button, ScrollToComponent, ALink, Subtitle, Map}

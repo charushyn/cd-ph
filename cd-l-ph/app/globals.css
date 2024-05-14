@@ -77,13 +77,8 @@ html {
     @apply bg-background text-foreground;
   }
 }
-.leaflet-container {
-  height: 300px;
-  width: 300px;
-  @media only screen and (min-width: 413px) {
-    width: 100%;
-  }
-}
+
+#map { height: 180px; }
 
 @keyframes Question {
   0% {
@@ -127,11 +122,6 @@ html {
 }
 
 
-
-.leaflet-container{
-  height: 200px;
-  z-index: 0;
-}
 
 .animateQuestion{
   animation: Question 1s ease;

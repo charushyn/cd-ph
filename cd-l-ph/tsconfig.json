@@ -32,7 +32,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/shared/ui/ScrollToComponent/ScrollToComponent.tsx",
-    "src/shared/ui/LeafletMap/ui/LeafletMap.tsx",
     "src/widgets/Opinions/ui/Opinions.jsx"
   ],
   "exclude": [
