@@ -32,7 +32,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/shared/ui/ScrollToComponent/ScrollToComponent.tsx",
-    "src/widgets/Opinions/ui/Opinions.jsx"
+    "src/widgets/Opinions/ui/Opinions.jsx",
+    "./middleware.ts"
   ],
   "exclude": [
     "node_modules"

@@ -4,7 +4,10 @@ import { Title, ScrollToComponent } from "@/shared/ui/index"
 
 import {ReactTyped} from 'react-typed'
 
+import {useTranslations} from 'next-intl';
+
 export default function Greeting(){
+    const t = useTranslations();
         return(
             <div className={`w-full relative h-svh font-OpenSans`} id="greeting">
                 <div className="fadeinn w-full h-svh z-[-1]">
@@ -14,6 +17,7 @@ export default function Greeting(){
                 <div className='overlay z-[0]'></div>
                 <div className={`flex flex-col justify-around h-svh z-[1] relative px-4 pt-[60px] m-l:pt-[100px] t-l:px-8`}>
                     <div className="flex flex-col gap-6 t-s:gap-10">
+                        <p>{t('index')}</p>
                         <ReactTyped
                         className=" text-white m-l:text-xl t-s:text-2xl t-m:text-3xl t-x:text-4xl d-s:text-5xl"
                         strings={[
