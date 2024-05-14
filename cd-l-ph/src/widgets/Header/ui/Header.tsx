@@ -38,9 +38,9 @@ const Header = ({isBurger, isArrowBack} : {isBurger: boolean, isArrowBack: boole
                 {iconFinder("small-gold-logo", 'h-[20px]')}
             </div>
             <div className="flex flex-row gap-4">
-                <div className='flex flex-row gap-2 items-center' onClick={() => dispatch(toggleVisibilityPopupLanguage())}>
+                {/* <div className='flex flex-row gap-2 items-center' onClick={() => dispatch(toggleVisibilityPopupLanguage())}>
                     {iconFinder(`flag-${locale}`, 'h-[16px]')}
-                </div>
+                </div> */}
                 {
                     isBurger &&
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white t-s:w-6 t-s:h-6" onClick={() => {dispatch(toggleVisibilityPopupBurger())}}>

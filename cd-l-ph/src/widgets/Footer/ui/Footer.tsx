@@ -1,7 +1,9 @@
-import { Link, ScrollToComponent, Title } from "@/shared/ui/index"
+import { Link, ScrollToComponent, Title, Subtitle } from "@/shared/ui/index"
 import { TitleWithSbtitle } from "@/entities/index"
 
 import { iconFinder } from "../../../../public/helpers"
+
+import { useTranslations } from "next-intl"
 
 import dynamic from 'next/dynamic'
 
@@ -12,10 +14,10 @@ const DynamicMap = dynamic(() => import('@/shared/ui/LeafletMap/ui/LeafletMap'),
 
 
 export default function Footer(){
-
+    const t = useTranslations("footer")
     return(
         <footer className='font-OpenSans flex flex-col text-xs bg-black text-white gap-4 h-fit p-4' id='footer'>
-            <ScrollToComponent text={'повернутись нагору'} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffect={false}></ScrollToComponent>
+            <ScrollToComponent text={t("button")} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffect={false}></ScrollToComponent>
             <div className="w-90svh h-50svh mx-auto">
                 <DynamicMap />
             </div>
@@ -32,37 +34,54 @@ export default function Footer(){
                     <div className='flex flex-col gap-4'>
                         <div className='flex flex-row items-center gap-2'>
                             {iconFinder('small-gold-logo')}
-                            <p className='text-sm'>CD Phinance</p>
+                            <Title className='text-white' text="CD Phinance"></Title>
                         </div>
-                        <TitleWithSbtitle titleText="Title" subtitleText="Subtitle"></TitleWithSbtitle>
-                        <TitleWithSbtitle titleText="Title" subtitleText="Subtitle"></TitleWithSbtitle>
-                        <TitleWithSbtitle titleText="Title" subtitleText="Subtitle"></TitleWithSbtitle>
+                        <div className="flex flex-col gap-2">
+                            <Title text={t("schedule.title")} className="text-white"></Title>
+                            <Subtitle text={t("schedule.0")} className="text-white"></Subtitle>
+                            <Subtitle text={t("schedule.1")} className="text-white"></Subtitle>
+                            <Subtitle text={t("schedule.2")} className="text-white"></Subtitle>
+                            <Subtitle text={t("schedule.3")} className="text-white"></Subtitle>
+                            <Subtitle text={t("schedule.4")} className="text-white"></Subtitle>
+                            <Subtitle text={t("schedule.5")} className="text-white"></Subtitle>
+                            <Subtitle text={t("schedule.6")} className="text-white"></Subtitle>
+                        </div>
+
                     </div>
                     <div className='flex flex-col gap-4'>
                         <Title text="Social Media" className="text-white"></Title>
-                        <div className='flex flex-row gap-2 cursor-pointer items-center'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                            </svg>
-                            <p className='underline'>link/link</p>
+                        <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
+                            <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href="https://t.me/cdfinancebot" target="_blank" rel="noopener noreferrer"></a>
+                            <div className="w-[20px] h-[20px]">
+                                {iconFinder("telegram")}
+                            </div>
+                            <p className='underline text-xs decoration-1 t-s:text-sm t-m:text-base font-Acrom_Light'>@cd_finance</p>
                         </div>
-                        <div className='flex flex-row gap-2 cursor-pointer items-center'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                            </svg>
-                            <p className='underline'>link/link</p>
+                        <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
+                            <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href="https://www.facebook.com/cd.finance.poland" target="_blank" rel="noopener noreferrer"></a>
+                            <div className="w-[20px] h-[20px]">
+                                {iconFinder("facebook")}
+                            </div>
+                            <p className='underline text-xs decoration-1 t-s:text-sm t-m:text-base font-Acrom_Light'>Facebook</p>
                         </div>
-                        <div className='flex flex-row gap-2 cursor-pointer items-center'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                            </svg>
-                            <p className='underline'>link/link</p>
+                        <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
+                            <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href="https://www.instagram.com/cd.finance/" target="_blank" rel="noopener noreferrer"></a>
+                            <div className="w-[20px] h-[20px]">
+                                {iconFinder("instagram")}
+                            </div>
+                            <p className='underline text-xs decoration-1 t-s:text-sm t-m:text-base font-Acrom_Light'>@cd.finance</p>
+                        </div>
+                        <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
+                            <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href="https://wa.me/message/7LWC3YO5DXYSP1" target="_blank" rel="noopener noreferrer"></a>
+                            <div className="w-[20px] h-[20px]">
+                                {iconFinder("whatsapp")}
+                            </div>
+                            <p className='underline decoration-1 text-xs t-s:text-sm t-m:text-base font-Acrom_Light'>WhatsApp</p>
                         </div>
                     </div>
                     <div className='flex flex-col gap-4'>
-                        <Title className='text-white' text="Угоди з сайтом"></Title>
-                        <Link isArrowIconNeeded={true} text={'some text'} href="/" className="w-full p-0 underline"></Link>
-                        <Link isArrowIconNeeded={true} text={'some text'} href="/" className="w-full p-0 underline"></Link>
+                        <Title className='text-white' text={t("accept.title")}></Title>
+                        {/* <Link isArrowIconNeeded={true} text={t("accept.privicy-policy")} href="/privicy-policy" className="w-full m-s:p-0 m-m:p-0 m-l:p-0 t-s:p-0 t-m:p-0 t-l:p-0 t-x:p-0 d-s:p-0 d-m:p-0 d-l:p-0 underline"></Link> */}
                     </div>
                 </div>
                 

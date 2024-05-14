@@ -6,27 +6,29 @@ import { Link, Title, ScrollToComponent } from "@/shared/ui/index"
 
 import { toggleVisibilityPopupBurger } from "@/shared/utils/index"
 
+import { useTranslations } from "next-intl"
+
 export default function PopupBurger(){
     const isOpen = useSelector((state: any) => state.burgerReducer.isOpen)
-
+    const t = useTranslations("header.popupburger")
     const dispatch = useDispatch()
 
     return(
         <div className={`font-OpenSans w-full h-svh bg-[rgba(0,0,0,0.70)] fixed ${isOpen ? 'opacity-100 z-[50]' : 'opacity-0 z-[-99]'} top-0 bottom-0 right-0 left-0`} onClick={() => dispatch(toggleVisibilityPopupBurger())}>
             <div className={`h-fit flex flex-col w-full relative gap-4 bg-[#D3BE5F] p-4 ${isOpen ? "top-0" : "-top-[1000px]"} transition-all duration-500`} onClick={(e) => e.stopPropagation()}>
                 <div className='flex flex-row justify-between '>
-                    <Title text="The Best Result" className=""></Title>
+                    <Title text="CD Finance" className=""></Title>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 t-s:w-8 t-s:h-8" onClick={() => dispatch(toggleVisibilityPopupBurger())}>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </div>
                 <hr className=" bg-black h-[1px] border-0"></hr>
-                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={'Our Services'} hrefElem="services" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
-                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={'FAQ'} hrefElem="faq" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
-                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={'Why we?'} hrefElem="whywe" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
-                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={'Opinions'} hrefElem="opinions" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
-                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={'Contact us'} hrefElem="feedbackform" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
-                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={'Our location'} hrefElem="footer" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
+                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={t("services")} hrefElem="services" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
+                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={t("faq")} hrefElem="faq" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
+                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={t("whywe")} hrefElem="whywe" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
+                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={t("opinions")} hrefElem="opinions" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
+                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={t("contact")} hrefElem="feedbackform" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
+                <ScrollToComponent className="bg-[none] decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0" normalcase text={t("footer")} hrefElem="footer" onClick={() => dispatch(toggleVisibilityPopupBurger())}></ScrollToComponent>
             </div>
         </div>
     )

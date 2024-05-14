@@ -10,22 +10,23 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
   } from "@/shared/uiShadcn/ui/alert-dialog"
-
+  import { useTranslations } from "next-intl";
   import React from "react";
 
 import { MouseEventHandler } from "react";
 const ErrorCard = ({text, funcReset, isOpen} : {text:string | undefined, funcReset: any, isOpen: boolean }) => {
+    const t = useTranslations("feedbackcards")
     return(
         <AlertDialog open={isOpen}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                <AlertDialogTitle>Щось пішло не так...</AlertDialogTitle>
+                <AlertDialogTitle>{t("failed.title")}</AlertDialogTitle>
                 <AlertDialogDescription>
                     {text}
                 </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                <AlertDialogAction onClick={() => funcReset()}>Спробувати ще раз</AlertDialogAction>
+                <AlertDialogAction onClick={() => funcReset()}>{t("failed.exit")}</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

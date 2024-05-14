@@ -4,7 +4,10 @@ import React from "react";
 import { Title } from "@/shared/ui/index";
 import { iconFinder } from "../../../../public/helpers";
 
-const ReviewBlock = ({avatar, title, description, srcToOpinion, hardCodeColorBg} : {avatar: string, title: string, description: string, srcToOpinion: string, hardCodeColorBg?: string}) => {
+import { useTranslations } from "next-intl";
+
+const ReviewBlock = ({avatar, title, description, srcToOpinion, hardCodeColorBg, name} : {avatar: string, title: string, description: string, srcToOpinion: string, name: string, hardCodeColorBg?: string}) => {
+    const t = useTranslations("opinions")
     const bgStyle = `bg-${hardCodeColorBg}-700`
     return(
         <div className="flex flex-col h-fit gap-4 bg-white rounded-3xl p-4 border-[1px] mx-8">
@@ -15,8 +18,8 @@ const ReviewBlock = ({avatar, title, description, srcToOpinion, hardCodeColorBg}
                     <p className="text-white">{avatar}</p>
                 </div>
                 <div className="flex flex-col gap-1">
-                    <Title text='Nina Azolevna'></Title>
-                    <Title className="text-gray-500" text="Клієнт The Best Result"></Title>
+                    <Title text={name}></Title>
+                    <Title className="text-gray-500" text={`${t("client")} CD Finance`}></Title>
                 </div>
             </div>
         </div>

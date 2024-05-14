@@ -17,7 +17,7 @@ const findUserByPhone = async (values : {mobilecode: string, phone: string}) => 
             }
           ]
       })
-    let response = await fetch('https://proxy-for-best-friend-illya-charushyn.onrender.com/crm/proxy/rest/contact/list', {
+    let response = await fetch('http://46.41.140.125/crm/proxy/rest/contact/list', {
     method: 'POST',
     headers: {
       'accept': 'application/json',

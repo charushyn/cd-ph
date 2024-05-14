@@ -15,12 +15,15 @@ import { BarLoader } from "@/entities/index";
 
 import React from "react";
 
-const ErrorCard = ({text, isOpen} : {text:string, isOpen: boolean }) => {
+import { useTranslations } from "next-intl";
+
+const ErrorCard = ({isOpen} : {isOpen: boolean }) => {
+    const t = useTranslations("feedbackcards")
     return(
         <AlertDialog open={isOpen}>
             <AlertDialogContent className=" flex justify-center">
                 <AlertDialogHeader>
-                <AlertDialogTitle>{text}</AlertDialogTitle>
+                <AlertDialogTitle>{t("loading.title")}</AlertDialogTitle>
                 <AlertDialogDescription>
                 <BarLoader className="bg-white"></BarLoader>
                 </AlertDialogDescription>

@@ -8,6 +8,18 @@ import car from './store/car.svg'
 import handshake from './store/handshake.svg'
 import team from './store/team.svg'
 import quatation from "./store/quatation.svg"
+import investment from "./store/investment.svg"
+import insurance from "./store/insurance.svg"
+import house from "./store/house.svg"
+import time from "./store/time.svg"
+import chair from "./store/chair.svg"
+import phone from "./store/phone.svg"
+import telegram from "./store/telegram.svg"
+import facebook from "./store/facebook.svg"
+import whatsapp from "./store/whatsapp.svg"
+import instagram from "./store/instagram.svg"
+
+
 
 import iconName from './types/iconName'
 
@@ -70,7 +82,47 @@ const iconFinder = (iconName: iconName, className?: string
         case "quatation":
             return(
                 <Image src={quatation} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
-            )   
+            )
+        case "investment":
+            return(
+                <Image src={investment} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "insurance":
+            return(
+                <Image src={insurance} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "house":
+            return(
+                <Image src={house} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "time":
+            return(
+                <Image src={time} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "phone":
+            return(
+                <Image src={phone} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "chair":
+            return(
+                <Image src={chair} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "instagram":
+            return(
+                <Image src={instagram} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "telegram":
+            return(
+                <Image src={telegram} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "facebook":
+            return(
+                <Image src={facebook} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
+        case "whatsapp":
+            return(
+                <Image src={whatsapp} className={cn('w-[20px] h-[20px]', className)} alt=""></Image>
+            )
     }
 }
 

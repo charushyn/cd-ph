@@ -12,20 +12,21 @@ import {
   } from "@/shared/uiShadcn/ui/alert-dialog"
 
   import React from "react";
-
+  import { useTranslations } from "next-intl";
 import { MouseEventHandler } from "react";
-const SuccessCard = ({text, funcReset, isOpen} : {text:string, funcReset: any, isOpen: boolean }) => {
+const SuccessCard = ({funcReset, isOpen} : {funcReset: any, isOpen: boolean }) => {
+    const t = useTranslations("feedbackcards")
     return(
         <AlertDialog open={isOpen}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                <AlertDialogTitle>Вітаємо!</AlertDialogTitle>
+                <AlertDialogTitle>{t("success.title")}</AlertDialogTitle>
                 <AlertDialogDescription>
-                    {text}
+                    {t("success.description")}
                 </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                <AlertDialogAction onClick={() => funcReset()}>Закрити</AlertDialogAction>
+                <AlertDialogAction onClick={() => funcReset()}>{t("success.exit")}</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

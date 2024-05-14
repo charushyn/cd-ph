@@ -6,7 +6,10 @@ import {ScrollToComponent} from "@/shared/ui/index";
 import { useInView } from "react-intersection-observer";
 import React from "react";
 
+import { useTranslations } from "next-intl";
+
 const FAQBlock = ({description, title} : {description:string, title:string}) => {
+    const t = useTranslations("faq")
          const {ref: faqRef, inView: isBlockVisible } = useInView({triggerOnce: true})
          const [active, setActive] = React.useState(false)
         return(
@@ -20,10 +23,10 @@ const FAQBlock = ({description, title} : {description:string, title:string}) => 
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </div>
-                    <div className={`info ${active ? '' : 'hidden'} h-fit mb-4  flex flex-col gap-4 d-s:gap-6`}>
-                        <div className='text-xs t-s:text-sm t-m:text-base leading-5 t-x:text-lg d-s:w-[60%] text-gray-500'>{description}</div>
-                        <div className='flex justify-end'>
-                            <ScrollToComponent isHoverEffect={true} hrefElem='feedbackform' className=" bottom-4 right-4 text-white" onClick={(e: any) => e.stopPropagation()} isArrowIconNeeded={true} text={'до послуги'}></ScrollToComponent>
+                    <div className={`info ${active ? '' : 'hidden'} h-fit mt-4 flex flex-col gap-4 d-s:gap-6`}>
+                        <div className='text-xs t-s:text-sm t-m:text-base leading-5 t-x:text-lg d-s:w-[80%] text-gray-500'>{description}</div>
+                        <div className='flex justify-end mt-10'>
+                            <ScrollToComponent isHoverEffect={true} hrefElem='feedbackform' className=" bottom-4 right-4 text-white" onClick={(e: any) => e.stopPropagation()} isArrowIconNeeded={true} text={t("button")}></ScrollToComponent>
                         </div>
                     </div>
                     <hr></hr>

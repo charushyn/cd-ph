@@ -2,11 +2,11 @@ import createMiddleware from 'next-intl/middleware';
  
 export default createMiddleware({
   // A list of all locales that are supported
-  locales: ['en', 'ua', 'pl'],
+  locales: ['en', 'ua', 'pl', 'ru'],
  
   // Used when no locale matches
   localePrefix: 'never',
-  defaultLocale: 'en'
+  defaultLocale: 'ru'
 });
  
 export const config = {
