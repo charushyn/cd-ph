@@ -24,7 +24,7 @@ const createCardUser = async (values : {name: string, surname: string, email: st
           //   "contacts": [],
           //   "customFieldData": []
           // })
-          let response = await fetch('http://46.41.140.125/crm/proxy/rest/contact/', {
+          let response = await fetch('http://backend.cdfinance.pl/crm/proxy/contact/', {
           method: 'POST',
           headers: {
             'accept': 'application/json',
@@ -62,6 +62,7 @@ const createCardUser = async (values : {name: string, surname: string, email: st
           return res.json()
         }
         if(res.status == 400){
+          console.log('status code 400 => throwing error: user already exist')
           throw new Error('user already exist')
         } else if (res.status == 500){
           throw new Error('server error')

@@ -1,5 +1,8 @@
+import { gzip } from "zlib"
+
 const findUserByPhone = async (values : {mobilecode: string, phone: string}) => {
     // group.id === 1 === client
+    console.log(`${values.mobilecode}${values.phone}`)
     const body = JSON.stringify({
         "offset": 0,
         "pageSize": 1,
@@ -17,12 +20,13 @@ const findUserByPhone = async (values : {mobilecode: string, phone: string}) => 
             }
           ]
       })
-    let response = await fetch('http://46.41.140.125/crm/proxy/rest/contact/list', {
+    let response = await fetch('https://cdfinance.planfix.com/rest/contact/list/', {
     method: 'POST',
     headers: {
       'accept': 'application/json',
+      'Authorization': 'Bearer 7698b7bb3c7b00a1155abac76318121e',
       'Content-Type': 'application/json',
-  },
+    },
   body: body,
   mode: 'cors',
   cache: 'default',

@@ -12,7 +12,9 @@ const sendData = async (values: {name: string, email: string, mobilecode: string
                 switch(error.message){
                     case 'user already exist': {
                         try{
+                        console.log('getting error "user already exist" in index.ts file')
                         let user = await findUserByPhone(values)
+                        console.log(user)
                         if(user.contacts.length != 0){
                             let task = await createTaskFromUser(user.contacts[0].id, values.textarea, values.service, user.contacts[0].name)
                             return task

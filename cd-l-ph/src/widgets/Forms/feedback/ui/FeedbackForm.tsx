@@ -56,18 +56,18 @@ import {
 
  
 const formSchema = z.object({
-  name: z.string().min(2, 'name!').max(14, 'Too long!'),
-  surname: z.string().min(2, 'Too Short!').max(14, 'Too long!'),
+  name: z.string().min(2, 'Too Short/Zakrótko/Закоротко!').max(14, 'Too Long/Zadługo/Задовго!'),
+  surname: z.string().min(2, 'Too Short/Zakrótko/Закоротко!').max(14, 'Too Long/Zadługo/Задовго!'),
   mobilecode: z.string(),
   phone: z.string(),
-  email: z.string().email('Invalid Email'),
-  service: z.string().min(1, "Оберіть послугу яка Вас цікавить"),
+  email: z.string().email('Invalid/Nieprawidłowy/Неправильний Email'),
+  service: z.string().min(1, "Choose/Wybierz/Обери!"),
   textarea: z.string(),
 }).refine((values) => {
   return validator.isMobilePhone(`${values.mobilecode}${values.phone}`, ['uk-UA', 'pl-PL', 'be-BY', 'de-DE'])
 },
   {
-      message: "Неправильний номер, заповніть ще раз та вишліть форму",
+      message: "Invalid/Nieprawidłowy/Неправильний Phone/Telefon/Телефон!",
       path: ["phone"]
   }
 )

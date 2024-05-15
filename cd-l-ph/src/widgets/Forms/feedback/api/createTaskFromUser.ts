@@ -19,7 +19,7 @@ const createTaskFromUser = async (userID: any, description: string, service: str
         }
       }
     )
-    let response = await fetch(`http://46.41.140.125/crm/proxy/rest/task/`, {
+    let response = await fetch(`http://backend.cdfinance.pl/crm/proxy/task/`, {
         method: 'POST',
         headers: {
             'accept': 'application/json',
