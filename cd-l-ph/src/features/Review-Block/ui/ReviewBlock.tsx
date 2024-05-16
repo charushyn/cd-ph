@@ -10,7 +10,7 @@ const ReviewBlock = ({avatar, title, description, srcToOpinion, hardCodeColorBg,
     const t = useTranslations("opinions")
     const bgStyle = `bg-${hardCodeColorBg}-700`
     return(
-        <div className="flex flex-col h-fit gap-4 bg-white rounded-3xl p-4 border-[1px] mx-8">
+        <div className="flex flex-col h-fit gap-4 bg-white rounded-3xl p-4 border-[1px] mx-10">
             {iconFinder("quatation", 'w-[30px] h-[30px] t-s:w-[45px] t-s:h-[45px] t-l:w-[50px] t-l:h-[50px]')}
             <p className="text-xs m-l:text-sm t-s:text-base line-clamp-5 leading-5 tracking-wide t-l:leading-7">{description}</p>
             <div className="flex flex-row gap-4 items-center">

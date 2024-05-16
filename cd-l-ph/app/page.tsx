@@ -1,5 +1,7 @@
 'use client'
 
+import Head from 'next/head';
+
 import {redirect, usePathname} from 'next/navigation';
 
 

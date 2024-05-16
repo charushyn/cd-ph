@@ -6,10 +6,16 @@ import {ReactTyped} from 'react-typed'
 
 import {useTranslations} from 'next-intl';
 
+import React from "react";
+
+
+
 export default function Greeting(){
-    const t = useTranslations('greeting');
+        const t = useTranslations('greeting');
+
+        
         return(
-            <div className={`w-full relative h-svh font-OpenSans`} id="greeting">
+            <div className={`w-full relative h-svh font-OpenSans z-[-2]`} id="greeting">
                 <div className="fadeinn w-full h-svh z-[-1]">
                     <img className='h-full w-full' src="https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.850businessmagazine.com/content/uploads/2019/10/iStock-694415714-1024x688.jpg" id="f1" />
                     <img className='h-full w-full' src="https://img.freepik.com/free-photo/people-business-meeting-high-angle_23-2148911819.jpg" id="f2" />

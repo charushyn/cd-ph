@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import services from "../api/data";
 import { Title } from "@/shared/ui/index";
@@ -17,22 +17,16 @@ const Service = dynamic(
     { ssr: false }
   );
 
+
 const Services = () => {
     const dispatch = useDispatch()
     const currentService = useSelector((state: any) => state.serviceReducer.currentServiceShowed)
     const t = useTranslations("services")
 
-    React.useEffect(() => {
+    useEffect(() => {
         dispatch(changeCurrentService(t("insurance.title")))
     }, [])
 
-    let amountOfServices = services.length
-
-    
-
-
-
-        
         return(
             <div className="font-OpenSans" id="services">
                 <Title text={t("title")} className="text-sm bg-white h-[50px] flex items-center px-4 t-l:px-8 relative"></Title>

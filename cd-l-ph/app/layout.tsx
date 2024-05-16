@@ -1,7 +1,10 @@
+import Head from 'next/head';
 import './globals.css';
 
 // Since we have a `not-found.tsx` page on the root, a layout file
 // is required, even if it's just passing children through.
+
+
 export default function RootLayout({
     children,
   }: {
@@ -17,6 +20,7 @@ export default function RootLayout({
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossOrigin=""></script>
+            <link rel="icon" type="image/x-icon" href="/favicon.ico"></link>
             </head>
             <html lang="en">
                 <body>{children}</body>

@@ -3,7 +3,6 @@
 import { Title, ScrollToComponent } from "@/shared/ui/index"
 
 import { iconFinder } from "../../../../public/helpers"
-// title, description, link(to page with choosed service), photoUrl, iconUrl
 
 import { useTranslations } from "next-intl"
 
@@ -20,7 +19,6 @@ const Service = ({title, description, photoUrl, active, onClickFunc, iconUrl, on
             onHoverFunc()
         }
     }
-
     const t = useTranslations("services")
 
     

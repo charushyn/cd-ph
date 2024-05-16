@@ -33,7 +33,7 @@
     ".next/types/**/*.ts",
     "src/shared/ui/ScrollToComponent/ScrollToComponent.tsx",
     "src/widgets/Opinions/ui/Opinions.jsx",
-    "./middleware.ts"
+    "./middleware.ts",
   ],
   "exclude": [
     "node_modules"
