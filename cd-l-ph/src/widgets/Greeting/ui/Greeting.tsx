@@ -15,7 +15,7 @@ export default function Greeting(){
 
         
         return(
-            <div className={`w-full relative h-svh font-OpenSans z-[-2]`} id="greeting">
+            <div className={`w-full relative h-svh font-OpenSans z-[0]`} id="greeting">
                 <div className="fadeinn w-full h-svh z-[-1]">
                     <img className='h-full w-full' src="https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.850businessmagazine.com/content/uploads/2019/10/iStock-694415714-1024x688.jpg" id="f1" />
                     <img className='h-full w-full' src="https://img.freepik.com/free-photo/people-business-meeting-high-angle_23-2148911819.jpg" id="f2" />
@@ -37,7 +37,7 @@ export default function Greeting(){
                         </div>
                     </div>
                     <div className='flex flex-col gap-3 t-l:gap-5'>
-                        <ScrollToComponent text={t("nav.contact")} isArrowIconNeeded={false} className=" bg-[none] text-white decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0 cursor-pointer" arrowClassName="" hrefElem="footer"></ScrollToComponent>
+                        <ScrollToComponent text={t("nav.contact")} isArrowIconNeeded={false} className=" bg-[none] text-white decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0 cursor-pointer" arrowClassName="" hrefElem="feedbackform"></ScrollToComponent>
                         <ScrollToComponent text={t("nav.services")} isArrowIconNeeded={false} className=" bg-[none] text-white decoration-[0.5px]  underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0 cursor-pointer" arrowClassName="" hrefElem="services"></ScrollToComponent>
                         <ScrollToComponent text={t("nav.about")} isArrowIconNeeded={false} className=" bg-[none] text-white decoration-[0.5px] underline p-0 t-s:decoration-[1px] t-l:p-0 t-x:p-0 cursor-pointer" arrowClassName="" hrefElem="whywe"></ScrollToComponent>
                     </div>
