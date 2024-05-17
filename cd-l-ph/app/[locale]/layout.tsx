@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Suspense } from "react";
 import { ReduxProvider, ProviderAsync, NextIntlProvider, Loading } from "@/build/Providers/index";
-
 export const metadata: Metadata = {
   title: "CD Finance",
   description: "Services for insurance",
