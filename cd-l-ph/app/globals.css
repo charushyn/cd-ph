@@ -2,6 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+.overlay {    
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  
+  background-color: rgba(0,0,0,0.60);
+}
+.fadeinn {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+.fadeinn img {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  object-fit: cover;
+  -webkit-animation-name: fade;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 8s;
+  animation-name: fade;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+}
+@keyframes fade {
+  0% {opacity: 0;}
+  20% {opacity: 1;}
+  33% {opacity: 1;}
+  53% {opacity: 0.5;}
+  100% {opacity: 0;}
+}
+#f2 {
+  animation-delay: 4s;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

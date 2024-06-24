@@ -6,25 +6,46 @@ import { iconFinder } from "../../../../public/helpers"
 
 import { useTranslations } from "next-intl"
 
-const Service = ({title, description, photoUrl, active, onClickFunc, iconUrl, onHoverFunc, amountOfServices} : {title: string, description: string, photoUrl: string, active: boolean, onClickFunc: any, iconUrl: string, width: any, onHoverFunc: any, amountOfServices: any}) => {
+import React from "react"
+
+const Service = (
+    {
+        title, 
+        description, 
+        photoUrl, 
+        iconUrl, 
+        amountOfServices
+    } : {
+        title: string, 
+        description: string, 
+        photoUrl: string,  
+        iconUrl: string, 
+        amountOfServices: any
+    }) => {
+    const [active, setActive] = React.useState(false)
+
     let userWidth: any;
     let widthForActive: any;
+
     if(typeof window !== 'undefined'){
         userWidth = window.innerWidth;
         widthForActive = (userWidth - ((amountOfServices - 1) * 60))
     }
 
-    const func = () => {
+    const onHoverFunc = () => {
         if(typeof window !== 'undefined' && userWidth > 1119){
-            onHoverFunc()
+            setActive(!active)
         }
     }
-    const t = useTranslations("services")
+
+    const onClickFunc = () => {
+        setActive(!active)
+    }
 
     
     return(
         <div className={`w-full flex flex-col h-fit bg-black`} onClick={onClickFunc}>
-            <div onMouseOver={func} className={`serviceC relative ${active ? `active` : `h-[70px] m-l:h-[90px] t-l:h-[100px] justify-center d-s:justify-start`} flex flex-col`}>
+            <div onMouseOver={onHoverFunc} className={`serviceC relative ${active ? `active` : `h-[70px] m-l:h-[90px] t-l:h-[100px] justify-center d-s:justify-start`} flex flex-col`}>
                 <div className={` flex flex-row justify-between items-center px-4 uppercase m-l:h-[90px] h-[70px] t-l:px-8 d-s:px-0 relative ${active ? 'd-s:justify-end' : 'd-s:justify-center'}`}>
                     <Title className={`text-sm text-white ${active && 'opacity-0'} d-s:hidden`} text={title}></Title>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={`d-s:hidden w-6 h-6 t-m:w-8 t-m:h-8 text-white transition-all duration-200 ${active ? 'rotate-180' : 'rotate-0'}`}>
@@ -38,7 +59,7 @@ const Service = ({title, description, photoUrl, active, onClickFunc, iconUrl, on
                     {/* <img src={iconUrl} className={`hidden d-s:block ${active ? 'w-[100px] h-[100px] absolute top-10 right-10' : 'w-8 h-8'}`}></img> */}
                     <Title className="text-white uppercase relative" text={title}></Title>
                     <div className=' text-white relative text-xs leading-5 t-s:text-base t-s:w-[70%] t-m:text-lg d-s:w-[60%]'>{description}</div>
-                    <ScrollToComponent hrefElem='feedbackform' className=" text-white absolute bottom-4 right-4 d-s:bottom-10 d-s:right-10 t-x:px-10 t-x:py-4" isArrowIconNeeded={true} isHoverEffect={true} text={t("button")}></ScrollToComponent>
+                    <ScrollToComponent hrefElem='feedbackform' className=" text-white absolute bottom-4 right-4 d-s:bottom-10 d-s:right-10 t-x:px-10 t-x:py-4" isArrowIconNeeded={true} isHoverEffect={true} text={'go'}></ScrollToComponent>
                 </div>
                 <style jsx>{
                         `

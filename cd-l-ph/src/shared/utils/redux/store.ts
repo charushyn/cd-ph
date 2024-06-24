@@ -10,7 +10,7 @@ export const store = configureStore({
     reducer: {
         languageReducer,
         burgerReducer,
-        serviceReducer,
+        serviceReducer
     }
 })
 

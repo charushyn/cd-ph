@@ -1,5 +1,5 @@
 import { PrivicyPolicy } from "@/_pages/index";
-import { DeepLayout } from "@/shared/templates/index";
+import { DeepLayout } from "@/build/templates/index";
 
 export default function PrivicyPolicyPage(){
     return (

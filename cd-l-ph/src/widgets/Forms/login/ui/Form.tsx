@@ -6,9 +6,11 @@ import { z } from "zod"
 
 import { MutateFunction, useMutation } from "@tanstack/react-query"
 
+import {Subtitle} from "@/shared/ui/index"
 
 
 
+import { useToast } from "@/shared/uiShadcn/ui/use-toast"
 
 import validator from 'validator';
 
@@ -38,6 +40,9 @@ import { SuccessCard, LoadingCard, ErrorCard } from "@/features/index";
 
 import { Link, Title } from "@/shared/ui/index";
 import React from "react";
+import Login from "../api/login"
+import { useDispatch } from "react-redux"
+import { useRouter } from "next/navigation"
 
  
 const formSchema = z.object({
@@ -47,6 +52,11 @@ const formSchema = z.object({
 })
 
 const LoginForm = () => {
+    const dispatch = useDispatch()
+    const router = useRouter()
+
+    const [err, setErr] = React.useState(false)
+
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
@@ -54,15 +64,16 @@ const LoginForm = () => {
         password: "",
       },
     })
-    // const { isPending, isError, isSuccess, error, mutate, reset} = useMutation({mutationFn: (values: {name: string, email: string, phone: string, service: string, textarea: string}) => sendData(values)})
 
-    // React.useEffect(() => {
-    //   isSuccess && toast.success('success')
-    //   isError && toast.error('error!')!
-    // }, [isError, isSuccess])
-
-    function onSubmit(values: z.infer<typeof formSchema>) {
-    //   mutate(values)
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        const res = await Login(values.email, values.password)
+        
+        
+        if(res.allow){
+          router.push('/cabinet-admin')
+        } else {
+          setErr(true)
+        }
     }
 
 
@@ -71,8 +82,6 @@ const LoginForm = () => {
             <hr className=" bg-black h-[1px] border-0 t-s:m-10"></hr>
             <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className={` space-y-4 m-l:w-[80%] t-m:w-[50%] d-s:w-[33%] d-s:flex d-s:flex-col w-full mx-auto relative`}>
-
-                      
                     <Title text="Login" className="text-center text-white"></Title>
                     <FormField
                         control={form.control}
@@ -101,8 +110,11 @@ const LoginForm = () => {
                         )}
                         />
                         <div className='flex flex-row text-white justify-between'>
-                            <p className="text-sm">Not have account yet?</p>
-                            <Link href='/registration' text='registration' isArrowIconNeeded={true} className="text-blue-500 p-0 lowercase gap-1 text-sm"></Link>
+                            <Subtitle text="Not have account yet?" className="text-white"></Subtitle>
+                            <Link href='/registration' text='registration' isArrowIconNeeded={true} normalcase className="text-blue-500 d-s:p-0 lowercase gap-1 text-sm"></Link>
+                        </div>
+                        <div className={`w-full h-fit p-2 bg-red-500 text-white text-center ${err ? 'flex' : 'hidden'}`}>
+                          Login Fail!
                         </div>
                         <Button type="submit" className="w-full " variant={"secondary"}>Submit</Button>
                     </form>

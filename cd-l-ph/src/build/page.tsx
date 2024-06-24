@@ -1,5 +1,7 @@
 import {Main} from "@/_pages/index";
-import {MainLayout} from "@/shared/templates/index";
+import {MainLayout} from "@/build/templates/index";
+
+
 
 
 export default function App() {

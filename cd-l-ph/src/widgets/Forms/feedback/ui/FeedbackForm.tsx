@@ -254,7 +254,7 @@ const FeedbackForm = () => {
                             </FormItem>
                           )}
                         />
-                        {/* <div className="items-top flex space-x-2">
+                        <div className="items-top flex space-x-2">
                           <Checkbox id="terms1" required/>
                           <div className="grid gap-1.5 leading-none">
                             <label
@@ -264,7 +264,7 @@ const FeedbackForm = () => {
                               Accept terms and conditions
                             </label>
                           </div>
-                        </div> */}
+                        </div>
                         <ReCAPTCHA
                         aria-required={true}
                         onChange={() => {

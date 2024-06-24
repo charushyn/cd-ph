@@ -2,22 +2,22 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface ServiceState {
-    currentServiceShowed: object,
+export interface serviceState {
+    activeServiceID: number
 }
 
-const initialState: ServiceState = {
-    currentServiceShowed: {},
+const initialState: serviceState = {
+    activeServiceID: 0
 }
 
 export const serviceSlice = createSlice({
-    name: 'currentServiceShowed',
+    name: 'service',
     initialState,
     reducers: {
-        changeCurrentService: (state, action) => { state.currentServiceShowed = action.payload }
+        setActiveID: (state, action) => { state.activeServiceID = action.payload}
     }
 })
 
-export const { changeCurrentService } = serviceSlice.actions;
+export const { setActiveID } = serviceSlice.actions;
 
 export default serviceSlice.reducer;

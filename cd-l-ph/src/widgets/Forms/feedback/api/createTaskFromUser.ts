@@ -19,10 +19,11 @@ const createTaskFromUser = async (userID: any, description: string, service: str
         }
       }
     )
-    let response = await fetch(`http://backend.cdfinance.pl/crm/proxy/task/`, {
+    let response = await fetch(`https://cdfinance.planfix.com/rest/task/`, {
         method: 'POST',
         headers: {
             'accept': 'application/json',
+            'Authorization': 'Bearer 7698b7bb3c7b00a1155abac76318121e',
             'Content-Type': 'application/json',
         },
         body: body,

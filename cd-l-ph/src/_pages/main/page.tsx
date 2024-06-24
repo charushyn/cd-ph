@@ -1,5 +1,3 @@
-'use client'
-
 import { FAQ, Services } from "@/widgets/index";
 import {PopupLanguage} from "@/widgets/index";
 import {PopupBurger} from "@/widgets/index";
@@ -9,32 +7,79 @@ import {WhyWe} from '@/widgets/index'
 import {Opinions} from "@/widgets/index"
 import {LoadingBar} from "@/widgets/index";
 
+import { useLocale } from "next-intl";
+
 import React from "react";
+import { getServices } from "@/widgets/Services/api/index";
+import getWhyWeData from "@/widgets/WhyWe/api/getWhyWeData";
+import { getLocale } from "next-intl/server";
+import getFAQData from "@/widgets/FAQ/api/getFAQData";
+import getOpinionsData from "@/widgets/Opinions/api/getOpinionsData";
+import getGreetingData from "@/widgets/Greeting/api/getGreeting";
+import { isToken } from "@/shared/utils/cookie/cookie";
+import { getStaticData } from "@/shared/utils";
 
 
-const Main = () => {
-        const [pageLoaded, setPageLoaded] = React.useState(false)
+const Main = async () => {
 
-        React.useEffect(() => {
-          setPageLoaded(true)
-        }, [])
+        const locale = await getLocale()
+
+        const showIDs = await isToken()
+
+        const services = async () => {
+          try{
+            
+            const services = await getStaticData(locale, 'services')
+            return services
+          } catch(err: any){
+            return {error: true}
+          }
+        }
+        const whywes = async () => {
+          try{
+            const whywes = await getStaticData(locale, 'whywes')
+            return whywes
+          } catch(err){
+            return {error: true}
+          }
+        }
+        const faqs = async () => {
+          try{
+            const faqs = await getStaticData(locale, 'faqs')
+            return faqs
+          } catch(err){
+            return {error: true}
+          }
+        }
+        const opinions = async () => {
+          try{
+            const faqs = await getStaticData(locale, 'opinions')
+            return faqs
+          } catch(err){
+            return {error: true}
+          }
+        }
+        const greeting = async () => {
+          try{
+            const faqs = await getStaticData(locale, 'greeting')
+            return faqs
+          } catch(err){
+            return {error: true}
+          }
+        }
+
+        
         
         return (
           <div className="">
-            {
-              pageLoaded ? 
-              <>
                 <PopupBurger></PopupBurger>
                 <PopupLanguage></PopupLanguage>
-                <Greeting></Greeting>
-                <Services></Services>
-                <WhyWe></WhyWe>
-                <FAQ></FAQ>
-                <Opinions></Opinions>
-                <FeedbackForm></FeedbackForm>
-              </> :
-                      <LoadingBar></LoadingBar>
-            }
+                <Greeting data={await greeting()}></Greeting>
+                <Services data={await services()} bool={showIDs} title=""></Services>
+                <WhyWe data={await whywes()} bool={showIDs} title=""></WhyWe>
+                <FAQ data={await faqs()} bool={showIDs}></FAQ>
+                <Opinions data={await opinions()} bool={showIDs}></Opinions>
+                {/* <FeedbackForm></FeedbackForm> */}
           </div>
         );
       }

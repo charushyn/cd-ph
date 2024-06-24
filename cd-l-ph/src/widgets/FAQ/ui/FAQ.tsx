@@ -10,24 +10,27 @@ import blocks from "../api/data"
 
 import { useTranslations } from "next-intl"
 
+import React from "react"
 
-const FAQ = () => {
+
+const FAQ = ({data, bool} : {data: any, bool: boolean}) => {
+
     const t = useTranslations("faq")
     const { ref: faqRef, inView: faqIsVisible } = useInView({triggerOnce: true})
+
+    const [active, setActive] = React.useState('')
+
     return(
         <div ref={faqRef} className='font-OpenSans flex flex-col px-4 pb-4 t-l:px-8' id="faq">
-            <Title text={t("title")} className="text-sm bg-white h-[70px] flex items-center"></Title>
+            {/* <Title text={t("title")} className="text-sm bg-white h-[70px] flex items-center"></Title> */}
             <div className="gap-y-8 flex flex-col t-m:items-center my-10">
-            {/* {blocks.map((item: any) => {
-                return(
-                    <FAQBlock key={item.title} title={item.title} description={item.description}></FAQBlock>
-                )
-            })} */}
-            <FAQBlock title={t("0.title")} description={t("0.description")}></FAQBlock>
-            <FAQBlock title={t("1.title")} description={t("1.description")}></FAQBlock>
-            <FAQBlock title={t("2.title")} description={t("2.description")}></FAQBlock>
-            <FAQBlock title={t("3.title")} description={t("3.description")}></FAQBlock>
-            <FAQBlock title={t("4.title")} description={t("4.description")}></FAQBlock>
+            {
+                !data.error ? data.map((item: any) => {
+                    return(
+                        <FAQBlock id={item.id} bool={bool} title={item.title} description={item.description} active={item.title === active} setActive={() => setActive(item.title)}></FAQBlock>
+                    )
+                }) : ''
+            }
             </div>
         </div>
     )

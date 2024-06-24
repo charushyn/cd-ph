@@ -1,4 +1,4 @@
-
+'use server'
 
 import { Link, ScrollToComponent, Title, Subtitle } from "@/shared/ui/index"
 import { TitleWithSbtitle } from "@/entities/index"
@@ -9,17 +9,28 @@ import { useTranslations } from "next-intl"
 
 import dynamic from 'next/dynamic'
 
+import { getStaticData } from "@/shared/utils"
+import { getLocale } from "next-intl/server"
+import getImg from "@/shared/utils/img/getImg"
 const DynamicMap = dynamic(() => import('@/shared/ui/LeafletMap/ui/LeafletMap'), {
   ssr: false
 });
 
 
 
-export default function Footer(){
-    const t = useTranslations("footer")
+export default async function Footer(){
+    const locale = await getLocale()
+    const data = await getStaticData(locale, 'footer')
+
+    const idSocialMedia = data.findIndex((item:any) => item.id === 1)
+    const idSchedule = data.findIndex((item: any) => item.id === 0)
+    const idSiteAgree = data.findIndex((item: any) => item.id === 2) 
+
+    
+    
     return(
         <footer className='font-OpenSans flex flex-col text-xs bg-black text-white gap-4 h-fit p-4' id='footer'>
-            <ScrollToComponent text={t("button")} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffect={false}></ScrollToComponent>
+            <ScrollToComponent text={''} arrowClassName=" rotate-[-90deg]" hrefElem="top" isArrowIconNeeded={true} className="w-full p-0 items-center my-2 justify-center" isHoverEffect={false}></ScrollToComponent>
             <div className="w-90svh h-50svh mx-auto">
                 <DynamicMap />
             </div>
@@ -39,51 +50,51 @@ export default function Footer(){
                             <Title className='text-white' text="CD Phinance"></Title>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <Title text={t("schedule.title")} className="text-white"></Title>
-                            <Subtitle text={t("schedule.0")} className="text-white"></Subtitle>
-                            <Subtitle text={t("schedule.1")} className="text-white"></Subtitle>
-                            <Subtitle text={t("schedule.2")} className="text-white"></Subtitle>
-                            <Subtitle text={t("schedule.3")} className="text-white"></Subtitle>
-                            <Subtitle text={t("schedule.4")} className="text-white"></Subtitle>
-                            <Subtitle text={t("schedule.5")} className="text-white"></Subtitle>
-                            <Subtitle text={t("schedule.6")} className="text-white"></Subtitle>
+                            <Title className="text-white" text={data[idSchedule].title}></Title>
+                            {
+                                data[idSchedule] ? data[idSchedule].data.map((item: any) => {
+                                    return (
+                                        <div className="w-fit flex flex-row">
+                                            <Subtitle text={`${item.day}: ${item.isOpen ? `${item.time.from}-${item.time.to}` : item.closed}`}></Subtitle>
+                                        </div>
+                                    )
+                                }) : ''
+                            }
                         </div>
 
                     </div>
                     <div className='flex flex-col gap-4'>
-                        <Title text="Social Media" className="text-white"></Title>
-                        <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
-                            <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href="https://t.me/cdfinancebot" target="_blank" rel="noopener noreferrer"></a>
-                            <div className="w-[20px] h-[20px]">
-                                {iconFinder("telegram")}
-                            </div>
-                            <p className='underline text-xs decoration-1 t-s:text-sm t-m:text-base font-Acrom_Light'>@cd_finance</p>
-                        </div>
-                        <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
-                            <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href="https://www.facebook.com/cd.finance.poland" target="_blank" rel="noopener noreferrer"></a>
-                            <div className="w-[20px] h-[20px]">
-                                {iconFinder("facebook")}
-                            </div>
-                            <p className='underline text-xs decoration-1 t-s:text-sm t-m:text-base font-Acrom_Light'>Facebook</p>
-                        </div>
-                        <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
-                            <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href="https://www.instagram.com/cd.finance/" target="_blank" rel="noopener noreferrer"></a>
-                            <div className="w-[20px] h-[20px]">
-                                {iconFinder("instagram")}
-                            </div>
-                            <p className='underline text-xs decoration-1 t-s:text-sm t-m:text-base font-Acrom_Light'>@cd.finance</p>
-                        </div>
-                        <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
-                            <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href="https://wa.me/message/7LWC3YO5DXYSP1" target="_blank" rel="noopener noreferrer"></a>
-                            <div className="w-[20px] h-[20px]">
-                                {iconFinder("whatsapp")}
-                            </div>
-                            <p className='underline decoration-1 text-xs t-s:text-sm t-m:text-base font-Acrom_Light'>WhatsApp</p>
-                        </div>
+                        <Title text={data[idSocialMedia].title} className="text-white"></Title>
+                        {/* {
+                            data[idSocialMedia] ? data[idSocialMedia].data.map(async (item: any) => {
+                              
+                                let img = Buffer.from(((await getImg(item.svg)).data),
+                                "binary" ).toString("base64");
+
+                                let icon =`data:image/png;base64,${img}`
+
+                                return(
+                                    <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
+                                        <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href={item.src} target="_blank" rel="noopener noreferrer"></a>
+                                        <img src={icon} className='w-6 h-6' alt=""></img>
+                                        <p className='underline text-xs decoration-1 t-s:text-sm t-m:text-base font-Acrom_Light'>{item.text}</p>
+                                    </div>
+                                )
+                            }) : ''
+                        } */}
                     </div>
                     <div className='flex flex-col gap-4'>
-                        <Title className='text-white' text={t("accept.title")}></Title>
-                        {/* <Link isArrowIconNeeded={true} text={t("accept.privicy-policy")} href="/privicy-policy" className="w-full m-s:p-0 m-m:p-0 m-l:p-0 t-s:p-0 t-m:p-0 t-l:p-0 t-x:p-0 d-s:p-0 d-m:p-0 d-l:p-0 underline"></Link> */}
+                        <Title className='text-white' text={data[idSiteAgree].title}></Title>
+                        {
+                            data[idSiteAgree] ?
+                            data[idSiteAgree].data.map((item: any) => {
+                                return(
+                                    <Link isArrowIconNeeded={true} text={item.text} href={item.src} className="w-full m-s:p-0 m-m:p-0 m-l:p-0 t-s:p-0 t-m:p-0 t-l:p-0 t-x:p-0 d-s:p-0 d-m:p-0 d-l:p-0 underline"></Link>
+                                )
+                            })
+                            : ''
+                        }
+                        
                     </div>
                 </div>
                 
