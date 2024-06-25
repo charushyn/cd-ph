@@ -25,7 +25,7 @@ const ErrorCard = ({isOpen} : {isOpen: boolean }) => {
                 <AlertDialogHeader>
                 <AlertDialogTitle>{t("loading.title")}</AlertDialogTitle>
                 <AlertDialogDescription>
-                <BarLoader className="bg-white"></BarLoader>
+                <BarLoader delay={0} className="bg-white"></BarLoader>
                 </AlertDialogDescription>
                 </AlertDialogHeader>
             </AlertDialogContent>

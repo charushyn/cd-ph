@@ -68,18 +68,28 @@ const Main = async () => {
           }
         }
 
-        
+        const other = async () => {
+          try{
+            const faqs = await getStaticData(locale, 'other')
+            return faqs
+          } catch(err){
+            return {error: true}
+          }
+        }
+
+        const otherData = await other()
+
         
         return (
           <div className="">
                 <PopupBurger></PopupBurger>
                 <PopupLanguage></PopupLanguage>
                 <Greeting data={await greeting()}></Greeting>
-                <Services data={await services()} bool={showIDs} title=""></Services>
-                <WhyWe data={await whywes()} bool={showIDs} title=""></WhyWe>
+                <Services data={await services()} bool={showIDs} title={otherData.h1.services}></Services>
+                <WhyWe data={await whywes()} bool={showIDs} title={otherData.h1.whywe}></WhyWe>
                 <FAQ data={await faqs()} bool={showIDs}></FAQ>
                 <Opinions data={await opinions()} bool={showIDs}></Opinions>
-                {/* <FeedbackForm></FeedbackForm> */}
+                <FeedbackForm></FeedbackForm>
           </div>
         );
       }

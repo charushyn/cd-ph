@@ -292,25 +292,25 @@ export default function Editor(){
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Schedule
                 </p>
-                <div className="">
+                {/* <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
                             Edit Schedule
                     </p>
                     <FormEditWorkDay></FormEditWorkDay>
-                </div>
+                </div> */}
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Map
                 </p>
-                <div className="">
+                {/* <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
                             Edit map
                     </p>
                     <FormEditMap></FormEditMap>
-                </div>
+                </div> */}
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Site agree
                 </p>
-                <div className="">
+                {/* <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
                             Add site agree
                     </p>
@@ -327,11 +327,11 @@ export default function Editor(){
                             Delete Site agree
                     </p>
                     <FormDeleteSiteAgree></FormDeleteSiteAgree>
-                </div>
+                </div> */}
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Social media
                 </p>
-                <div className="">
+                {/* <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
                             Add social media
                     </p>
@@ -351,7 +351,7 @@ export default function Editor(){
                 </div>
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Other
-                </p>
+                </p> */}
                 {/* <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
                             Edit Feedback Form Img

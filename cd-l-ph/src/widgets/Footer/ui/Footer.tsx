@@ -22,6 +22,7 @@ export default async function Footer(){
     const locale = await getLocale()
     const data = await getStaticData(locale, 'footer')
 
+
     const idSocialMedia = data.findIndex((item:any) => item.id === 1)
     const idSchedule = data.findIndex((item: any) => item.id === 0)
     const idSiteAgree = data.findIndex((item: any) => item.id === 2) 
@@ -46,16 +47,19 @@ export default async function Footer(){
                 <div className="flex flex-col gap-4 t-s:flex-row t-s:flex-wrap t-s:justify-between t-s:mt-10 m-l:px-[5svh]">
                     <div className='flex flex-col gap-4'>
                         <div className='flex flex-row items-center gap-2'>
-                            {iconFinder('small-gold-logo')}
+                            {
+                              // <Image src={} className={cn('w-fit h-[20px] t-s:h-[30px]', className)} alt=""></Image>
+                            }
+                            
                             <Title className='text-white' text="CD Phinance"></Title>
                         </div>
                         <div className="flex flex-col gap-2">
                             <Title className="text-white" text={data[idSchedule].title}></Title>
                             {
-                                data[idSchedule] ? data[idSchedule].data.map((item: any) => {
+                                data[idSchedule]?.data.length > 0 ? data[idSchedule].data.map((item: any) => {
                                     return (
                                         <div className="w-fit flex flex-row">
-                                            <Subtitle text={`${item.day}: ${item.isOpen ? `${item.time.from}-${item.time.to}` : item.closed}`}></Subtitle>
+                                            <Subtitle className="text-white" text={`${item.day}: ${item.isOpen ? `${item.time.from}-${item.time.to}` : item.closed}`}></Subtitle>
                                         </div>
                                     )
                                 }) : ''
@@ -65,8 +69,8 @@ export default async function Footer(){
                     </div>
                     <div className='flex flex-col gap-4'>
                         <Title text={data[idSocialMedia].title} className="text-white"></Title>
-                        {/* {
-                            data[idSocialMedia] ? data[idSocialMedia].data.map(async (item: any) => {
+                        {
+                            data[idSocialMedia]?.data.length > 0 ? data[idSocialMedia].data.map(async (item: any) => {
                               
                                 let img = Buffer.from(((await getImg(item.svg)).data),
                                 "binary" ).toString("base64");
@@ -81,12 +85,12 @@ export default async function Footer(){
                                     </div>
                                 )
                             }) : ''
-                        } */}
+                        }
                     </div>
                     <div className='flex flex-col gap-4'>
                         <Title className='text-white' text={data[idSiteAgree].title}></Title>
                         {
-                            data[idSiteAgree] ?
+                            data[idSiteAgree]?.data.length > 0 ?
                             data[idSiteAgree].data.map((item: any) => {
                                 return(
                                     <Link isArrowIconNeeded={true} text={item.text} href={item.src} className="w-full m-s:p-0 m-m:p-0 m-l:p-0 t-s:p-0 t-m:p-0 t-l:p-0 t-x:p-0 d-s:p-0 d-m:p-0 d-l:p-0 underline"></Link>

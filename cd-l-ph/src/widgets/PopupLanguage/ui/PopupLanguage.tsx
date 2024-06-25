@@ -31,9 +31,9 @@ const PopupLanguage = () => {
                                     
                                     dispatch(toggleVisibilityPopupLanguage())
                                     }}>
-                                    <Image width={30} height={20} alt="" className=' object-cover border-[1px]' src={item.flagUrl}></Image>
+                                    <img alt="" className=' object-cover border-[1px] w-[30px] h-[20px]' src={item.flagUrl}></img>
                                     <p className={`text-xs t-s:text-sm t-m:text-base t-x:text-lg`}>{item.fullName}</p>
-                                    <Link href={`/${item.id}`} className="absolute w-full h-full opacity-0 z-[60] top-0 bottom-0 left-0 right-0"></Link>
+                                    <a href={`http://localhost:3000/${item.id}`} className="absolute w-full h-full opacity-0 z-[60] top-0 bottom-0 left-0 right-0"></a>
                                 </div>
                             )
                         })

@@ -70,7 +70,7 @@ const LoginForm = () => {
         
         
         if(res.allow){
-          router.push('/cabinet-admin')
+          router.push('https://cdfinance.pl/cabinet-admin')
         } else {
           setErr(true)
         }

@@ -5,7 +5,7 @@ import { Title, ScrollToComponent } from "@/shared/ui/index"
 import { useTranslations } from "next-intl"
 import { useDispatch, useSelector } from "react-redux"
 
-import React from "react"
+import React, { useEffect } from "react"
 import { setActiveID } from "@/shared/utils/redux/service/service"
 import {Button} from "@/shared/ui/index"
 
@@ -28,6 +28,10 @@ const TestService = (
         const t = useTranslations('services')
         const active = id == useSelector((state: any) => state.serviceReducer.activeServiceID)
         const dispatch = useDispatch()
+
+        useEffect(() => {
+            dispatch(setActiveID(id))
+        }, [])
     return(
         <div style={{
                 backgroundImage: `url(${bg})`,
