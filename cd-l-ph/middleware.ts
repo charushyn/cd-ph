@@ -1,17 +1,15 @@
 'use server'
 
 import createIntlMiddleware from 'next-intl/middleware';
-import isAuthValid from './auth';
 import { NextResponse } from 'next/server'
 import type { NextFetchEvent, NextRequest } from 'next/server'
 import { cookies } from 'next/headers';
-import { deleteCookie } from '@/shared/utils/cookie/cookie';
 
 export default async function middleware(request: NextRequest, event: NextFetchEvent) {
     const cookieStore = cookies()
     if(request.nextUrl.pathname.includes('cabinet-admin')){
           if(!cookieStore.get('refreshToken')?.value){
-            return NextResponse.redirect(`http://localhost:3000/login`)
+            return NextResponse.redirect(`https://cdfinance.pl/login`)
           }
           let headers = new Headers();
           headers.append('Content-Type', 'application/json');
@@ -30,7 +28,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
           }).catch((e) => console.log(e))
 
           if(!response?.allow){
-            return NextResponse.redirect('http://localhost:3000/login')
+            return NextResponse.redirect('https://cdfinance.pl/login')
           }
     }
 
@@ -55,7 +53,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
             )
 
           if(response?.allow){
-            return NextResponse.redirect('http://localhost:3000/cabinet-admin')
+            return NextResponse.redirect('http://cdfinance.pl/cabinet-admin')
           }
         }
     }
