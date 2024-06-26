@@ -2,6 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { setCookie, getCookie } from 'cookies-next';
 
 
 import { MutateFunction, useMutation } from "@tanstack/react-query"
@@ -70,6 +71,7 @@ const LoginForm = () => {
         
         
         if(res.allow){
+          setCookie('refreshToken', res.token, {maxAge: 60*60, httpOnly: true})
           router.push('https://cdfinance.pl/cabinet-admin')
         } else {
           setErr(true)
