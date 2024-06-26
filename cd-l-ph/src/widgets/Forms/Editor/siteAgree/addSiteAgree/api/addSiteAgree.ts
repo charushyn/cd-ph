@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function addSiteAgree(values: {
     ua: {
         text: string
@@ -23,7 +25,7 @@ export default async function addSiteAgree(values: {
     body.append('en', JSON.stringify(values.en))
 
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/add-site-agreements`, {
+    const response: any = await fetch(`${reqUrl}/add-site-agreements`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function editWhyWe(values: {
     ua: {
         title: string,
@@ -31,7 +33,7 @@ export default async function editWhyWe(values: {
 
     
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/edit-whywe`, {
+    const response: any = await fetch(`${reqUrl}/edit-whywe`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

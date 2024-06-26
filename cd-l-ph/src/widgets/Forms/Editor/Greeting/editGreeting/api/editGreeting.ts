@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function editGreeting(values: {
     ua: {
         welcome: string,
@@ -31,7 +33,7 @@ export default async function editGreeting(values: {
 
     
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/edit-greeting`, {
+    const response: any = await fetch(`${reqUrl}/edit-greeting`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

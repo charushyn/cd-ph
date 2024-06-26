@@ -3,8 +3,8 @@ export default async function Login(email: string, password: string){
         login: email,
         password: password
      })
-    //   const response = await fetch(`https://backend.cdfinance.pl/login`, {
-        const response = await fetch(`http://localhost:1488/login`, {
+      const response = await fetch(`https://backend.cdfinance.pl/login`, {
+        // const response = await fetch(`http://localhost:1488/login`, {
           method: 'POST',
           mode: 'cors',
           credentials: 'include',

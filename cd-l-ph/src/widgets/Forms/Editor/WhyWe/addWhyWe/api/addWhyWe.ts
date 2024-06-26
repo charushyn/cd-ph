@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function addWhyWe(values: {
     ua: {
         title: string,
@@ -27,7 +29,7 @@ export default async function addWhyWe(values: {
     body.append('en', JSON.stringify(values.en))
 
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/add-whywe`, {
+    const response: any = await fetch(`${reqUrl}/add-whywe`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

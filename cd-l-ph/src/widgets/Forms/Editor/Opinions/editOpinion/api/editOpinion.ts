@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function editOpinion(values: {
     ua: {
         description: string,
@@ -35,7 +37,7 @@ export default async function editOpinion(values: {
 
     
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/edit-opinion`, {
+    const response: any = await fetch(`${reqUrl}/edit-opinion`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

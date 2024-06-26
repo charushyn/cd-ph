@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function addService(values: {
     ua: {
         title: string,
@@ -29,7 +31,7 @@ export default async function addService(values: {
     body.append('en', JSON.stringify(values.en))
 
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/add-service`, {
+    const response: any = await fetch(`${reqUrl}/add-service`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

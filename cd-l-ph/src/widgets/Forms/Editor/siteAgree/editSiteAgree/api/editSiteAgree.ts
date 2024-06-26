@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function editSiteAgree(values: {
     ua: {
         text: string,
@@ -27,7 +29,7 @@ export default async function editSiteAgree(values: {
 
     
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/edit-site-agreements`, {
+    const response: any = await fetch(`${reqUrl}/edit-site-agreements`, {
         method: 'POST',
         mode: 'cors',
         body: body

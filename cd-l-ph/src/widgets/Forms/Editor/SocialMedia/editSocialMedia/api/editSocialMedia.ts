@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function editSocialMedia(values: {
     ua: {
         text: string,
@@ -30,7 +32,7 @@ export default async function editSocialMedia(values: {
 
     
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/edit-social-media`, {
+    const response: any = await fetch(`${reqUrl}/edit-social-media`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

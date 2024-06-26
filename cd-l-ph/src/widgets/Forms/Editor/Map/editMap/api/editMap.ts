@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function editMap(values: {adress: string, link: string, X:string, Y: string}){
     const body = new FormData()
 
@@ -8,7 +10,7 @@ export default async function editMap(values: {adress: string, link: string, X:s
 
     
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/edit-map`, {
+    const response: any = await fetch(`${reqUrl}/edit-map`, {
         method: 'POST',
         mode: 'cors',
         body: body

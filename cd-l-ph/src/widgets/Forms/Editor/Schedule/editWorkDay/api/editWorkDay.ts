@@ -1,3 +1,5 @@
+
+import reqUrl from "../../../reqUrl"
 export default async function editWorkDay(values : {whichDay: number, isOpen: boolean, from?: Date, to?: Date}){
     const body = JSON.stringify({
         id: values.whichDay,
@@ -7,7 +9,7 @@ export default async function editWorkDay(values : {whichDay: number, isOpen: bo
             to: values.to
         } : '',
     })
-    const response: any = await fetch('http://localhost:1488/edit-work-day', {
+    const response: any = await fetch(`${reqUrl}/edit-work-day`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

@@ -1,6 +1,8 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function deleteSiteAgree(id: number){
     const body = JSON.stringify({id: id})
-    const response = await fetch(`http://localhost:1488/delete-site-agreement`, {
+    const response = await fetch(`${reqUrl}/delete-site-agreement`, {
         method: 'POST',
         mode: 'cors',
         headers: {

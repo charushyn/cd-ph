@@ -15,7 +15,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
           headers.append('Content-Type', 'application/json');
           headers.append('Accept', 'application/json');
           headers.append('Cookie', `${cookieStore}`)
-          const response = await fetch('http://localhost:1488/verify', {
+          const response = await fetch('https://backend.cdfinance.pl/verify', {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',
@@ -38,7 +38,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
           headers.append('Content-Type', 'application/json');
           headers.append('Accept', 'application/json');
           headers.append('Cookie', `${cookieStore}`)
-          const response = await fetch('http://localhost:1488/verify', {
+          const response = await fetch('https://backend.cdfinance.pl/verify', {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',

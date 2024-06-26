@@ -1,6 +1,8 @@
+
+import reqUrl from "../../../reqUrl"
 export default async function deleteOpinion(id: number){
     const body = JSON.stringify({id: id})
-    const response = await fetch(`http://localhost:1488/delete-opinion`, {
+    const response = await fetch(`${reqUrl}/delete-opinion`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

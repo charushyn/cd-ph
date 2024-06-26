@@ -1,3 +1,5 @@
+import reqUrl from "@/widgets/Forms/Editor/reqUrl"
+
 export default async function addSocialMedia(values: {
     ua: {
         text: string,
@@ -27,7 +29,7 @@ export default async function addSocialMedia(values: {
     body.append('en', JSON.stringify(values.en))
 
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/add-social-media`, {
+    const response: any = await fetch(`${reqUrl}/add-social-media`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

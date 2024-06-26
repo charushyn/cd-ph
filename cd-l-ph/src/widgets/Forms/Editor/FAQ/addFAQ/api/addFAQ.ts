@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function addFAQ(values: {
     ua: {
         title: string,
@@ -23,7 +25,7 @@ export default async function addFAQ(values: {
     body.append('ru', JSON.stringify(values.ru))
     body.append('en', JSON.stringify(values.en))
 
-    const response: any = await fetch('http://localhost:1488/add-faq', {
+    const response: any = await fetch(`${reqUrl}/add-faq`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

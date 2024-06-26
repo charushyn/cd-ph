@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function editService(values: {
     ua: {
         title: string,
@@ -33,7 +35,7 @@ export default async function editService(values: {
 
     
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/edit-service`, {
+    const response: any = await fetch(`${reqUrl}/edit-service`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

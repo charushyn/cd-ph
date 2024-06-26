@@ -1,3 +1,5 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function editFAQ(values: {
     ua: {
         title: string,
@@ -27,7 +29,7 @@ export default async function editFAQ(values: {
 
     
     console.log(body)
-    const response: any = await fetch(`http://localhost:1488/edit-faq`, {
+    const response: any = await fetch(`${reqUrl}/edit-faq`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

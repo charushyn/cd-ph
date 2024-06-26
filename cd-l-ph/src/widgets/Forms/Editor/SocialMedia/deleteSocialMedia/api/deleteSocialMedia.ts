@@ -1,6 +1,8 @@
+import reqUrl from "../../../reqUrl"
+
 export default async function deleteSocialMedia(id: number){
     const body = JSON.stringify({id: id})
-    const response = await fetch(`http://localhost:1488/delete-social-media`, {
+    const response = await fetch(`${reqUrl}/delete-social-media`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
