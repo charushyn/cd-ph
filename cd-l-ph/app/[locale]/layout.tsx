@@ -23,7 +23,7 @@ export default function Layout({
   return (
     <html lang={"en"} suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
-          <Loading>
+          {/* <Loading> */}
           <ProviderAsync>
           <ReduxProvider>
             <NextIntlProvider>
@@ -31,7 +31,7 @@ export default function Layout({
             </NextIntlProvider>
           </ReduxProvider>
           </ProviderAsync>
-          </Loading>
+          {/* </Loading> */}
       </body>
     </html>
   );

@@ -17,6 +17,7 @@ import getFAQData from "@/widgets/FAQ/api/getFAQData";
 import getOpinionsData from "@/widgets/Opinions/api/getOpinionsData";
 import getGreetingData from "@/widgets/Greeting/api/getGreeting";
 import { isToken } from "@/shared/utils/cookie/cookie";
+import { Loading } from "@/build/Providers";
 import { getStaticData } from "@/shared/utils";
 
 
@@ -77,16 +78,16 @@ const Main = async () => {
           }
         }
 
-        const otherData = await other()
-
         
         return (
-          <div className="">
+          <div className="relative">
                 <PopupBurger></PopupBurger>
                 <PopupLanguage></PopupLanguage>
+                <Loading>
                 <Greeting data={await greeting()}></Greeting>
-                <Services data={await services()} bool={showIDs} title={otherData.h1.services}></Services>
-                <WhyWe data={await whywes()} bool={showIDs} title={otherData.h1.whywe}></WhyWe>
+                </Loading>
+                <Services data={await services()} bool={showIDs} title={''}></Services>
+                <WhyWe data={await whywes()} bool={showIDs} title={''}></WhyWe>
                 <FAQ data={await faqs()} bool={showIDs}></FAQ>
                 <Opinions data={await opinions()} bool={showIDs}></Opinions>
                 <FeedbackForm></FeedbackForm>

@@ -11,6 +11,7 @@ import { Service } from "@/features/index";
 import TestService from "@/features/TestService/ui/TestService";
 import { useDispatch } from "react-redux";
 import getImg from "@/shared/utils/img/getImg";
+import { Loading } from "@/build/Providers";
 
 
   
@@ -37,7 +38,9 @@ function Services ({data, bool, title} : {data: any, bool: boolean, title: strin
                             let bg =`data:image/png;base64,${base64Bg}`
                             let svg = `data:image/png;base64,${base64Icon}`
                             return(
+                                
                                 <TestService bool={bool} key={service.id} id={service.id} title={service.title} description={service.description} bg={bg} svg={svg}></TestService>
+                                
                             )
                         }) : ''
                     }

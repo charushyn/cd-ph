@@ -5,6 +5,7 @@ import { Title, ScrollToComponent } from "@/shared/ui/index"
 import React from "react";
 import Typed from "@/features/Typed/ui/Typed";
 import getImg from "@/shared/utils/img/getImg";
+import { Loading } from "@/build/Providers";
 
 
 export default async function Greeting(data: any){
