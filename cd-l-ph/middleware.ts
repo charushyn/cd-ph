@@ -15,7 +15,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
           headers.append('Content-Type', 'application/json');
           headers.append('Accept', 'application/json');
           headers.append('Cookie', `${cookieStore}`)
-          const response = await fetch('http://127.0.0.1:1488/verify', {
+          const response = await fetch('https://backend.cdfinance.pl/verify', {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',
@@ -29,6 +29,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
 
           if(!response?.allow){
             return NextResponse.redirect('https://cdfinance.pl/login')
+
           }
     }
 
@@ -38,7 +39,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
           headers.append('Content-Type', 'application/json');
           headers.append('Accept', 'application/json');
           headers.append('Cookie', `${cookieStore}`)
-          const response = await fetch('http://127.0.0.1:1488/verify', {
+          const response = await fetch('https://backend.cdfinance.pl/verify', {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',
@@ -53,7 +54,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
             )
 
           if(response?.allow){
-            return NextResponse.redirect('http://cdfinance.pl/cabinet-admin')
+            return NextResponse.redirect('https://cdfinance.pl/cabinet-admin')
           }
         }
     }

@@ -1,12 +1,12 @@
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies"
 
 export default async function isAuthValid(token: RequestCookie | undefined){
-    const response = await fetch(`http://localhost:1488/verify`, {
+    const response = await fetch(`https://backend.cdfinance.pl/verify`, {
         method: 'POST',
         mode: 'cors',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
-            mode: 'cors',
         },
         body: JSON.stringify({token: token})
     }).then(data => {
