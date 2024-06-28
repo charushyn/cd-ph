@@ -14,7 +14,7 @@ const BarLoader = ({className, delay} : {className?: string, delay: number}) => 
             // />
             <div style={{
                 animationDelay: `${delay}s`
-            }}className={`bg-gold w-4 h-10 animate-bounce`}></div>
+            }}className={cn(`bg-gold w-4 h-10 animate-bounce`, className)}></div>
     )
 }
 

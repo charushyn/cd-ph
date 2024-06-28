@@ -83,9 +83,7 @@ const Main = async () => {
           <div className="relative">
                 <PopupBurger></PopupBurger>
                 <PopupLanguage></PopupLanguage>
-                <Loading>
                 <Greeting data={await greeting()}></Greeting>
-                </Loading>
                 <Services data={await services()} bool={showIDs} title={''}></Services>
                 <WhyWe data={await whywes()} bool={showIDs} title={''}></WhyWe>
                 <FAQ data={await faqs()} bool={showIDs}></FAQ>

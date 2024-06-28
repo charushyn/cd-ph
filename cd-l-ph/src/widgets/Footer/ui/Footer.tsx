@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic'
 import { getStaticData } from "@/shared/utils"
 import { getLocale } from "next-intl/server"
 import getImg from "@/shared/utils/img/getImg"
+import SocialMedia from "@/features/SocialMedia/ui/SocialMedia"
 const DynamicMap = dynamic(() => import('@/shared/ui/LeafletMap/ui/LeafletMap'), {
   ssr: false
 });
@@ -70,19 +71,9 @@ export default async function Footer(){
                     <div className='flex flex-col gap-4'>
                         <Title text={data[idSocialMedia].title} className="text-white"></Title>
                         {
-                            data[idSocialMedia]?.data.length > 0 ? data[idSocialMedia].data.map(async (item: any) => {
-                              
-                                let img = Buffer.from(((await getImg(item.svg)).data),
-                                "binary" ).toString("base64");
-
-                                let icon =`data:image/png;base64,${img}`
-
+                            data[idSocialMedia]?.data.length > 0 ? data[idSocialMedia].data.map((item: any) => {
                                 return(
-                                    <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
-                                        <a className="absolute top-0 bottom-0 left-0 right-0 w-full h-full" href={item.src} target="_blank" rel="noopener noreferrer"></a>
-                                        <img src={icon} className='w-6 h-6' alt=""></img>
-                                        <p className='underline text-xs decoration-1 t-s:text-sm t-m:text-base font-Acrom_Light'>{item.text}</p>
-                                    </div>
+                                    <SocialMedia text={item.text} src={item.src} iconUrl={item.svg}></SocialMedia>
                                 )
                             }) : ''
                         }

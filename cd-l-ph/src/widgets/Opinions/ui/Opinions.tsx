@@ -22,13 +22,9 @@ const Opinions = async ({data, bool} : {data: any, bool: boolean}) => {
                 <div className='flex flex-col gap-4 d-s:w-[70%] w-full justify-center mx-auto'>
                   {!data.error ? 
                   <CarouselClient>
-                    {data.map(async (item: any) => {
-                            let imgBase64 = Buffer.from(((await getImg(item.img)).data),
-                                "binary" ).toString("base64");
-            
-                            let img =`data:image/png;base64,${imgBase64}`
+                    {data.map((item: any) => {
                             return(
-                              <ReviewBlock id={item.id} position={item.position} bool={bool} description={item.description} avatar={img} name={item.name}></ReviewBlock>
+                              <ReviewBlock id={item.id} position={item.position} bool={bool} description={item.description} avatar={item.img} name={item.name}></ReviewBlock>
                             )
                     })}
                   </CarouselClient>

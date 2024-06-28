@@ -1,4 +1,4 @@
-'use server'
+'use client'
 
 import { Title, ScrollToComponent } from "@/shared/ui/index"
 
@@ -7,22 +7,29 @@ import Typed from "@/features/Typed/ui/Typed";
 import getImg from "@/shared/utils/img/getImg";
 import { Loading } from "@/build/Providers";
 
+import { useEffect, useState } from "react";
 
-export default async function Greeting(data: any){
-        console.log(data)
-        let first = Buffer.from(((await getImg(data.data.firstImg)).data),
-        "binary" ).toString("base64");
 
-        let second = Buffer.from(((await getImg(data.data.secondImg)).data),
-            "binary" ).toString("base64");
+export default function Greeting(data: any){
 
-            
+        const [firstImg, setFirstImg] = useState('')
+        const [secondImg, setSecondImg] = useState('')
 
-   
-    
+        useEffect(() => {
+            new Promise(async (resolve, reject) => {
+                let first = Buffer.from(((await getImg(data.data.firstImg)).data),
+                    "binary" ).toString("base64");
 
-        let firstImg =`data:image/png;base64,${first}`
-        let secondImg = `data:image/png;base64,${second}`
+                let second = Buffer.from(((await getImg(data.data.secondImg)).data),
+                    "binary" ).toString("base64");
+
+                setFirstImg(`data:image/png;base64,${first}`)
+                setSecondImg(`data:image/png;base64,${second}`)
+
+            })
+                
+        
+            }, [])
         
         return(
             <div className={`w-full relative h-svh font-OpenSans z-[0]`} id="greeting">
@@ -33,7 +40,7 @@ export default async function Greeting(data: any){
                 <div className='overlay z-[0]'></div>
                 <div className={`flex flex-col justify-around h-svh z-[1] relative px-4 pt-[60px] m-l:pt-[100px] t-l:px-8`}>
                     <div className="flex flex-col gap-6 t-s:gap-10">
-                            <Typed text={data.data.welcome} className="text-white m-l:text-xl t-s:text-2xl t-m:text-3xl t-x:text-4xl d-s:text-5xl"></Typed>
+                            {firstImg.length === 0 ? <p className="text-white m-l:text-xl t-s:text-2xl t-m:text-3xl t-x:text-4xl d-s:text-5xl">{data.data.welcome}</p> : <Typed text={data.data.welcome} className="text-white m-l:text-xl t-s:text-2xl t-m:text-3xl t-x:text-4xl d-s:text-5xl"></Typed>}
                         <div className=' max-w-[60%] text-white text-xs m-l:text-sm t-s:text-xl t-m:max-w-[50%] leading-5 t-x:text-2xl d-s:text-lg d-s:max-w-[33%]'>
                             {data.data.mission}
                         </div>

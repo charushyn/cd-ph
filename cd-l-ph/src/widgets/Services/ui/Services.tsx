@@ -14,10 +14,14 @@ import getImg from "@/shared/utils/img/getImg";
 import { Loading } from "@/build/Providers";
 
 
+
+
   
 
 
 function Services ({data, bool, title} : {data: any, bool: boolean, title: string})  {
+
+
     
 
         return(
@@ -25,21 +29,21 @@ function Services ({data, bool, title} : {data: any, bool: boolean, title: strin
                 <Title text={title} className="text-sm bg-white h-[50px] flex items-center px-4 t-l:px-8 relative"></Title>
                 <div className="flex flex-col d-s:flex-row overflow-x-hidden">  
                     {
-                            !data.error ? data.map(async (service: any) => {
-                                let base64Bg = Buffer.from(((await getImg(service.bg)).data),
-                                "binary" ).toString("base64");
+                            !data.error ? data.map((service: any) => {
+                            //     let base64Bg = Buffer.from(((await getImg(service.bg)).data),
+                            //     "binary" ).toString("base64");
                 
-                                let base64Icon = Buffer.from(((await getImg(service.svg)).data),
-                                    "binary" ).toString("base64");
+                            //     let base64Icon = Buffer.from(((await getImg(service.svg)).data),
+                            //         "binary" ).toString("base64");
                 
                                
                                 
                             
-                            let bg =`data:image/png;base64,${base64Bg}`
-                            let svg = `data:image/png;base64,${base64Icon}`
+                            // let bg =`data:image/png;base64,${base64Bg}`
+                            // let svg = `data:image/png;base64,${base64Icon}`
                             return(
                                 
-                                <TestService bool={bool} key={service.id} id={service.id} title={service.title} description={service.description} bg={bg} svg={svg}></TestService>
+                                <TestService bool={bool} key={service.id} id={service.id} title={service.title} description={service.description} bgPath={service.bg} svgPath={service.svg}></TestService>
                                 
                             )
                         }) : ''
