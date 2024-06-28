@@ -20,15 +20,23 @@ export default function Greeting(data: any){
                 let first = Buffer.from(((await getImg(data.data.firstImg)).data),
                     "binary" ).toString("base64");
 
-                let second = Buffer.from(((await getImg(data.data.secondImg)).data),
-                    "binary" ).toString("base64");
 
                 setFirstImg(`data:image/png;base64,${first}`)
-                setSecondImg(`data:image/png;base64,${second}`)
 
             })
                 
         
+            }, [])
+
+            useEffect(() => {
+                new Promise(async (resolve, reject) => {
+    
+                    let second = Buffer.from(((await getImg(data.data.secondImg)).data),
+                        "binary" ).toString("base64");
+                    setSecondImg(`data:image/png;base64,${second}`)
+    
+                })
+
             }, [])
         
         return(

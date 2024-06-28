@@ -169,7 +169,7 @@ export default function Editor(){
                 </MenubarItem>
                 </MenubarContent>
             </MenubarMenu>
-            <MenubarMenu>
+            {/* <MenubarMenu>
                 <MenubarTrigger>Footer</MenubarTrigger>
                 <MenubarContent>
                 <MenubarRadioGroup value="benoit">
@@ -182,7 +182,7 @@ export default function Editor(){
                 <MenubarSeparator />
                 <MenubarItem inset>Add Profile...</MenubarItem>
                 </MenubarContent>
-            </MenubarMenu>
+            </MenubarMenu> */}
             </Menubar>
             <div className="px-8 ">
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} pt-8 text-5xl`}>

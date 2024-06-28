@@ -22,6 +22,19 @@ export default function Layout({
 }>) {
   return (
     <html lang={"en"} suppressHydrationWarning={true}>
+            <head>
+            {/* <link rel="icon" type="image/x-icon" href="/favicon.ico"></link> */}
+            <link rel="icon" href="/favicon.ico" sizes="any" />
+            <link
+              rel="apple-touch-icon"
+              href="/apple-icon?<generated>"
+              type="image/<generated>"
+              sizes="<generated>"
+            />
+            <link rel="icon" href="/favicon.ico" sizes="any" />
+            {/* <link rel="icon" href="http://localhost:3000/favicon.ico" />
+            <link rel="shortcut icon" href="favicon.ico"></link> */}
+            </head>      
       <body suppressHydrationWarning={true}>
           <Loading>
           <ProviderAsync>

@@ -113,7 +113,7 @@ const TestService = (
                     <Title text={active ? description : ''} className={`text-white d-s:w-[70%] d-s:pt-8`}></Title>
                 </div>
                 {/* id */}
-                {bool && <p className={`absolute bottom-4 z-[2] opacity-0 hover:opacity-100 px-4 left-4 text-white ${active ? 'inline' : 'hidden'}`}>№ {id}</p>}
+                {bool && <p className={`absolute bottom-4 z-[2] px-4 left-4 text-white ${active ? 'inline' : 'hidden'}`}>№ {id}</p>}
                 {/* button */}
                 <div className={`absolute bottom-8 right-8 transition-opacity duration-1000 delay-[0.8s] ${active ? 'opacity-100' : 'opacity-0'} z-[2]`}>
                     <ScrollToComponent hrefElem={'feedbackform'} className={` text-white ${active ? 'flex' : 'hidden'} `} isArrowIconNeeded={true} isHoverEffect={true} text={t('button')}></ScrollToComponent>

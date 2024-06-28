@@ -33,7 +33,7 @@ export default function WhyWeBlock({iconPath, title, description, bool, id} : {i
                 <Title className="d-s:text-lg" text={title}></Title>
                 <p className="text-center text-black text-xs t-s:text-base t-m:text-sm">{description}</p>
             </div>
-            {bool && <p className={`absolute bottom-4 z-[2] opacity-0 hover:opacity-100 px-4 left-4 text-black`}>№ {id}</p>}
+            {bool && <p className={`absolute bottom-4 z-[2] px-4 left-4 text-black`}>№ {id}</p>}
         </div>
     )
 }
