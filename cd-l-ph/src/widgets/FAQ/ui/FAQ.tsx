@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl"
 import React from "react"
 
 
-const FAQ = ({data, bool} : {data: any, bool: boolean}) => {
+const FAQ = ({data, title, bool, button} : {data: any, bool: boolean, title:string, button: string}) => {
 
     const t = useTranslations("faq")
     const { ref: faqRef, inView: faqIsVisible } = useInView({triggerOnce: true})
@@ -22,12 +22,12 @@ const FAQ = ({data, bool} : {data: any, bool: boolean}) => {
 
     return(
         <div ref={faqRef} className='font-OpenSans flex flex-col px-4 pb-4 t-l:px-8' id="faq">
-            {/* <Title text={t("title")} className="text-sm bg-white h-[70px] flex items-center"></Title> */}
+            <Title text={title} className="text-sm bg-white h-[70px] flex items-center"></Title>
             <div className="gap-y-8 flex flex-col t-m:items-center my-10">
             {
                 !data.error ? data.map((item: any) => {
                     return(
-                        <FAQBlock id={item.id} bool={bool} title={item.title} description={item.description} active={item.title === active} setActive={() => setActive(item.title)}></FAQBlock>
+                        <FAQBlock button={button} id={item.id} bool={bool} title={item.title} description={item.description} active={item.title === active} setActive={() => setActive(item.title)}></FAQBlock>
                     )
                 }) : ''
             }

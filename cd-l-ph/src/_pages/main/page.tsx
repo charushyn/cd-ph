@@ -1,4 +1,4 @@
-import { FAQ, Services } from "@/widgets/index";
+import { FAQ, Footer, Header, Services } from "@/widgets/index";
 import {PopupLanguage} from "@/widgets/index";
 import {PopupBurger} from "@/widgets/index";
 import {FeedbackForm} from "@/widgets/Forms/index"
@@ -19,9 +19,11 @@ import getGreetingData from "@/widgets/Greeting/api/getGreeting";
 import { isToken } from "@/shared/utils/cookie/cookie";
 import { Loading } from "@/build/Providers";
 import { getStaticData } from "@/shared/utils";
+import getImg from "@/shared/utils/img/getImg";
 
 
 const Main = async () => {
+
 
         const locale = await getLocale()
 
@@ -71,24 +73,40 @@ const Main = async () => {
 
         const other = async () => {
           try{
-            const faqs = await getStaticData(locale, 'other')
-            return faqs
+            const other = await getStaticData(locale, 'other')
+            return other
           } catch(err){
             return {error: true}
           }
         }
 
+
+        const greetingData = await greeting()
+        const servicesData = await services()
+        const whyweData = await whywes()
+        const faqData = await faqs()
+        const opinionsData = await opinions()
+        const otherData = await other()
+
+
+
+        const {h1, logo, buttons, map} = otherData
+
+        const logoSrc = (await getImg(logo)).data
+        const ulServices = [...servicesData.map((item:any) => {return item.title})]
         
         return (
           <div className="relative">
+                <Header logo={logoSrc}></Header>
                 <PopupBurger></PopupBurger>
                 <PopupLanguage></PopupLanguage>
-                <Greeting data={await greeting()}></Greeting>
-                <Services data={await services()} bool={showIDs} title={''}></Services>
-                <WhyWe data={await whywes()} bool={showIDs} title={''}></WhyWe>
-                <FAQ data={await faqs()} bool={showIDs}></FAQ>
-                <Opinions data={await opinions()} bool={showIDs}></Opinions>
-                <FeedbackForm></FeedbackForm>
+                <Greeting data={greetingData}></Greeting>
+                <Services data={servicesData} bool={showIDs} title={h1.services} button={buttons.services}></Services>
+                <WhyWe data={whyweData} bool={showIDs} title={h1.whywe}></WhyWe>
+                <FAQ data={faqData} bool={showIDs} title={h1.faq} button={buttons.faq}></FAQ>
+                <Opinions data={opinionsData} bool={showIDs} title={h1.opinions} button={buttons.opinions} href={map.link}></Opinions>
+                <FeedbackForm title={h1.form} button={buttons.form} ulServices={ulServices}></FeedbackForm>
+                <Footer map={map} logo={logoSrc}></Footer>
           </div>
         );
       }

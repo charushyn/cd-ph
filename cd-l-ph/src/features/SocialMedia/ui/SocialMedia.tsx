@@ -9,10 +9,7 @@ export default function SocialMedia({iconUrl, src, text} : {iconUrl: string, src
 
     useEffect(() => {
         new Promise(async () => {
-            let img = Buffer.from(((await getImg(iconUrl)).data),
-            "binary" ).toString("base64");
-    
-            setIcon(`data:image/png;base64,${img}`)
+            setIcon((await getImg(iconUrl)).data)
         })
     }, [])
 

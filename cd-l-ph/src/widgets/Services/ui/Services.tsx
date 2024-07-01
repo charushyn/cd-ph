@@ -19,7 +19,7 @@ import { Loading } from "@/build/Providers";
   
 
 
-function Services ({data, bool, title} : {data: any, bool: boolean, title: string})  {
+function Services ({data, bool, title, button} : {data: any, bool: boolean, title: string, button: string})  {
 
 
     
@@ -30,20 +30,9 @@ function Services ({data, bool, title} : {data: any, bool: boolean, title: strin
                 <div className="flex flex-col d-s:flex-row overflow-x-hidden">  
                     {
                             !data.error ? data.map((service: any) => {
-                            //     let base64Bg = Buffer.from(((await getImg(service.bg)).data),
-                            //     "binary" ).toString("base64");
-                
-                            //     let base64Icon = Buffer.from(((await getImg(service.svg)).data),
-                            //         "binary" ).toString("base64");
-                
-                               
-                                
-                            
-                            // let bg =`data:image/png;base64,${base64Bg}`
-                            // let svg = `data:image/png;base64,${base64Icon}`
                             return(
                                 
-                                <TestService bool={bool} key={service.id} id={service.id} title={service.title} description={service.description} bgPath={service.bg} svgPath={service.svg}></TestService>
+                                <TestService bool={bool} key={service.id} id={service.id} title={service.title} description={service.description} bgPath={service.bg} svgPath={service.svg} button={button}></TestService>
                                 
                             )
                         }) : ''

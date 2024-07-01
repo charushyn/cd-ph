@@ -71,7 +71,7 @@ const formSchema = z.object({
       path: ["phone"]
   }
 )
-const FeedbackForm = () => {
+const FeedbackForm = ({title, button, ulServices} : {title: string, button: string, ulServices: any}) => {
   const t = useTranslations("feedback")
     const [captcha, setCaptcha] = React.useState(false)
     const { 
@@ -123,7 +123,7 @@ const FeedbackForm = () => {
     const locale = useLocale()
     return (
         <div className="flex flex-col" id='feedbackform'>
-            <Title text={''} className="text-sm bg-white h-[50px] flex items-center px-4 t-l:px-8 relative"></Title>
+            <Title text={title} className="text-sm bg-white h-[50px] flex items-center px-4 t-l:px-8 relative"></Title>
             <div className="flex flex-col gap-4 font-OpenSans d-s:flex-row h-fit d-s:justify-between">
               <div className="h-vh w-[67%] photo relative">
                 <div className="overlay"></div>
@@ -147,10 +147,13 @@ const FeedbackForm = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                <SelectItem value={t('form.select.0')}>{t('form.select.0')}</SelectItem>
-                                <SelectItem value={t('form.select.1')}>{t('form.select.1')}</SelectItem>
-                                <SelectItem value={t('form.select.2')}>{t('form.select.2')}</SelectItem>
-                                <SelectItem value={t('form.select.3')}>{t('form.select.3')}</SelectItem>
+                                {
+                                  ulServices.map((item:any) => {
+                                    return(
+                                        <SelectItem value={item}>{item}</SelectItem>
+                                    )
+                                  })
+                                }
                               </SelectContent>
                             </Select>
                             <FormMessage />
@@ -274,7 +277,7 @@ const FeedbackForm = () => {
                         sitekey='6LecEcspAAAAAGtyTc0IYkH_LGTWjVbBZOICQgCQ'
                         className=""
                         />
-                        <Button type="submit" className="w-full">Надіслати</Button>
+                        <Button type="submit" className="w-full">{button}</Button>
                     </form>
             </Form>
             <style jsx>{

@@ -16,9 +16,6 @@ export default async function WhyWe({data, bool,title} : {data: any, bool: boole
             <div className="flex flex-col p-4 gap-5 justify-center items-center  t-s:flex-row t-s:flex-wrap t-l:p-8 t-l:justify-around t-l:gap-y-8">
                 {
                     !data.error ? data.map((item: any) => {
-                            // let base64Icon = Buffer.from(((await getImg(item.svg)).data),
-                            //     "binary" ).toString("base64");
-                            // let svg = `data:image/png;base64,${base64Icon}`
                         return(
                             <WhyWeBlock id={item.id} bool={bool} title={item.title} description={item.description} iconPath={item.svg}></WhyWeBlock>
                         )

@@ -16,12 +16,7 @@ const ReviewBlock = ({avatar, description, position, name, id, bool} : {avatar: 
 
         useEffect(() => {
             new Promise(async (resolve, reject) => {
-                let base64Bg = Buffer.from(((await getImg(avatar)).data),
-                "binary" ).toString("base64");
-                let bg =`data:image/png;base64,${base64Bg}`
-
-                setImgUrl(bg)
-
+                setImgUrl((await getImg(avatar)).data)
             })
                 
     

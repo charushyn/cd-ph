@@ -21,14 +21,16 @@ const TestService = (
         id,
         bgPath,
         svgPath,
-        bool
+        bool,
+        button
     } : {
         title: string, 
         description: string, 
         id: number,
         bgPath: string,
         svgPath: string,
-        bool: boolean
+        bool: boolean,
+        button: string
     }) => {
 
         const [iconUrl, setIconUrl] = useState('')
@@ -36,35 +38,16 @@ const TestService = (
 
         useEffect(() => {
             new Promise(async (resolve, reject) => {
-                let base64Bg = Buffer.from(((await getImg(bgPath)).data),
-                "binary" ).toString("base64");
-                let bg =`data:image/png;base64,${base64Bg}`
-
-                setBgPhotoUrl(bg)
+                setBgPhotoUrl((await getImg(bgPath)).data)
 
             })
 
             new Promise(async (resolve, reject) => {
-                let base64Svg = Buffer.from(((await getImg(svgPath)).data),
-                "binary" ).toString("base64");
-                let svg =`data:image/png;base64,${base64Svg}`
-
-                setIconUrl(svg)
+                setIconUrl((await getImg(svgPath)).data)
 
             })
-                
-        
-                // let base64Icon = Buffer.from(((await getImg(service.svg)).data),
-                //     "binary" ).toString("base64");
             }, [])
-        
-
        
-        
-    
-        
-        // let svg = `data:image/png;base64,${base64Icon}`        
-        const t = useTranslations('services')
         const active = id == useSelector((state: any) => state.serviceReducer.activeServiceID)
         const dispatch = useDispatch()
 
@@ -116,7 +99,7 @@ const TestService = (
                 {bool && <p className={`absolute bottom-4 z-[2] px-4 left-4 text-white ${active ? 'inline' : 'hidden'}`}>№ {id}</p>}
                 {/* button */}
                 <div className={`absolute bottom-8 right-8 transition-opacity duration-1000 delay-[0.8s] ${active ? 'opacity-100' : 'opacity-0'} z-[2]`}>
-                    <ScrollToComponent hrefElem={'feedbackform'} className={` text-white ${active ? 'flex' : 'hidden'} `} isArrowIconNeeded={true} isHoverEffect={true} text={t('button')}></ScrollToComponent>
+                    <ScrollToComponent hrefElem={'feedbackform'} className={` text-white ${active ? 'flex' : 'hidden'} `} isArrowIconNeeded={true} isHoverEffect={true} text={button}></ScrollToComponent>
                 </div>
         </div>
     )

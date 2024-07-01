@@ -8,7 +8,7 @@ import React from "react";
 
 import { useTranslations } from "next-intl";
 
-const FAQBlock = ({description, title, active, setActive, bool, id} : {description:string, title:string, active: boolean, setActive: any, bool: boolean, id: number}) => {
+const FAQBlock = ({description, title, active, setActive, bool, id, button} : {description:string, title:string, active: boolean, setActive: any, bool: boolean, id: number, button:string}) => {
     const t = useTranslations("faq")
          const {ref: faqRef, inView: isBlockVisible } = useInView({triggerOnce: true})
         return(
@@ -26,7 +26,7 @@ const FAQBlock = ({description, title, active, setActive, bool, id} : {descripti
                         <div className='text-xs t-s:text-sm t-m:text-base leading-5 t-x:text-lg d-s:w-[80%] text-gray-500'>{description}</div>
                         {bool && <p className={'text-black'}>№ {id}</p>}
                         <div className='flex justify-end mt-10'>
-                            <ScrollToComponent isHoverEffect={true} hrefElem='feedbackform' className=" bottom-4 right-4 text-white" onClick={(e: any) => e.stopPropagation()} isArrowIconNeeded={true} text={t("button")}></ScrollToComponent>
+                            <ScrollToComponent isHoverEffect={true} hrefElem='feedbackform' className=" bottom-4 right-4 text-white" onClick={(e: any) => e.stopPropagation()} isArrowIconNeeded={true} text={button}></ScrollToComponent>
                         </div>
                     </div>
                     

@@ -1,5 +1,7 @@
+'use server'
+
 export default async function getImg(path: string){
-    const response = await fetch(`https://backend.cdfinance.pl/img`, {
+    const response = await fetch(`${process.env.URL_STATIC_INFORMATION_SECRET}/img`, {
         method: 'POST',
         mode: 'cors',
         headers: {

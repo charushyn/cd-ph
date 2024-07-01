@@ -14,10 +14,9 @@ import { Link } from "@/shared/ui/index";
 
 import { useLocale } from "next-intl";
 
-const Header = () => {
+const Header = ({logo} : {logo: string}) => {
     const dispatch = useDispatch()
     const locale = useLocale()
-
     const scrollDirection = useScrollDirection();
 
     return(
@@ -28,7 +27,7 @@ const Header = () => {
                 hrefElem="top"
                 text=''
                 ></ScrollToComponent>
-                {iconFinder("small-gold-logo", 'h-[20px]')}
+                <img src={logo} className={'w-fit h-[20px] t-s:h-[20px]'} alt=""></img>
             </div>
             <div className="flex flex-row gap-4">
                 <div className='flex flex-row gap-2 items-center' onClick={() => dispatch(toggleVisibilityPopupLanguage())}>
