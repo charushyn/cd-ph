@@ -33,20 +33,20 @@ const TestService = (
         button: string
     }) => {
 
-        const [iconUrl, setIconUrl] = useState('')
-        const [bgPhotoUrl, setBgPhotoUrl] = useState('')
+        // const [iconUrl, setIconUrl] = useState('')
+        // const [bgPhotoUrl, setBgPhotoUrl] = useState('')
 
-        useEffect(() => {
-            new Promise(async (resolve, reject) => {
-                setBgPhotoUrl((await getImg(bgPath)).data)
+        // useEffect(() => {
+        //     new Promise(async (resolve, reject) => {
+        //         setBgPhotoUrl((await getImg(bgPath)).data)
 
-            })
+        //     })
 
-            new Promise(async (resolve, reject) => {
-                setIconUrl((await getImg(svgPath)).data)
+        //     new Promise(async (resolve, reject) => {
+        //         setIconUrl((await getImg(svgPath)).data)
 
-            })
-            }, [])
+        //     })
+        //     }, [])
        
         const active = id == useSelector((state: any) => state.serviceReducer.activeServiceID)
         const dispatch = useDispatch()
@@ -54,9 +54,10 @@ const TestService = (
         useEffect(() => {
             dispatch(setActiveID(id))
         }, [])
+        console.log(svgPath)
     return(
         <div style={{
-                backgroundImage: `url(${bgPhotoUrl})`,
+                backgroundImage: `url(${getImg(bgPath)})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
@@ -68,7 +69,7 @@ const TestService = (
                 {/* overlay with 0.5 bg black, make photo more dark*/}
                 <div className="absolute z-[1] bg-black opacity-50 w-full h-full"></div>
                 {/* overlay in load state img */}
-                {
+                {/* {
                     bgPhotoUrl.length === 0 && 
                     <div className="absolute z-[2] w-full h-full flex justify-end px-4 items-center">
                     <div className="flex flex-row gap-1">
@@ -77,7 +78,7 @@ const TestService = (
                         <BarLoader delay={0.2} className=""></BarLoader>
                     </div>
                     </div>
-                    }
+                    } */}
                 {/* default info */}
                 <div className='relative flex flex-row h-[70px] m-l:h-[90px] w-full z-[2] justify-between p-4 items-center d-s:hidden'>
                     <Title text={title} className="text-white uppercase"></Title>
@@ -88,7 +89,7 @@ const TestService = (
                 </div>
                 {/* default info, but for desktops */}
                 <div className={`relative z-[2] flex justify-center transition-opacity duration-1000 ${active ? 'd-s:opacity-0' : 'd-s:opacity-100'}`}>
-                       <img src={iconUrl} className={`w-6 h-6 t-m:w-8 t-m:h-8 text-white hidden mt-8 ${!active && 'd-s:flex'}`}></img>
+                       <img src={getImg(svgPath)} className={`w-6 h-6 t-m:w-8 t-m:h-8 text-white hidden mt-8 ${!active && 'd-s:flex'}`}></img>
                 </div>
                 {/* info with details */}
                 <div className={`relative transition-opacity duration-1000 delay-[0.8s] d-s:pt-[80px] d-s:px-8 ${active ? 'opacity-100 p-4' : 'opacity-0 p-0'} z-[2]`}>

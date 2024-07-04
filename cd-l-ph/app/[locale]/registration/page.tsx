@@ -1,3 +1,3 @@
-import { Registration } from "@/_pages/index";
+// import { Registration } from "@/_pages/index";
 
-export default Registration;
+// export default Registration;

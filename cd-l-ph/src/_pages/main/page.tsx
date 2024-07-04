@@ -92,12 +92,11 @@ const Main = async () => {
 
         const {h1, logo, buttons, map} = otherData
 
-        const logoSrc = (await getImg(logo)).data
         const ulServices = [...servicesData.map((item:any) => {return item.title})]
         
         return (
           <div className="relative">
-                <Header logo={logoSrc}></Header>
+                <Header logo={logo}></Header>
                 <PopupBurger></PopupBurger>
                 <PopupLanguage></PopupLanguage>
                 <Greeting data={greetingData}></Greeting>
@@ -106,7 +105,7 @@ const Main = async () => {
                 <FAQ data={faqData} bool={showIDs} title={h1.faq} button={buttons.faq}></FAQ>
                 <Opinions data={opinionsData} bool={showIDs} title={h1.opinions} button={buttons.opinions} href={map.link}></Opinions>
                 <FeedbackForm title={h1.form} button={buttons.form} ulServices={ulServices}></FeedbackForm>
-                <Footer map={map} logo={logoSrc}></Footer>
+                <Footer map={map} logo={logo}></Footer>
           </div>
         );
       }

@@ -49,7 +49,7 @@ export default async function Footer({logo, map} : {logo:string, map:any}){
                     <div className='flex flex-col gap-4'>
                         <div className='flex flex-row items-center gap-2'>
                             
-                            <img src={logo} className={'w-fit h-[20px] t-s:h-[20px]'} alt=""></img>
+                            <img src={getImg(logo)} className={'w-fit h-[20px] t-s:h-[20px]'} alt=""></img>
                             <Title className='text-white' text="CD Phinance"></Title>
                         </div>
                         <div className="flex flex-col gap-2">
