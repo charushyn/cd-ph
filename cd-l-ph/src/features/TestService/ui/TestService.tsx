@@ -54,7 +54,6 @@ const TestService = (
         useEffect(() => {
             dispatch(setActiveID(id))
         }, [])
-        console.log(svgPath)
     return(
         <div style={{
                 backgroundImage: `url(${getImg(bgPath)})`,

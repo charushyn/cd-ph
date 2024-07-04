@@ -13,8 +13,9 @@ import { PopupBurger } from "@/widgets/index";
 import { Link } from "@/shared/ui/index";
 
 import { useLocale } from "next-intl";
+import getImg from "@/shared/utils/img/getImg";
 
-const Header = ({logo} : {logo: any}) => {
+const Header = ({logo} : {logo: string}) => {
     const dispatch = useDispatch()
     const locale = useLocale()
     const scrollDirection = useScrollDirection();
@@ -27,7 +28,7 @@ const Header = ({logo} : {logo: any}) => {
                 hrefElem="top"
                 text=''
                 ></ScrollToComponent>
-                <img src={`http://localhost:1488/img/${logo}`} className={'w-fit h-[20px] t-s:h-[20px]'} alt=""></img>
+                <img src={getImg(logo)} className={'w-fit h-[20px] t-s:h-[20px]'} alt=""></img>
             </div>
             <div className="flex flex-row gap-4">
                 <div className='flex flex-row gap-2 items-center' onClick={() => dispatch(toggleVisibilityPopupLanguage())}>
