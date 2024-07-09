@@ -130,7 +130,7 @@ const FormDeleteSocialMedia = () => {
     return (
         <div className="p-4 flex flex-col" id='delete-service'>
             <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`} id='delete-social-media'>
                         <FormField
                         control={form.control}
                         name="id"

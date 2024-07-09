@@ -1,4 +1,4 @@
-import reqUrl from "../../../reqUrl"
+import reqUrl from "../../../../../../shared/utils/urls/reqUrlBack"
 
 export default async function deleteSocialMedia(id: number){
     const body = JSON.stringify({id: id})

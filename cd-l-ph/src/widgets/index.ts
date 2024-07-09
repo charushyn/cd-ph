@@ -8,5 +8,6 @@ import Greeting from "./Greeting/ui/Greeting";
 import WhyWe from "./WhyWe/ui/WhyWe";
 import Opinions from "./Opinions/ui/Opinions";
 import LoadingBar from "./LoadingBar/LoadingBar";
+import Calculator from "./Calculator/ui/Calculator";
 
-export {Header, Services, PopupBurger, PopupLanguage, FAQ, Footer, Greeting, WhyWe, Opinions, LoadingBar}
+export {Header, Services, PopupBurger, PopupLanguage, FAQ, Footer, Greeting, WhyWe, Opinions, LoadingBar, Calculator}

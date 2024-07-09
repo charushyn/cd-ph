@@ -44,6 +44,7 @@ import React from "react";
 import Login from "../api/login"
 import { useDispatch } from "react-redux"
 import { useRouter } from "next/navigation"
+import reqUrl from "@/shared/utils/urls/reqUrlFront";
 
  
 const formSchema = z.object({
@@ -72,7 +73,7 @@ const LoginForm = () => {
         
         if(res.allow){
           setCookie('refreshToken', res.token, {maxAge: 60*60, httpOnly: true})
-          router.push('https://cdfinance.pl/cabinet-admin')
+          router.push(`${reqUrl}/cabinet-admin`)
         } else {
           setErr(true)
         }

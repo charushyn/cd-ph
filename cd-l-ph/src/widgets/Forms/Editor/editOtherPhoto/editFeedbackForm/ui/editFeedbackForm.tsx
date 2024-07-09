@@ -67,8 +67,7 @@ const FormEditFeedbackPhoto = () => {
 
     async function onSubmit(values: z.infer<typeof formSchema>){
         try{
-            const data = await getStaticData('ua', 'other')
-            const response = await editImg(data.data.feedbackImg, values.bgPhoto)
+            await editImg(values.bgPhoto, 'feedback-bg')
             setTimeout(() => {
             toast({
                 variant: 'default',
@@ -80,9 +79,6 @@ const FormEditFeedbackPhoto = () => {
 
 
         } catch(err: any) {
-            if(err == 'Unauthorized'){
-                return router.push('/login')
-            }
               toast({
               variant: "destructive",
               title: 'Error!',
@@ -94,9 +90,9 @@ const FormEditFeedbackPhoto = () => {
 
 
     return (
-        <div className="p-4 flex flex-col gap-8" id='edit-service'>
+        <div className="p-4 flex flex-col gap-8" id='edit-feedback-bg'>
             <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`} id='edit-feedback-img'>
                         <FormField
                         control={form.control}
                         name="bgPhoto"

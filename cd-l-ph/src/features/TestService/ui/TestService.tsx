@@ -67,17 +67,6 @@ const TestService = (
             >
                 {/* overlay with 0.5 bg black, make photo more dark*/}
                 <div className="absolute z-[1] bg-black opacity-50 w-full h-full"></div>
-                {/* overlay in load state img */}
-                {/* {
-                    bgPhotoUrl.length === 0 && 
-                    <div className="absolute z-[2] w-full h-full flex justify-end px-4 items-center">
-                    <div className="flex flex-row gap-1">
-                        <BarLoader delay={0} className=""></BarLoader>
-                        <BarLoader delay={0.1} className=""></BarLoader>
-                        <BarLoader delay={0.2} className=""></BarLoader>
-                    </div>
-                    </div>
-                    } */}
                 {/* default info */}
                 <div className='relative flex flex-row h-[70px] m-l:h-[90px] w-full z-[2] justify-between p-4 items-center d-s:hidden'>
                     <Title text={title} className="text-white uppercase"></Title>

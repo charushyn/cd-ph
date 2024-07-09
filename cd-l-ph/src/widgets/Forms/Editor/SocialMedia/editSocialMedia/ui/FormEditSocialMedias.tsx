@@ -164,7 +164,7 @@ const FormEditSocialMedia = () => {
     return (
         <div className="p-4 flex flex-col gap-8" id='edit-service'>
             <Form {...formID}>
-                <form onSubmit={formID.handleSubmit(onSearch)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`}>
+                <form onSubmit={formID.handleSubmit(onSearch)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`} id='edit-social-media'>
                         <FormField
                         control={formID.control}
                         name="id"

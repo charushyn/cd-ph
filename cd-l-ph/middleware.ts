@@ -9,13 +9,13 @@ export default async function middleware(request: NextRequest, event: NextFetchE
     const cookieStore = cookies()
     if(request.nextUrl.pathname.includes('cabinet-admin')){
           if(!cookieStore.get('refreshToken')?.value){
-            return NextResponse.redirect(`https://cdfinance.pl/login`)
+            return NextResponse.redirect(`${process.env.FRONT}/login`)
           }
           let headers = new Headers();
           headers.append('Content-Type', 'application/json');
           headers.append('Accept', 'application/json');
           headers.append('Cookie', `${cookieStore}`)
-          const response = await fetch(`https://backend.cdfinance.pl/verify`, {
+          const response = await fetch(`${process.env.BACKEND}/verify`, {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',
@@ -28,7 +28,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
           }).catch((e) => console.log(e))
 
           if(!response?.allow){
-            return NextResponse.redirect('https://cdfinance.pl/login')
+            return NextResponse.redirect(`${process.env.FRONT}/login`)
 
           }
     }
@@ -39,7 +39,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
           headers.append('Content-Type', 'application/json');
           headers.append('Accept', 'application/json');
           headers.append('Cookie', `${cookieStore}`)
-          const response = await fetch(`https://backend.cdfinance.pl/verify`, {
+          const response = await fetch(`${process.env.BACKEND}/verify`, {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',
@@ -54,7 +54,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
             )
 
           if(response?.allow){
-            return NextResponse.redirect('https://cdfinance.pl/cabinet-admin')
+            return NextResponse.redirect(`${process.env.FRONT}/cabinet-admin`)
           }
         }
     }

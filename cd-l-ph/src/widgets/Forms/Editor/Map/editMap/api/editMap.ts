@@ -1,4 +1,4 @@
-import reqUrl from "../../../reqUrl"
+import reqUrl from "../../../../../../shared/utils/urls/reqUrlBack"
 
 export default async function editMap(values: {adress: string, link: string, X:string, Y: string}){
     const body = new FormData()

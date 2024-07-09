@@ -50,7 +50,7 @@ import { getStaticData } from "@/shared/utils"
 
  
 const formSchema = z.object({
-    feedbackImg: z.instanceof(File),
+    logo: z.instanceof(File),
   
 })
 
@@ -61,29 +61,24 @@ const FormEditLogo = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            feedbackImg: undefined
+            logo: undefined
         }
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>){
-        try{
-            const data = await getStaticData('ua', 'other')
-            
-            const response = await editImg(data.data.logo, values.feedbackImg)
+        try{           
+            await editImg(values.logo, 'logo')
             setTimeout(() => {
             toast({
                 variant: 'default',
                 title: 'Good job!',
-                description: 'Photo was changed!'
+                description: 'Logo was changed!'
               })
               form.reset()
               }, 0)
 
 
         } catch(err: any) {
-            if(err == 'Unauthorized'){
-                return router.push('/login')
-            }
               toast({
               variant: "destructive",
               title: 'Error!',
@@ -97,10 +92,10 @@ const FormEditLogo = () => {
     return (
         <div className="p-4 flex flex-col gap-8" id='edit-service'>
             <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`} id='edit-logo'>
                         <FormField
                         control={form.control}
-                        name="feedbackImg"
+                        name="logo"
                         render={({ field: { value, onChange, ...fieldProps } }) => (
                             <FormItem>
                             <FormLabel>new Logo</FormLabel>

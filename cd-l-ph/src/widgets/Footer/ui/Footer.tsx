@@ -19,7 +19,7 @@ const DynamicMap = dynamic(() => import('@/shared/ui/LeafletMap/ui/LeafletMap'),
 
 
 
-export default async function Footer({logo, map} : {logo:string, map:any}){
+export default async function Footer({logo, map, bool} : {logo:string, map:any, bool: boolean}){
     const locale = await getLocale()
     const data = await getStaticData(locale, 'footer')
 
@@ -71,7 +71,10 @@ export default async function Footer({logo, map} : {logo:string, map:any}){
                         {
                             data[idSocialMedia]?.data.length > 0 ? data[idSocialMedia].data.map((item: any) => {
                                 return(
-                                    <SocialMedia text={item.text} src={item.src} iconUrl={item.svg}></SocialMedia>
+                                    <div className="w-fit flex flex-row h-fit gap-2">
+                                        {bool ? <p>№{item.index}</p> : ''}
+                                        <SocialMedia text={item.text} src={item.src} iconUrl={item.svg}></SocialMedia>
+                                    </div>
                                 )
                             }) : ''
                         }
@@ -82,7 +85,11 @@ export default async function Footer({logo, map} : {logo:string, map:any}){
                             data[idSiteAgree]?.data.length > 0 ?
                             data[idSiteAgree].data.map((item: any) => {
                                 return(
-                                    <Link isArrowIconNeeded={true} text={item.text} href={item.src} className="w-full m-s:p-0 m-m:p-0 m-l:p-0 t-s:p-0 t-m:p-0 t-l:p-0 t-x:p-0 d-s:p-0 d-m:p-0 d-l:p-0 underline"></Link>
+                                    <div className="w-fit flex flex-row h-fit">
+                                        {bool ? <p>№{item.index}</p> : ''}
+                                        <Link isArrowIconNeeded={true} text={item.text} href={item.src} className="w-full m-s:p-0 m-m:p-0 m-l:p-0 t-s:p-0 t-m:p-0 t-l:p-0 t-x:p-0 d-s:p-0 d-m:p-0 d-l:p-0 underline"></Link>
+                                    </div>
+                                    
                                 )
                             })
                             : ''

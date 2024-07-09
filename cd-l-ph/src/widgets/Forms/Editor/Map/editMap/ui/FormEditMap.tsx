@@ -60,19 +60,9 @@ const formSchema = z.object({
     coordinationY: z.string().min(1, '!'),
 })
 
-const formSchemaID = z.object({
-        id: z.string().min(1, 'ID!'),     
-    })
-
 const FormEditMap = () => {
     const router = useRouter()
     const {toast} = useToast()
-    const formID = useForm<z.infer<typeof formSchemaID>>({
-      resolver: zodResolver(formSchemaID),
-      defaultValues: {
-        id: "",
-      },
-    })
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -83,23 +73,6 @@ const FormEditMap = () => {
             coordinationY: '',
         }
     })
-    const [data, setData] = React.useState<any[]>([]);
-
-
-    async function onSearch(valuesID: z.infer<typeof formSchemaID>){
-        try{
-            const mapData = await getMapData()
-            
-            setData([mapData])
-
-        } catch(err: any){
-            toast({
-                variant: "destructive",
-                title: 'Error!',
-                description: `Service was not found by id:${valuesID.id}`
-              })
-        }
-    }
 
     async function onSubmit(values: z.infer<typeof formSchema>){
         try{
@@ -115,60 +88,26 @@ const FormEditMap = () => {
                 title: 'Good job!',
                 description: 'Map was changed!'
               })
-              formID.reset()
               form.reset()
               
-                reset()
               }, 0)
 
 
         } catch(err: any) {
-            if(err == 'Unauthorized'){
-                return router.push('/login')
-            }
               toast({
               variant: "destructive",
               title: 'Error!',
               description: `Map was not changed`
             })
-            setTimeout(() => {
-                reset()
-              }, 3000)
             }
         }
-        function reset(){
-            setData([])
-          }
 
 
 
     return (
         <div className="p-4 flex flex-col gap-8" id='edit-service'>
-            <Form {...formID}>
-                <form onSubmit={formID.handleSubmit(onSearch)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`}>
-                        <FormField
-                        control={formID.control}
-                        name="id"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel className="">What id has "Service"?</FormLabel>
-                            <FormControl>
-                                <Input className={`${data.length > 0 &&  'bg-green-400'}`} disabled={data.length > 0} placeholder="text..."  {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                        />
-                        <Button type="submit" disabled={data.length > 0}  className="w-full ">Search!</Button>
-                        {data.length > 0 ? <Button type="button" onClick={() => {
-                          form.reset()
-                          formID.reset()
-                          reset()
-                        }} className="w-full">Refresh</Button> : <></>}
-                </form>
-            </Form>
             <Form {...form}>
-                    {data.length > 0 && <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`}>
                     <FormField
                             control={form.control}
                             name="adress"
@@ -178,7 +117,6 @@ const FormEditMap = () => {
                                 <FormControl>
                                     <Input placeholder="text..."  {...field} />
                                 </FormControl>
-                                <FormDescription>previous: {data.length > 0 ? data[0].adress : ''}</FormDescription>
                                 <FormMessage />
                                 </FormItem>
                             )}
@@ -192,7 +130,6 @@ const FormEditMap = () => {
                                 <FormControl>
                                     <Input placeholder="new text..."  {...field} />
                                 </FormControl>
-                                <FormDescription>previous: {data[0].link}</FormDescription>
                                 <FormMessage />
                                 </FormItem>
                             )}
@@ -206,7 +143,6 @@ const FormEditMap = () => {
                                 <FormControl>
                                     <Input placeholder="new text..."  {...field} />
                                 </FormControl>
-                                <FormDescription>previous: {data[0].coordinationX}</FormDescription>
                                 <FormMessage />
                                 </FormItem>
                             )}
@@ -220,7 +156,6 @@ const FormEditMap = () => {
                                 <FormControl>
                                     <Input placeholder="new text..."  {...field} />
                                 </FormControl>
-                                <FormDescription>previous: {data[0].coordinationY}</FormDescription>
                                 <FormMessage />
                                 </FormItem>
                             )}
@@ -241,9 +176,8 @@ const FormEditMap = () => {
                                 </p>
                             </div>
                         </div>
-                        <Button type="submit"  className="w-full ">Submit!</Button>
-                            
-                    </form>}
+                        <Button type="submit"  className="w-full ">Submit!</Button> 
+                    </form>
             </Form>
         </div>
       )

@@ -1,5 +1,5 @@
 
-import reqUrl from "../../../reqUrl"
+import reqUrl from "../../../../../../shared/utils/urls/reqUrlBack"
 export default async function deleteOpinion(id: number){
     const body = JSON.stringify({id: id})
     const response = await fetch(`${reqUrl}/delete-opinion`, {
@@ -14,9 +14,12 @@ export default async function deleteOpinion(id: number){
         if(data.ok){
             return data.json()
         }
+        if(data.status == 401){
+            throw new Error('Unauthorized')
+        }
         throw new Error()
     }).catch(err => {
-        return err
+        throw new Error(err)
     })
     return response
 }

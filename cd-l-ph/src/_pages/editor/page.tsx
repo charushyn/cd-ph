@@ -59,7 +59,7 @@ import FormAddSiteAgree from "@/widgets/Forms/Editor/siteAgree/addSiteAgree/ui/F
 import FormAddSocialMedia from "@/widgets/Forms/Editor/SocialMedia/addSocialMedia/addService/ui/FormAddSocialMedia"
 import FormEditSocialMedia from "@/widgets/Forms/Editor/SocialMedia/editSocialMedia/ui/FormEditSocialMedias"
 import FormDeleteSocialMedia from "@/widgets/Forms/Editor/SocialMedia/deleteSocialMedia/ui/FormDeleteSocialMedia"
-import FormEditLogo from "@/widgets/Forms/Editor/editOtherPhoto/editLogo/ui/editFeedbackForm"
+import FormEditLogo from "@/widgets/Forms/Editor/editOtherPhoto/editLogo/ui/editLogo"
 import FormEditFeedbackPhoto from "@/widgets/Forms/Editor/editOtherPhoto/editFeedbackForm/ui/editFeedbackForm"
  
 export default function Editor(){
@@ -169,20 +169,78 @@ export default function Editor(){
                 </MenubarItem>
                 </MenubarContent>
             </MenubarMenu>
-            {/* <MenubarMenu>
+            <MenubarMenu>
                 <MenubarTrigger>Footer</MenubarTrigger>
                 <MenubarContent>
-                <MenubarRadioGroup value="benoit">
-                    <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
-                    <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
-                    <MenubarRadioItem value="Luis">Luis</MenubarRadioItem>
-                </MenubarRadioGroup>
-                <MenubarSeparator />
-                <MenubarItem inset>Edit...</MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem inset>Add Profile...</MenubarItem>
+                <MenubarItem className="">
+                    <a href={'#edit-work-day'}>
+                    Edit Work Day
+                    </a>
+                </MenubarItem>
+                <MenubarItem className="">
+                    <a href={'#edit-map'}>
+                    Edit map
+                    </a>
+                </MenubarItem>
                 </MenubarContent>
-            </MenubarMenu> */}
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger>Social Media</MenubarTrigger>
+                <MenubarContent>
+                <MenubarItem className="">
+                    <a href={'#add-social-media'}>
+                    Add Social Media
+                    </a>
+                </MenubarItem>
+                <MenubarItem className="">
+                    <a href={'#edit-social-media'}>
+                    Edit Social Media
+                    </a>
+                </MenubarItem>
+                <MenubarItem className="">
+                    <a href={'#delete-social-media'}>
+                    Delete Social Media
+                    </a>
+                </MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger>Site Agree</MenubarTrigger>
+                <MenubarContent>
+                <MenubarItem className="">
+                    <a href={'#add-site-agree'}>
+                    Add Site Agree
+                    </a>
+                </MenubarItem>
+                <MenubarItem className="">
+                    <a href={'#edit-site-agree'}>
+                    Edit Site Agree
+                    </a>
+                </MenubarItem>
+                <MenubarItem className="">
+                    <a href={'#delete-site-agree'}>
+                    Delete Site Agree
+                    </a>
+                </MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+                <MenubarTrigger>Other</MenubarTrigger>
+                <MenubarContent>
+                <MenubarItem className="">
+                    <a href={'#edit-logo'}>
+                    Edit Logo
+                    </a>
+                </MenubarItem>
+                <MenubarItem className="">
+                    <a href={'#edit-feedback-bg'}>
+                    Edit Feedback Form Bg Photo
+                    </a>
+                </MenubarItem>
+                </MenubarContent>
+            </MenubarMenu>
+            
+            
             </Menubar>
             <div className="px-8 ">
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} pt-8 text-5xl`}>
@@ -292,25 +350,25 @@ export default function Editor(){
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Schedule
                 </p>
-                {/* <div className="">
+                <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
-                            Edit Schedule
+                            Edit work day
                     </p>
                     <FormEditWorkDay></FormEditWorkDay>
-                </div> */}
+                </div>
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Map
                 </p>
-                {/* <div className="">
+                <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
                             Edit map
                     </p>
                     <FormEditMap></FormEditMap>
-                </div> */}
+                </div>
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Site agree
                 </p>
-                {/* <div className="">
+                <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
                             Add site agree
                     </p>
@@ -327,11 +385,11 @@ export default function Editor(){
                             Delete Site agree
                     </p>
                     <FormDeleteSiteAgree></FormDeleteSiteAgree>
-                </div> */}
+                </div>
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Social media
                 </p>
-                {/* <div className="">
+                <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
                             Add social media
                     </p>
@@ -351,10 +409,10 @@ export default function Editor(){
                 </div>
                 <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-5xl underline`}>
                     Other
-                </p> */}
-                {/* <div className="">
+                </p>
+                <div className="">
                     <p className={`${resolvedTheme === 'light' ? 'text-black' : 'text-white'} py-8 text-3xl text-center`}>
-                            Edit Feedback Form Img
+                            Edit Feedback Form Bg Img
                     </p>
                     <FormEditFeedbackPhoto></FormEditFeedbackPhoto>
                 </div>
@@ -363,7 +421,7 @@ export default function Editor(){
                             Edit Logo
                     </p>
                     <FormEditLogo></FormEditLogo>
-                </div> */}
+                </div>
             </div>
         </main>
     )

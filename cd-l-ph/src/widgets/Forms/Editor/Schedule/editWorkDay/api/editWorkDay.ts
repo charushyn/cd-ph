@@ -1,5 +1,5 @@
 
-import reqUrl from "../../../reqUrl"
+import reqUrl from "../../../../../../shared/utils/urls/reqUrlBack"
 export default async function editWorkDay(values : {whichDay: number, isOpen: boolean, from?: Date, to?: Date}){
     const body = JSON.stringify({
         id: values.whichDay,

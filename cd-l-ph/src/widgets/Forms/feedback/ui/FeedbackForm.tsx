@@ -53,6 +53,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/shared/uiShadcn/ui/form"
+import getImg from "@/shared/utils/img/getImg";
 
  
 const formSchema = z.object({
@@ -71,7 +72,7 @@ const formSchema = z.object({
       path: ["phone"]
   }
 )
-const FeedbackForm = ({title, button, ulServices} : {title: string, button: string, ulServices: any}) => {
+const FeedbackForm = ({title, button, ulServices, bgPhoto} : {title: string, button: string, ulServices: any, bgPhoto: string}) => {
   const t = useTranslations("feedback")
     const [captcha, setCaptcha] = React.useState(false)
     const { 
@@ -283,7 +284,7 @@ const FeedbackForm = ({title, button, ulServices} : {title: string, button: stri
             <style jsx>{
                         `
                         .photo {
-                            background-image: url("https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.850businessmagazine.com/content/uploads/2019/10/iStock-694415714-1024x688.jpg");
+                            background-image: url("${getImg(bgPhoto)}");
                             background-size: cover;
                             background-repeat: no-repeat;
                             background-position: right;

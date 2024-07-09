@@ -1,10 +1,11 @@
-export default async function editImg(path: string, file: File){
+import reqUrl from "../urls/reqUrlBack"
+
+export default async function editImg(file: File, name: string){
     const body = new FormData()
 
     body.append('img', file)
-    body.append('path', path)
 
-    const response = await fetch(`http://localhost:1488/edit-img`, {
+    const response = await fetch(`${reqUrl}/edit-${name}`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

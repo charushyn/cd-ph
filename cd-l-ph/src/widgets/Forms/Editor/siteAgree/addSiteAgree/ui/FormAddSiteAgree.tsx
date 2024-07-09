@@ -10,7 +10,7 @@ import { MutateFunction, useMutation } from "@tanstack/react-query"
 
 import {Subtitle} from "@/shared/ui/index"
 
-import addService from "../api/addSiteAgree"
+import addSiteAgree from "../api/addSiteAgree"
 
 import { useToast } from "@/shared/uiShadcn/ui/use-toast"
 
@@ -89,7 +89,7 @@ const FormAddSiteAgree = () => {
 
         
         try{
-            const response = await addService({
+            const response = await addSiteAgree({
                 ua: {
                     text: values.textUA,
                     src: values.src
@@ -116,9 +116,6 @@ const FormAddSiteAgree = () => {
             form.reset()
 
         } catch(err){
-            if(err == 'Unauthorized'){
-                return router.push('/login')
-            }
             toast({
                 variant: "destructive",
                 title: "Try again!",
@@ -134,7 +131,7 @@ const FormAddSiteAgree = () => {
     return (
         <div className="p-4 flex flex-col" id='add-service'>
             <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`} >
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`} id='add-site-agree'>
                         <FormField
                         control={form.control}
                         name="textUA"

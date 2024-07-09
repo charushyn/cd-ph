@@ -112,9 +112,6 @@ const FormAddSocialMedia = () => {
             form.reset()
 
         } catch(err){
-            if(err == 'Unauthorized'){
-                return router.push('/login')
-            }
             toast({
                 variant: "destructive",
                 title: "Try again!",
@@ -130,7 +127,7 @@ const FormAddSocialMedia = () => {
     return (
         <div className="p-4 flex flex-col" id='add-service'>
             <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`} >
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 d-s:flex d-s:flex-col w-full mx-auto relative d-s:w-[33%]`} id='add-social-media' >
                         <FormField
                         control={form.control}
                         name="text"

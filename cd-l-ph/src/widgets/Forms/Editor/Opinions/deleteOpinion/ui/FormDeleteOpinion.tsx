@@ -51,6 +51,7 @@ import React from "react";
 import findOpinion from "../../editOpinion/api/findOpinion"
 import deleteOpinion from "../api/deleteOpinion"
 
+import { useRouter } from "next/navigation"
  
 const formSchema = z.object({
     id: z.string().min(1, 'id!')
@@ -58,6 +59,7 @@ const formSchema = z.object({
 
 const FormDeleteFAQ = () => {
     const {toast} = useToast()
+    const router = useRouter()
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
@@ -79,6 +81,9 @@ const FormDeleteFAQ = () => {
             })
             reset()
           } catch(err:any){
+            if(err.message.toLowerCase().split(' ')[1] === 'unauthorized'){
+              router.refresh()
+            }
             toast({
               variant: "destructive",
               title: 'Error!',

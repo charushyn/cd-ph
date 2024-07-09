@@ -1,9 +1,11 @@
+import reqUrl from "../../../../shared/utils/urls/reqUrlBack"
+
 export default async function Login(email: string, password: string){
      const body = JSON.stringify({
         login: email,
         password: password
      })
-      const response = await fetch(`https://backend.cdfinance.pl/login`, {
+      const response = await fetch(`${reqUrl}/login`, {
           method: 'POST',
           mode: 'cors',
           credentials: 'include',

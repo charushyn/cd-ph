@@ -5,6 +5,8 @@ import React from "react"
 import languages from "../api/data"
 import { Title } from "@/shared/ui"
 
+import reqUrl from "@/shared/utils/urls/reqUrlFront"
+
 
 import Link from "next/link"
 
@@ -33,7 +35,7 @@ const PopupLanguage = () => {
                                     }}>
                                     <img alt="" className=' object-cover border-[1px] w-[30px] h-[20px]' src={item.flagUrl}></img>
                                     <p className={`text-xs t-s:text-sm t-m:text-base t-x:text-lg`}>{item.fullName}</p>
-                                    <a href={`https://cdfinance.pl/${item.id}`} className="absolute w-full h-full opacity-0 z-[60] top-0 bottom-0 left-0 right-0"></a>
+                                    <a href={`${reqUrl}/${item.id}`} className="absolute w-full h-full opacity-0 z-[60] top-0 bottom-0 left-0 right-0"></a>
                                 </div>
                             )
                         })

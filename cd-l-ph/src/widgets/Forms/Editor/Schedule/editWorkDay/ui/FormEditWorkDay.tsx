@@ -70,12 +70,9 @@ export function FormEditWorkDay() {
           description: "Service was added!"
       })
 
-      // form.reset()
+      form.reset()
 
   } catch(err){
-      if(err == 'Unauthorized'){
-          return router.push('/login')
-      }
       toast({
           variant: "destructive",
           title: "Try again!",
@@ -89,6 +86,7 @@ export function FormEditWorkDay() {
     <Form {...form}>
       <form
         className="flex flex-col gap-4 justify-center"
+        id="edit-work-day"
         onSubmit={form.handleSubmit(onSubmit)}
       >
                     <FormField

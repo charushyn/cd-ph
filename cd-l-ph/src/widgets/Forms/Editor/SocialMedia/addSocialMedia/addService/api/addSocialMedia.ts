@@ -1,4 +1,4 @@
-import reqUrl from "@/widgets/Forms/Editor/reqUrl"
+import reqUrl from "@/shared/utils/urls/reqUrlBack"
 
 export default async function addSocialMedia(values: {
     ua: {

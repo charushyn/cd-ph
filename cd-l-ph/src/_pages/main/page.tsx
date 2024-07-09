@@ -90,7 +90,7 @@ const Main = async () => {
 
 
 
-        const {h1, logo, buttons, map} = otherData
+        const {h1, logo, feedbackbg, buttons, map} = otherData
 
         const ulServices = [...servicesData.map((item:any) => {return item.title})]
         
@@ -104,8 +104,8 @@ const Main = async () => {
                 <WhyWe data={whyweData} bool={showIDs} title={h1.whywe}></WhyWe>
                 <FAQ data={faqData} bool={showIDs} title={h1.faq} button={buttons.faq}></FAQ>
                 <Opinions data={opinionsData} bool={showIDs} title={h1.opinions} button={buttons.opinions} href={map.link}></Opinions>
-                <FeedbackForm title={h1.form} button={buttons.form} ulServices={ulServices}></FeedbackForm>
-                <Footer map={map} logo={logo}></Footer>
+                <FeedbackForm title={h1.form} button={buttons.form} ulServices={ulServices} bgPhoto={feedbackbg}></FeedbackForm>
+                <Footer map={map} logo={logo} bool={showIDs}></Footer>
           </div>
         );
       }
